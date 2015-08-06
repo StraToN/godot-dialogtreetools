@@ -28,7 +28,6 @@ func add_addbutton(parent):
 	var btnAdd = Button.new()
 	btnAdd.set_name("addbtn")
 	btnAdd.set_text("+")
-	print(parent)
 	btnAdd.connect("pressed", parent, "_on_add_pressed")
 	get_node("hbox").add_child(btnAdd)
 	
@@ -37,7 +36,6 @@ func add_rembutton(parent):
 	var btnRemove = Button.new()
 	btnRemove.set_name("rembtn")
 	btnRemove.set_text("-")
-	print(parent)
 	btnRemove.connect("pressed", parent, "_on_remove_pressed", [self])
 	get_node("hbox").add_child(btnRemove)
 

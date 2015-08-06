@@ -1,13 +1,13 @@
 # godot-dialogtreetools
 
 !!! CURRENTLY, NO SAVING !!!
-
-##Thanks
-LeeZH for the initial project, which was importantly modified since then - https://github.com/leezh/gdscript-dialogue
-
 Tool for creating dialog trees for Adventure or RPG games in the form of a Graph.
 Made using Godot Engine.
 
+
+
+##Thanks
+LeeZH for the initial project, which was importantly modified since then - https://github.com/leezh/gdscript-dialogue
 
 ##Objectives
 

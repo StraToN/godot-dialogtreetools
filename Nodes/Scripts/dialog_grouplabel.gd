@@ -20,8 +20,11 @@ func save_data(node_list):
 		"id": get_name(),
 		"x": get_offset().x,
 		"y": get_offset().y,
-		"name": get_node("vbox/groupname").get_text()
+		"groupname": get_node("vbox/groupname").get_text().percent_encode()
 	})
 
 func load_data(data):
-	get_node("vbox/groupname").set_text(data["name"])
+	set_name( data["id"])
+	set_offset( Vector2(data["x"], data["y"]))
+	get_node("vbox/groupname").set_text(data["groupname"])
+	

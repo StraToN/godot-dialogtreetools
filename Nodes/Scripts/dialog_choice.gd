@@ -8,13 +8,15 @@ func _on_close_request():
 
 func save_data(node_list):
 	node_list.push_back({
-		"type": "choice",
+		"type": "dialog_choice",
 		"id": get_name(),
 		"x": get_offset().x,
 		"y": get_offset().y
 	})
 
 func load_data(data):
+	set_name( data["id"])
+	set_offset( Vector2(data["x"], data["y"]))
 	pass
 
 func export_data(file, connections, labels):

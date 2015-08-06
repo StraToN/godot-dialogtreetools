@@ -12,13 +12,15 @@ func save_data(node_list):
 		"id": get_name(),
 		"x": get_offset().x,
 		"y": get_offset().y,
-		"lines": get_node("vbox/vbox_line/vbox_block/lines").get_text(),
-		"anim": get_node("vbox/vbox_line/vbox_block/anim").get_text(),
+		"lines": get_node("vbox/vbox_line/vbox_block/lines").get_text().percent_encode(),
+		"anim": get_node("vbox/vbox_line/vbox_block/anim").get_text().percent_encode(),
 		"not_said": get_node("vbox/not_said").is_pressed(),
-		"condition": get_node("vbox/condition").get_text()
+		"condition": get_node("vbox/condition").get_text().percent_encode()
 	})
 
 func load_data(data):
+	set_name( data["id"])
+	set_offset( Vector2(data["x"], data["y"]))
 	get_node("vbox/vbox_line/vbox_block/lines").set_text(data["lines"])
 	get_node("vbox/vbox_line/vbox_block/anim").set_text(data["anim"])
 	get_node("vbox/not_said").set_pressed(data["not_said"])

@@ -8,15 +8,17 @@ func _on_close_request():
 
 func save_data(node_list):
 	node_list.push_back({
-		"type": "dialog_random",
+		"type": "dialog_line_random",
 		"id": get_name(),
 		"x": get_offset().x,
 		"y": get_offset().y,
-		"lines": get_node("vbox_main_container/vbox_line/vbox_block/lines").get_text(),
-		"anim": get_node("vbox_main_container/vbox_line/vbox_block/anim").get_text()
+		"lines": get_node("vbox_main_container/vbox_line/vbox_block/lines").get_text().percent_encode(),
+		"anim": get_node("vbox_main_container/vbox_line/vbox_block/anim").get_text().percent_encode()
 	})
 
 func load_data(data):
+	set_name( data["id"])
+	set_offset( Vector2(data["x"], data["y"]))
 	get_node("vbox_main_container/vbox_line/vbox_block/lines").set_text(data["lines"])
 	get_node("vbox_main_container/vbox_line/vbox_block/anim").set_text(data["anim"])
 

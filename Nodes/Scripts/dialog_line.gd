@@ -37,7 +37,6 @@ func _on_remove_pressed(node):
 		nodes_lines[0].hide_rembutton()
 	
 	var resize = get_node("vbox_main_container").get_size()
-	print(resize)
 	set_size( Vector2(resize.x+32, resize.y ) )
 	
 func _on_add_pressed():
@@ -48,16 +47,34 @@ func _on_close_request():
 	queue_free()
 
 func save_data(node_list):
-	node_list.push_back({
-		"type": "dialog_line",
-		"name": get_name(),
-		"x": get_offset().x,
-		"y": get_offset().y,
-		"statement": get_node("vbox/statement").get_text()
-	})
+	var nodeDict = {
+			"type": "dialog_line",
+			"id": get_name(),
+			"x": get_offset().x,
+			"y": get_offset().y
+			}
+	for i in range(0, nbBlockLines):
+		var block = nodes_lines[i]
+		nodeDict["lines"+str(block.get_id())] = block.get_node("vbox_block/lines").get_text().percent_encode()
+		nodeDict["anim"+str(block.get_id())] = block.get_node("vbox_block/anim").get_text().percent_encode()
+		
+	node_list.push_back(nodeDict)
 
 func load_data(data):
-	get_node("vbox/statement").set_text(data["statement"])
+	_on_remove_pressed(nodes_lines[0])
+	set_name( data["id"])
+	set_offset( Vector2(data["x"], data["y"]))
+
+	var currentBlock = 0
+	var keyLine = "lines" 
+	var keyAnim = "anim"
+	while data.has( keyLine + str(currentBlock)) and data.has( keyAnim + str(currentBlock)):
+		_add_line()
+		nodes_lines[currentBlock].get_node("vbox_block/lines").set_text(data[keyLine + str(currentBlock)])
+		nodes_lines[currentBlock].get_node("vbox_block/anim").set_text(data[keyAnim + str(currentBlock)])
+		currentBlock += 1
+	
+	
 
 func export_data(file, connections, labels):
 	file.store_line("func " + get_name() + "(c):")

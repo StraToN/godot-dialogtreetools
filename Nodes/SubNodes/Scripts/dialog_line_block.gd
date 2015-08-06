@@ -56,7 +56,7 @@ func _on_btn_hide_pressed():
 		var nbLines = (textlines.split("\n")).size()
 		if textlines == "":
 			nbLines = 0
-		var cutText = textlines.split("\n")[0].substr(0, 60)
+		var cutText = textlines.split("\n")[0].substr(0, 15)
 		if nbLines > 0:
 			cutText += "... (" + str(nbLines) + ")"
 		get_node("hbox/lbl_first_line").set_text( cutText )
