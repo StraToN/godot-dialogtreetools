@@ -102,19 +102,19 @@ func _load_data( path ):
 	var jsonData = {}
 	jsonData.parse_json(jsonString)
 	
-	# insert nodes in editor
+	# remove all nodes in editor
 	var list_nodes_editor = editor.get_children()
 	for ndel in list_nodes_editor:
 		if ndel extends GraphNode:
 			editor.remove_child(ndel)
-	
+	# add new nodes
 	for n in jsonData["nodes"]:
 		var new_node = _add_node(n["type"])
 		new_node.load_data(n)
 		
-		# apply connections
-		for c in jsonData["connections"]:
-			editor.connect_node(c["from"], c["from_port"], c["to"], c["to_port"])
+	# apply connections
+	for c in jsonData["connections"]:
+		editor.connect_node(c["from"], c["from_port"], c["to"], c["to_port"])
 	
 
 

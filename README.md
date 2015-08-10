@@ -1,6 +1,5 @@
 # godot-dialogtreetools
 
-!!! CURRENTLY, NO SAVING !!!
 Tool for creating dialog trees for Adventure or RPG games in the form of a Graph.
 Made using Godot Engine.
 
