@@ -1,4 +1,8 @@
-extends GraphNode
+extends "../Globals/dialognode.gd"
+
+func _init():
+	self.type = "dialog_condition"
+	pass
 
 func _ready():
 	pass
@@ -8,7 +12,7 @@ func _on_close_request():
 
 func save_data(node_list):
 	node_list.push_back({
-		"type": "dialog_condition",
+		"type": self.type,
 		"id": get_name(),
 		"x": get_offset().x,
 		"y": get_offset().y,

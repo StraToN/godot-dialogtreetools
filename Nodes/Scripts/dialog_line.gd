@@ -1,7 +1,12 @@
-extends GraphNode
+extends "../Globals/dialognode.gd"
 
 var nbBlockLines = 0
 var nodes_lines = []
+
+func _init():
+	self.type = "dialog_line"
+	pass
+
 
 func _ready():
 	_add_line()
@@ -36,8 +41,8 @@ func _on_remove_pressed(node):
 	if nbBlockLines == 1:
 		nodes_lines[0].hide_rembutton()
 	
-	var resize = get_node("vbox_main_container").get_size()
-	set_size( Vector2(resize.x+32, resize.y ) )
+	var resize = get_minimum_size()
+	set_size( Vector2(resize.x, 0 ) )
 	
 func _on_add_pressed():
 	_add_line()
@@ -48,7 +53,7 @@ func _on_close_request():
 
 func save_data(node_list):
 	var nodeDict = {
-			"type": "dialog_line",
+			"type": self.type,
 			"id": get_name(),
 			"x": get_offset().x,
 			"y": get_offset().y
@@ -57,6 +62,7 @@ func save_data(node_list):
 		var block = nodes_lines[i]
 		nodeDict["lines"+str(block.get_id())] = block.get_node("vbox_block/lines").get_text().percent_encode()
 		nodeDict["anim"+str(block.get_id())] = block.get_node("vbox_block/anim").get_text().percent_encode()
+		nodeDict["hidden"+str(block.get_id())] = block.is_hidden_state()
 		
 	node_list.push_back(nodeDict)
 
@@ -68,15 +74,18 @@ func load_data(data):
 	var currentBlock = 0
 	var keyLine = "lines" 
 	var keyAnim = "anim"
+	var keyHidden = "hidden"
 	while data.has( keyLine + str(currentBlock)) and data.has( keyAnim + str(currentBlock)):
 		_add_line()
 		nodes_lines[currentBlock].get_node("vbox_block/lines").set_text(data[keyLine + str(currentBlock)])
 		nodes_lines[currentBlock].get_node("vbox_block/anim").set_text(data[keyAnim + str(currentBlock)])
+		if data[keyHidden + str(currentBlock)] == true:
+			nodes_lines[currentBlock]._on_btn_hide_pressed()
 		currentBlock += 1
 	
 	
 
-func export_data(file, connections, labels):
+func export_gdscript(file, connections, labels):
 	file.store_line("func " + get_name() + "(c):")
 	var statement = get_node("vbox/statement").get_text()
 	if statement == "":
