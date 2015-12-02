@@ -1,22 +1,33 @@
+extends "../Globals/dialognode.gd"
 
-extends GraphNode
+var groupName = ""
 
-# member variables here, example:
-# var a=2
-# var b="textvar"
+
+func _init():
+	self.type = "dialog_grouplabel"
+	pass
 
 func _ready():
-	# Initialization here
+	get_node("vbox/groupname").connect("text_changed", self, "_on_groupname_update")
 	pass
+
+
+func get_group_name():
+	return groupName
 
 
 func _on_close_request():
 	queue_free()
 
+func _on_groupname_update( text ):
+	groupName = text
+	pass # replace with function body
+
+
 
 func save_data(node_list):
 	node_list.push_back({
-		"type": "dialog_grouplabel",
+		"type": self.type,
 		"id": get_name(),
 		"x": get_offset().x,
 		"y": get_offset().y,
@@ -27,4 +38,6 @@ func load_data(data):
 	set_name( data["id"])
 	set_offset( Vector2(data["x"], data["y"]))
 	get_node("vbox/groupname").set_text(data["groupname"])
+	groupName = data["groupname"]
 	
+

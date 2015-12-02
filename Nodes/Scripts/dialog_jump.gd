@@ -1,11 +1,15 @@
-extends GraphNode
+extends "../Globals/dialognode.gd"
+
+func _init():
+	self.type = "dialog_jump"
+	pass
 
 func _on_close_request():
 	queue_free()
 
 func save_data(node_list):
 	node_list.push_back({
-		"type": "dialog_jump",
+		"type": self.type,
 		"id": get_name(),
 		"x": get_offset().x,
 		"y": get_offset().y,

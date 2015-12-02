@@ -1,14 +1,11 @@
 
 extends Control
 
-
-const DialogNode = preload("../Nodes/Globals/dialognode.gd")
 var editor
 var hscroll
 var vscroll
 var currentSaveFile = null
 
-var list_groups = []
 
 
 func _on_menu_item(id):
@@ -20,7 +17,6 @@ func _on_menu_item(id):
 		if not get_node("save_dialog").is_hidden():
 			get_node("save_dialog").hide()
 		get_node("load_dialog").show()
-		
 	elif id == 2:
 		# SAVE
 		if currentSaveFile != null:
@@ -49,8 +45,6 @@ func _ready():
 		if not c extends GraphNode:
 			hscroll = c.get_node("_h_scroll")
 			vscroll = c.get_node("_v_scroll")
-		if not hscroll == null and not vscroll == null:
-			break
 	
 	var file_menu = get_node("toppanel/toolbar/Button").get_popup()
 	file_menu.connect("item_pressed", self, "_on_menu_item")
@@ -70,13 +64,9 @@ func _ready():
 	load_.set_access(save.ACCESS_FILESYSTEM)
 	load_.set_mode(save.MODE_OPEN_FILE)
 	load_.add_filter("*.json;JavaScript Object Notation")
-
+	
 	#add start node
 	_add_node("startnode").get_node("vbox/name").set_text("start")
-	
-	add_signals()
-	
-	
 
 
 func _save_data(path):
@@ -112,26 +102,41 @@ func _load_data( path ):
 	var jsonData = {}
 	jsonData.parse_json(jsonString)
 	
-	# remove all nodes in editor
+	# insert nodes in editor
 	var list_nodes_editor = editor.get_children()
 	for ndel in list_nodes_editor:
 		if ndel extends GraphNode:
 			editor.remove_child(ndel)
-	# add new nodes
+	
 	for n in jsonData["nodes"]:
 		var new_node = _add_node(n["type"])
 		new_node.load_data(n)
 		
-	# apply connections
-	for c in jsonData["connections"]:
-		editor.connect_node(c["from"], c["from_port"], c["to"], c["to_port"])
+		# apply connections
+		for c in jsonData["connections"]:
+			editor.connect_node(c["from"], c["from_port"], c["to"], c["to_port"])
 	
 
 
+func _on_editor_connection_request(from, from_slot, to, to_slot):
+	var from_node = editor.get_node(from)
+	if from_node.get_slot_type_right(from_slot) == 0:
+		for x in editor.get_connection_list():
+			if x["from"] == from and x["from_port"] == from_slot:
+				editor.disconnect_node(from, from_slot, x["to"], x["to_port"])
+				
+	editor.connect_node(from, from_slot, to, to_slot)
+	pass
 
 
+func _on_editor_disconnection_request( from, from_slot, to, to_slot ):
+	editor.disconnect_node(from, from_slot, to, to_slot)
+	pass
+	
+	
 	
 func _add_node(type):
+	print(type)
 	var node = load("res://Nodes/" + type + ".scn").instance()
 	var offset = Vector2(hscroll.get_val(), vscroll.get_val())
 	var i = 1
@@ -142,34 +147,8 @@ func _add_node(type):
 	node.set_offset(offset + (editor.get_size() - node.get_size()) / 2)
 	return node
 
-
 func _on_resized():
-	var vpSize = get_tree().get_root().get_rect().size
-	var newSizeEditor = Vector2(vpSize.x,vpSize.y - get_node("toppanel").get_size().y)
-	get_node("editor").set_size( newSizeEditor )
-	var newSizeTopPanel = Vector2(vpSize.x, get_node("toppanel").get_minimum_size().y)
-	get_node("toppanel").set_size( newSizeTopPanel )
-	
-	pass 
-	
-
-
-func add_signals():
-	get_tree().get_root().connect("size_changed", self, "_on_resized")
-
-
-
-func _on_focus_pressed():
-	make_groups_list()
-	print(list_groups)
-
-	
+	get_node("toppanel").set_size( Vector2(get_size().x, get_node("toppanel").get_size().y) )
+	get_node("editor").set_size( Vector2(get_size().x, get_size().y) )
 	pass # replace with function body
-
-
-func make_groups_list():
-	list_groups = []
-	for gn in editor.get_children():
-		if gn extends DialogNode and gn.get_type() == "dialog_grouplabel":
-				list_groups.append(gn.get_group_name())
 

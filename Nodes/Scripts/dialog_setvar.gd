@@ -1,7 +1,11 @@
-extends GraphNode
+extends "../Globals/dialognode.gd"
 
 var nbVariables = 0
 var nodes_variables = []
+
+func _init():
+	self.type = "dialog_setvar"
+	pass
 
 func _ready():
 	_add_var()
@@ -39,8 +43,8 @@ func _on_remove_pressed(node):
 	if nbVariables == 1:
 		nodes_variables[0].hide_rembutton()
 	
-	var resize = get_node("vbox_main_container").get_size()
-	set_size( Vector2(resize.x+32, resize.y ) )
+	var resize = get_minimum_size()
+	set_size( Vector2(resize.x, 0 ) )
 
 
 func _on_close_request():
@@ -49,7 +53,7 @@ func _on_close_request():
 
 func save_data(node_list):
 	node_list.push_back({
-		"type": "dialog_setvar",
+		"type": self.type,
 		"id": get_name(),
 		"x": get_offset().x,
 		"y": get_offset().y,
