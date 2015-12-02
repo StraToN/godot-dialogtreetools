@@ -94,8 +94,8 @@ Parent
 +- Option(Goodbye.)
 
 2 scenarios :
-1/ If the player selects Option 1, the dialog will follow the according branch, then this branch will disappear. Options 2 and 3 are then the only ones left.
-2/ If the player selects Option 2, the dialog will follow the according branch ("Sure!"), then Options available will be Option 1(What's your name?), Option 2(How much do you like it?) and Option 3.
+1. If the player selects Option 1, the dialog will follow the according branch, then this branch will disappear. Options 2 and 3 are then the only ones left.
+2. If the player selects Option 2, the dialog will follow the according branch ("Sure!"), then Options available will be Option 1(What's your name?), Option 2(How much do you like it?) and Option 3.
 
 Then again, you can switch to a whole new set of options if you add more than 1 option:
 Parent
