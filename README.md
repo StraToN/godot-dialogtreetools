@@ -79,14 +79,14 @@ Options are lines to be chosen by the player (by clicking one of them at the bot
 If mutiple Options have the same parent node, they will be displayed all together for the player to make a choice.
 
 Parent
-+- Option(What's your name?)
-+- Option(Do you like Godot?)
++- Option(What's your name?)\\
++- Option(Do you like Godot?)\\
 +- Option(Goodbye.)
 
 If an Option follows another Option later in the sub-tree, it replaces the preceding Option when the dialog reaches it. Example:
 Parent
-+- Option(What's your name?)---Dialog(My name is gBot.)
-+- Option(Do you like Godot?)---Dialog(Sure!)---Option(How much do you like it?)---Dialog(A lot!)
++- Option(What's your name?)---Dialog(My name is gBot.)\\
++- Option(Do you like Godot?)---Dialog(Sure!)---Option(How much do you like it?)---Dialog(A lot!)\\
 +- Option(Goodbye.)
 
 2 scenarios :
@@ -95,10 +95,10 @@ Parent
 
 Then again, you can switch to a whole new set of options if you add more than 1 option:
 Parent
-+- Option(What's your name?)---Dialog(My name is gBot.)
-+- Option(Let's talk about Godot.)---Dialog(Sure!)
-																+- Option(How much do you like it?)---Dialog(A lot!)
-																+- Option(Do you find it useful?)---Dialog(Yeah! It allowed me to create great games!)
++- Option(What's your name?)---Dialog(My name is gBot.)\\
++- Option(Let's talk about Godot.)---Dialog(Sure!)\\							
+                                    +- Option(How much do you like it?)---Dialog(A lot!)\\
+                                    +- Option(Do you find it useful?)---Dialog(Yeah! It allowed me to create great games!)\\
 +- Option(Goodbye.)
 
 As there are more than 1 Option as children of Dialog(Sure!), all these Options define a new subject and they will be the only ones shown.
