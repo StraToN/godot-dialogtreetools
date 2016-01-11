@@ -95,11 +95,11 @@ If an Option follows another Option later in the sub-tree, it replaces the prece
 
 Then again, you can switch to a whole new set of options if you add more than 1 option:
 >Parent  
->> +- Option(What's your name?)---Dialog(My name is gBot.)  
->> +- Option(Let's talk about Godot.)---Dialog(Sure!)  
+>>+- Option(What's your name?)---Dialog(My name is gBot.)  
+>>+- Option(Let's talk about Godot.)---Dialog(Sure!)  
 >>>+- Option(How much do you like it?)---Dialog(A lot!)  
 >>>+- Option(Do you find it useful?)---Dialog(Yeah! It allowed me to create great games!)  
->> +- Option(Goodbye.)
+>>+- Option(Goodbye.)
 
 As there are more than 1 Option as children of Dialog(Sure!), all these Options define a new subject and they will be the only ones shown.
 
