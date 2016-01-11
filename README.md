@@ -78,16 +78,16 @@ Similar to Line node, but selects one line between all the lines provided. Allow
 Options are lines to be chosen by the player (by clicking one of them at the bottom part of screen, in most games).
 If mutiple Options have the same parent node, they will be displayed all together for the player to make a choice.
 
-Parent
->+- Option(What's your name?)  
->+- Option(Do you like Godot?)  
->+- Option(Goodbye.)
+>Parent
+>>+- Option(What's your name?)  
+>>+- Option(Do you like Godot?)  
+>>+- Option(Goodbye.)
 
-If an Option follows another Option later in the sub-tree, it replaces the preceding Option when the dialog reaches it. Example:
-Parent
->+- Option(What's your name?)---Dialog(My name is gBot.)  
->+- Option(Do you like Godot?)---Dialog(Sure!)---Option(How much do you like it?)---Dialog(A lot!)  
->+- Option(Goodbye.)  
+If an Option follows another Option later in the sub-tree, it replaces the preceding Option when the dialog reaches it. Example:  
+>Parent
+>>+- Option(What's your name?)---Dialog(My name is gBot.)  
+>>+- Option(Do you like Godot?)---Dialog(Sure!)---Option(How much do you like it?)---Dialog(A lot!)  
+>>+- Option(Goodbye.)  
 
 2 scenarios :  
 1. If the player selects Option 1, the dialog will follow the according branch, then this branch will disappear. Options 2 and 3 are then the only ones left.  
