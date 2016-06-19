@@ -78,28 +78,29 @@ Similar to Line node, but selects one line between all the lines provided. Allow
 Options are lines to be chosen by the player (by clicking one of them at the bottom part of screen, in most games).
 If mutiple Options have the same parent node, they will be displayed all together for the player to make a choice.
 
-Parent
-+- Option(What's your name?)
-+- Option(Do you like Godot?)
-+- Option(Goodbye.)
+>Parent
+>>+- Option(What's your name?)  
+>>+- Option(Do you like Godot?)  
+>>+- Option(Goodbye.)
 
-If an Option follows another Option later in the sub-tree, it replaces the preceding Option when the dialog reaches it. Example:
-Parent
-+- Option(What's your name?)---Dialog(My name is gBot.)
-+- Option(Do you like Godot?)---Dialog(Sure!)---Option(How much do you like it?)---Dialog(A lot!)
-+- Option(Goodbye.)
+If an Option follows another Option later in the sub-tree, it replaces the preceding Option when the dialog reaches it. Example:  
+>Parent
+>>+- Option(What's your name?)---Dialog(My name is gBot.)  
+>>+- Option(Do you like Godot?)---Dialog(Sure!)---Option(How much do you like it?)---Dialog(A lot!)  
+>>+- Option(Goodbye.)  
 
-2 scenarios :
-1/ If the player selects Option 1, the dialog will follow the according branch, then this branch will disappear. Options 2 and 3 are then the only ones left.
-2/ If the player selects Option 2, the dialog will follow the according branch ("Sure!"), then Options available will be Option 1(What's your name?), Option 2(How much do you like it?) and Option 3.
+2 scenarios :  
+1. If the player selects Option 1, the dialog will follow the according branch, then this branch will disappear. Options 2 and 3 are then the only ones left.  
+2. If the player selects Option 2, the dialog will follow the according branch ("Sure!"), then Options available will be Option 1(What's your name?), Option 2(How much do you like it?) and Option 3.
 
 Then again, you can switch to a whole new set of options if you add more than 1 option:
-Parent
-+- Option(What's your name?)---Dialog(My name is gBot.)
-+- Option(Let's talk about Godot.)---Dialog(Sure!)
-																+- Option(How much do you like it?)---Dialog(A lot!)
-																+- Option(Do you find it useful?)---Dialog(Yeah! It allowed me to create great games!)
-+- Option(Goodbye.)
+>Parent  
+>>+- Option(What's your name?)---Dialog(My name is gBot.)  
+>>+- Option(Let's talk about Godot.)---Dialog(Sure!)  
+>>>+- Option(How much do you like it?)---Dialog(A lot!)  
+>>>+- Option(Do you find it useful?)---Dialog(Yeah! It allowed me to create great games!)  
+
+>>+- Option(Goodbye.)
 
 As there are more than 1 Option as children of Dialog(Sure!), all these Options define a new subject and they will be the only ones shown.
 
