@@ -5,9 +5,6 @@ func _init():
 	self.type = "startnode"
 	pass
 
-func _on_close_request():
-	queue_free()
-
 ##############
 
 func save_data(nodes_list):

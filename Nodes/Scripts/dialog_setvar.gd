@@ -1,6 +1,5 @@
 extends "../Globals/dialognode.gd"
 
-var nbVariables = 0
 var nodes_variables = []
 
 func _init():
@@ -8,31 +7,7 @@ func _init():
 	pass
 
 func _ready():
-	_add_var()
-	pass
-
-func _add_var():
-	var node = load("res://Nodes/SubNodes/dialog_setvar_block.scn").instance()
-	node.set_id(nbVariables)
-	
-	node.add_rembutton(self)
-	if nbVariables+1 <= 1:
-		node.hide_rembutton()
-	
-	node.add_addbutton(self)
-	
-	# add new line block to the main container
-	get_node("vbox_main_container").add_child(node)
-	nodes_variables.append(node)
-	nbVariables += 1
-	
-	# at least 2 variables, add remove button to first variable so it can be deleted
-	if nbVariables > 1:
-		nodes_variables[0].show_rembutton()
-
-
-func _on_add_pressed():
-	_add_var()
+	add_new_block("res://Nodes/SubNodes/dialog_setvar_block.tscn")
 	pass
 	
 func _on_remove_pressed(node):

@@ -43,9 +43,36 @@ var currentConnexions = []
 var nextNodes = []
 var chrono
 
-
 func _ready():
 	player = get_parent().get_node("player")
+	
+	var font = preload("res://DialogTester/fonts/TitilliumWeb-Bold.fnt")
+	
+	var playerRTL = RichTextLabel.new()
+	playerRTL.set("bbcode/enabled", true)
+	playerRTL.set("custom_fonts/normal_font", "res://DialogTester/fonts/TitilliumWeb-Bold.fnt")
+	playerRTL.set("custom_fonts/italic_font", font.get_path())
+	playerRTL.set("custom_fonts/bold_font", font.get_path())
+	playerRTL.set("custom_fonts/bold_italics_font", font.get_path())
+	playerRTL.set("custom_colors/default_color", Color(1.0, 1.0, 1.0) )
+	playerRTL.set_pos(player.get_node("dialogbox_pos").get_pos())
+	playerRTL.set_size( Vector2(500,30))
+	playerRTL.set_name("dialogbox")
+	player.add_child(playerRTL)
+
+	var dialogboxRTL = RichTextLabel.new()
+	dialogboxRTL.set("bbcode/enabled", true)
+	dialogboxRTL.set("custom_fonts/normal_font", font.get_path())
+	dialogboxRTL.set("custom_fonts/italic_font", font.get_path())
+	dialogboxRTL.set("custom_fonts/bold_font", font.get_path())
+	dialogboxRTL.set("custom_fonts/bold_italics_font", font.get_path())
+	dialogboxRTL.set("custom_colors/default_color", colorText )
+	dialogboxRTL.set_pos(get_node("dialogbox_pos").get_pos())
+	dialogboxRTL.set_size( Vector2(500, 30))
+	dialogboxRTL.set_name("dialogbox")
+	self.add_child(dialogboxRTL)
+
+	
 	
 	var file = File.new()
 	file.open(dialogFile, file.READ)
@@ -76,8 +103,6 @@ func _ready():
 	print(listNodes)
 	listConnexions = dictJson["connections"]
 	
-	get_node("dialogbox").set("custom_colors/default_color", colorText)
-
 	nextNodes = ["node1"]
 	isCurrentNodeFinished = true
 	set_process(true)
@@ -125,14 +150,22 @@ func execute(nodeName):
 		
 	elif currentNode.type == "dialog_option":
 		printt("LISTE OPTIONS : ", listOptions)
+		var optionsLabelsYdecal = 0
 		for optionNode in listOptions:
 			var label = RichTextLabel.new()
-			label.set_bbcode(optionNode.lines)
+			label.connect("input_event", self, "on_dialog_option_focus")
+
+			label.set_bbcode(optionNode.lines.percent_decode())
+			
 			label.set_size( Vector2(1450,30))
-			label.set("custom_fonts/normal_font", "res://DialogTester/fonts/.fnt")
-			get_parent().get_node("OptionsPanel/ScrollContainer/VBoxContainer").add_child(label)
+			label.set_pos( Vector2(0, optionsLabelsYdecal))
+			label.set("custom_fonts/normal_font", "res://DialogTester/fonts/TitilliumWeb-Bold.fnt")
+			get_parent().get_node("OptionsPanel").add_child(label)
+			#label.set_hidden(false)
+			optionsLabelsYdecal += 40
 		
-		set_process_input(true)
+		
+		#set_process_input(true)
 		isCurrentNodeFinished = false
 		
 	elif currentNode.type == "dialog_condition":
@@ -206,6 +239,9 @@ func displayLine(lineId):
 		player.get_node("dialogbox").set_bbcode("")
 		if (player.get_node("anim").is_playing()):
 			player.get_node("anim").stop()
+
+func on_dialog_option_focus():
+	print("event")
 
 ############
 # STATEMENT

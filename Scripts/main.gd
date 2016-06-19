@@ -71,9 +71,10 @@ func _ready():
 	load_.set_mode(save.MODE_OPEN_FILE)
 	load_.add_filter("*.json;JavaScript Object Notation")
 
-	#add start node
+	#add start node to the scene
 	_add_node("startnode").get_node("vbox/name").set_text("start")
 	
+	# add signals to the frame
 	add_signals()
 	
 	
@@ -125,14 +126,10 @@ func _load_data( path ):
 	# apply connections
 	for c in jsonData["connections"]:
 		editor.connect_node(c["from"], c["from_port"], c["to"], c["to_port"])
-	
 
 
-
-
-	
 func _add_node(type):
-	var node = load("res://Nodes/" + type + ".scn").instance()
+	var node = load("res://Nodes/" + type + ".tscn").instance()
 	var offset = Vector2(hscroll.get_val(), vscroll.get_val())
 	var i = 1
 	while editor.get_node("node" + str(i)) != null:
@@ -144,27 +141,21 @@ func _add_node(type):
 
 
 func _on_resized():
+	# set the size of the top panel and GraphEdit to the same as the frame on resize
 	var vpSize = get_tree().get_root().get_rect().size
 	var newSizeEditor = Vector2(vpSize.x,vpSize.y - get_node("toppanel").get_size().y)
 	get_node("editor").set_size( newSizeEditor )
 	var newSizeTopPanel = Vector2(vpSize.x, get_node("toppanel").get_minimum_size().y)
 	get_node("toppanel").set_size( newSizeTopPanel )
 	
-	pass 
-	
-
 
 func add_signals():
-	get_tree().get_root().connect("size_changed", self, "_on_resized")
-
+	get_viewport().connect("size_changed", self, "_on_resized")
 
 
 func _on_focus_pressed():
 	make_groups_list()
 	print(list_groups)
-
-	
-	pass # replace with function body
 
 
 func make_groups_list():

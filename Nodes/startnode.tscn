@@ -1,0 +1,80 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://Nodes/Scripts/startnode.gd" type="Script" id=1]
+
+[node name="start_node" type="GraphNode"]
+
+rect/min_size = Vector2( 150, 0 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 150.0
+margin/bottom = 77.0
+custom_constants/separation = 5
+title = "Start node"
+show_close = true
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script/script = ExtResource( 1 )
+__meta__ = { "__editor_plugin_screen__":"2D" }
+
+[node name="vbox" type="VBoxContainer" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 3.0
+margin/top = 24.0
+margin/right = 134.0
+margin/bottom = 72.0
+custom_constants/separation = 5
+alignment = 0
+
+[node name="label" type="Label" parent="vbox"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 131.0
+margin/bottom = 14.0
+text = "Name"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="name" type="LineEdit" parent="vbox"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 19.0
+margin/right = 131.0
+margin/bottom = 43.0
+focus_mode = 2
+
+[node name="spacer" type="Control" parent="vbox"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 48.0
+margin/right = 131.0
+margin/bottom = 48.0
+
+[connection signal="close_request" from="." to="." method="_on_close_request"]
+
+

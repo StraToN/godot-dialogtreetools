@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://Nodes/Scripts/dialog_grouplabel.gd" type="Script" id=1]
+
+[node name="group_node" type="GraphNode"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 2.0
+margin/right = 161.0
+margin/bottom = 76.0
+title = "Dialog group label"
+show_close = true
+slot/0/left_enabled = true
+slot/0/left_type = 1
+slot/0/left_color = Color( 0.666667, 0.666667, 0.666667, 1 )
+slot/0/right_enabled = true
+slot/0/right_type = 1
+slot/0/right_color = Color( 0.666667, 0.666667, 0.666667, 1 )
+script/script = ExtResource( 1 )
+__meta__ = { "__editor_plugin_screen__":"Script" }
+
+[node name="vbox" type="VBoxContainer" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 3.0
+margin/top = 24.0
+margin/right = 145.0
+margin/bottom = 66.0
+alignment = 0
+
+[node name="lbl_groupname" type="Label" parent="vbox"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 142.0
+margin/bottom = 14.0
+text = "Group name"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="groupname" type="LineEdit" parent="vbox"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 18.0
+margin/right = 142.0
+margin/bottom = 42.0
+focus_mode = 2
+
+[connection signal="close_request" from="." to="." method="_on_close_request"]
+
+

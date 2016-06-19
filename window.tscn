@@ -1,0 +1,325 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://Scripts/main.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/grapheditor.gd" type="Script" id=2]
+
+[node name="Control" type="Control"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 1680.0
+margin/bottom = 1049.0
+script/script = ExtResource( 1 )
+__meta__ = { "__editor_plugin_screen__":"2D", "_edit_lock_":true }
+
+[node name="save_dialog" type="FileDialog" parent="."]
+
+visibility/visible = false
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 257.0
+margin/top = 226.0
+margin/right = 899.0
+margin/bottom = 676.0
+popup/exclusive = false
+window/title = "Save dialog"
+dialog/hide_on_ok = false
+
+[node name="load_dialog" type="FileDialog" parent="."]
+
+visibility/visible = false
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 257.0
+margin/top = 226.0
+margin/right = 899.0
+margin/bottom = 676.0
+popup/exclusive = false
+window/title = "Save dialog"
+dialog/hide_on_ok = false
+
+[node name="render" type="TextureFrame" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 1680.0
+margin/bottom = 1050.0
+stretch_mode = 0
+
+[node name="editor" type="GraphEdit" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 1
+margin/left = 0.0
+margin/top = 70.0
+margin/right = 1680.0
+margin/bottom = 1050.0
+script/script = ExtResource( 2 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="toppanel" type="Panel" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 1
+size_flags/vertical = 1
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 1680.0
+margin/bottom = 70.0
+__meta__ = { "_edit_lock_":true }
+
+[node name="toolbar" type="HBoxContainer" parent="toppanel"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 10.0
+margin/top = 10.0
+margin/right = 227.0
+margin/bottom = 14.0
+alignment = 0
+
+[node name="Button" type="MenuButton" parent="toppanel/toolbar"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 48.0
+margin/bottom = 46.0
+toggle_mode = false
+click_on_press = true
+enabled_focus_mode = 0
+shortcut = null
+text = "Menu"
+flat = false
+items = [  ]
+
+[node name="vbox" type="VBoxContainer" parent="toppanel/toolbar"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 52.0
+margin/top = 0.0
+margin/right = 568.0
+margin/bottom = 46.0
+alignment = 0
+
+[node name="hbox1" type="HBoxContainer" parent="toppanel/toolbar/vbox"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 516.0
+margin/bottom = 20.0
+alignment = 0
+
+[node name="add_start" type="Button" parent="toppanel/toolbar/vbox/hbox1"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 70.0
+margin/bottom = 20.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Add Start"
+flat = false
+
+[node name="add_setvar" type="Button" parent="toppanel/toolbar/vbox/hbox1"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 74.0
+margin/top = 0.0
+margin/right = 190.0
+margin/bottom = 20.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Add Variable Set"
+flat = false
+
+[node name="add_group" type="Button" parent="toppanel/toolbar/vbox/hbox1"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 194.0
+margin/top = 0.0
+margin/right = 274.0
+margin/bottom = 20.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Add Group"
+flat = false
+
+[node name="add_dialog" type="Button" parent="toppanel/toolbar/vbox/hbox1"]
+
+hint/tooltip = "Node for dialog lines and actions"
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 278.0
+margin/top = 0.0
+margin/right = 392.0
+margin/bottom = 20.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Add Action/Line"
+flat = false
+
+[node name="add_random_dialog" type="Button" parent="toppanel/toolbar/vbox/hbox1"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 396.0
+margin/top = 0.0
+margin/right = 516.0
+margin/bottom = 20.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Add RandomLine"
+flat = false
+
+[node name="hbox2" type="HBoxContainer" parent="toppanel/toolbar/vbox"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 24.0
+margin/right = 516.0
+margin/bottom = 44.0
+alignment = 0
+
+[node name="add_condition" type="Button" parent="toppanel/toolbar/vbox/hbox2"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 102.0
+margin/bottom = 20.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Add Condition"
+flat = false
+
+[node name="add_option" type="Button" parent="toppanel/toolbar/vbox/hbox2"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 106.0
+margin/top = 0.0
+margin/right = 191.0
+margin/bottom = 20.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Add Option"
+flat = false
+
+[node name="add_jump" type="Button" parent="toppanel/toolbar/vbox/hbox2"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 195.0
+margin/top = 0.0
+margin/right = 268.0
+margin/bottom = 20.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Add Jump"
+flat = false
+
+[node name="add_loop" type="Button" parent="toppanel/toolbar/vbox/hbox2"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 272.0
+margin/top = 0.0
+margin/right = 344.0
+margin/bottom = 20.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Add Loop"
+flat = false
+
+[connection signal="file_selected" from="save_dialog" to="." method="_save_data"]
+
+[connection signal="file_selected" from="load_dialog" to="." method="_load_data"]
+
+[connection signal="disconnection_request" from="editor" to="editor" method="_on_editor_disconnection_request"]
+
+[connection signal="connection_request" from="editor" to="editor" method="_on_editor_connection_request"]
+
+[connection signal="pressed" from="toppanel/toolbar/vbox/hbox1/add_start" to="." method="_add_node" binds= [ "startnode" ]]
+
+[connection signal="pressed" from="toppanel/toolbar/vbox/hbox1/add_setvar" to="." method="_add_node" binds= [ "dialog_setvar" ]]
+
+[connection signal="pressed" from="toppanel/toolbar/vbox/hbox1/add_group" to="." method="_add_node" binds= [ "dialog_grouplabel" ]]
+
+[connection signal="pressed" from="toppanel/toolbar/vbox/hbox1/add_dialog" to="." method="_add_node" binds= [ "dialog_line" ]]
+
+[connection signal="pressed" from="toppanel/toolbar/vbox/hbox1/add_random_dialog" to="." method="_add_node" binds= [ "dialog_line_random" ]]
+
+[connection signal="pressed" from="toppanel/toolbar/vbox/hbox2/add_condition" to="." method="_add_node" binds= [ "dialog_condition" ]]
+
+[connection signal="pressed" from="toppanel/toolbar/vbox/hbox2/add_option" to="." method="_add_node" binds= [ "dialog_option" ]]
+
+[connection signal="pressed" from="toppanel/toolbar/vbox/hbox2/add_jump" to="." method="_add_node" binds= [ "dialog_jump" ]]
+
+[connection signal="pressed" from="toppanel/toolbar/vbox/hbox2/add_loop" to="." method="_add_node" binds= [ "dialog_loop" ]]
+
+

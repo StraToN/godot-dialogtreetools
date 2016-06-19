@@ -1,0 +1,69 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://Nodes/Scripts/dialog_line_random.gd" type="Script" id=1]
+[ext_resource path="res://Nodes/SubNodes/dialog_line_block.scn" type="PackedScene" id=2]
+
+[node name="line_random_node" type="GraphNode"]
+
+rect/min_size = Vector2( 300, 0 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 300.0
+margin/bottom = 240.0
+title = "Random Text"
+show_close = true
+slot/0/left_enabled = true
+slot/0/left_type = 1
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = true
+slot/0/right_type = 1
+slot/0/right_color = Color( 1, 1, 1, 1 )
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color( 1, 1, 1, 1 )
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color( 1, 1, 1, 1 )
+script/script = ExtResource( 1 )
+__meta__ = { "__editor_plugin_screen__":"2D" }
+
+[node name="lbl_rappel%" type="Label" parent="."]
+
+rect/min_size = Vector2( 0, 30 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+margin/left = 3.0
+margin/top = 24.0
+margin/right = 303.0
+margin/bottom = 54.0
+text = "This node makes the character say one random line."
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="vbox_main_container" type="VBoxContainer" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 3.0
+margin/top = 54.0
+margin/right = 303.0
+margin/bottom = 183.0
+alignment = 0
+
+[node name="vbox_line" parent="vbox_main_container" instance=ExtResource( 2 )]
+
+margin/right = 300.0
+margin/bottom = 129.0
+
+[connection signal="close_request" from="." to="." method="_on_close_request"]
+
+

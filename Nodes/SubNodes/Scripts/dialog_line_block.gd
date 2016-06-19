@@ -1,70 +1,22 @@
 
 extends VBoxContainer
 
-export(int) var id
-var parentPanel
-
-# member variables here, example:
-# var a=2
-# var b="textvar"
+var id setget set_id,get_id
 
 func _ready():
-	# Initialization here
-	pass
-
+	get_node("hbox/btn_hide").connect("pressed", get_parent(), "_on_hide_block_pressed", [get_node("vbox_block")])
 
 func set_id(v):
 	id = v
+	get_node("hbox/id").set_text(str(id))
 
 func get_id():
 	return id
 
-
-func add_addbutton(parent):
-	parentPanel = parent
-	var btnAdd = Button.new()
-	btnAdd.set_name("addbtn")
-	btnAdd.set_text("+")
-	btnAdd.connect("pressed", parent, "_on_add_pressed")
-	get_node("hbox").add_child(btnAdd)
-	
-	
-func add_rembutton(parent):
-	var btnRemove = Button.new()
-	btnRemove.set_name("rembtn")
-	btnRemove.set_text("-")
-	#print(parent)
-	btnRemove.connect("pressed", parent, "_on_remove_pressed", [self])
-	get_node("hbox").add_child(btnRemove)
-
-
-func hide_rembutton():
-	get_node("hbox/rembtn").hide()
-	
-	
-func show_rembutton():
-	get_node("hbox/rembtn").show()
-
-func is_hidden_state():
-	return get_node("vbox_block").is_hidden()
-
-func _on_btn_hide_pressed():
-	var szTextSplitted = 20
-	if get_node("vbox_block").is_hidden():
-		get_node("vbox_block").show()
-		get_node("hbox/lbl_first_line").hide()
-	else:
-		get_node("vbox_block").hide()
-		
-		var textlines = get_node("vbox_block/lines").get_text()
-		var nbLines = (textlines.split("\n")).size()
-		if textlines == "":
-			nbLines = 0
-		var cutText = textlines.split("\n")[0].substr(0, szTextSplitted)
-		if nbLines > 0:
-			cutText += "... (" + str(nbLines) + ")"
-		get_node("hbox/lbl_first_line").set_text( cutText )
-		get_node("hbox/lbl_first_line").show()
-		
-		parentPanel.set_size( Vector2(parentPanel.get_minimum_size().x, 0))
-	pass # replace with function body
+func _on_item_action_selected( ID ):
+	var hbox_to_show = "box_" + get_node("hbox/option_btn_action").get_item_text(ID)
+	for hboxesnodes in get_node("vbox_block/hBoxContainer").get_children():
+		if (hboxesnodes.get_name() == hbox_to_show):
+			get_node("vbox_block/hBoxContainer/"+hboxesnodes.get_name()).show()
+		else:
+			get_node("vbox_block/hBoxContainer/"+hboxesnodes.get_name()).hide()

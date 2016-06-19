@@ -1,55 +1,17 @@
 extends "../Globals/dialognode.gd"
 
 var nbBlockLines = 0
-var nodes_lines = []
+var nodes_lines = []	# list of line blocks
 
 func _init():
 	self.type = "dialog_line"
-	pass
-
+	self.block_scene = "res://Nodes/SubNodes/dialog_line_block.tscn"
+	self.new_block_adds_left_slot = false
+	self.new_block_adds_right_slot = false
 
 func _ready():
-	_add_line()
-	pass
-	
+	add_new_block()
 
-func _add_line():
-	var node = load("res://Nodes/SubNodes/dialog_line_block.scn").instance()
-	node.set_id(nbBlockLines)
-		
-	node.add_rembutton(self)
-	if nbBlockLines+1 <= 1:
-		node.hide_rembutton()
-	
-	node.add_addbutton(self)
-	
-	# add new line block to the main container
-	get_node("vbox_main_container").add_child(node)
-	nodes_lines.append(node)
-	nbBlockLines += 1
-	
-	# at least 2 variables, add remove button to first variable so it can be deleted
-	if nbBlockLines > 1:
-		nodes_lines[0].show_rembutton()
-
-
-func _on_remove_pressed(node):
-	get_node("vbox_main_container").remove_child(node)
-	nodes_lines.remove( nodes_lines.find(node) )
-	nbBlockLines -= 1
-	
-	if nbBlockLines == 1:
-		nodes_lines[0].hide_rembutton()
-	
-	var resize = get_minimum_size()
-	set_size( Vector2(resize.x, 0 ) )
-	
-func _on_add_pressed():
-	_add_line()
-
-
-func _on_close_request():
-	queue_free()
 
 func save_data(node_list):
 	var nodeDict = {
@@ -60,7 +22,7 @@ func save_data(node_list):
 			}
 	for i in range(0, nbBlockLines):
 		var block = nodes_lines[i]
-		nodeDict["lines"+str(block.get_id())] = block.get_node("vbox_block/lines").get_text().percent_encode()
+		nodeDict["lines"+str(block.get_id())] = block.get_node("vbox_block/lines").get_text().percent_encode() # NEED TO BE SPLIT
 		nodeDict["anim"+str(block.get_id())] = block.get_node("vbox_block/anim").get_text().percent_encode()
 		nodeDict["hidden"+str(block.get_id())] = block.is_hidden_state()
 		

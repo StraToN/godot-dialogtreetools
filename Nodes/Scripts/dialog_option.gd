@@ -2,14 +2,14 @@ extends "../Globals/dialognode.gd"
 
 func _init():
 	self.type = "dialog_option"
-	pass
+	self.block_scene = "res://Nodes/SubNodes/dialog_option_block.tscn"
+	self.first_left_slot = true
+	self.first_right_slot = true
+	self.new_block_adds_left_slot = false
+	self.new_block_adds_right_slot = true
 
 func _ready():
-	get_node("vbox/vbox_line").parentPanel = self
-	pass
-
-func _on_close_request():
-	queue_free()
+	add_new_block()
 
 func save_data(node_list):
 	node_list.push_back({
@@ -17,26 +17,26 @@ func save_data(node_list):
 		"id": get_name(),
 		"x": get_offset().x,
 		"y": get_offset().y,
-		"lines": get_node("vbox/vbox_line/vbox_block/lines").get_text().percent_encode(),
-		"anim": get_node("vbox/vbox_line/vbox_block/anim").get_text().percent_encode(),
+		"lines": get_node("option/vbox_line/vbox_block/lines").get_text().percent_encode(),
+		"anim": get_node("option/vbox_line/vbox_block/anim").get_text().percent_encode(),
 		"not_said": get_node("vbox/not_said").is_pressed(),
 		"repeat": get_node("vbox/repeat").is_pressed(),
 		"condition": get_node("vbox/condition").get_text().percent_encode(),
-		"hidden": get_node("vbox/vbox_line").is_hidden_state()
+		"hidden": get_node("option/vbox_line").is_hidden_state()
 	})
 
 func load_data(data):
 	set_name( data["id"])
 	set_offset( Vector2(data["x"], data["y"]))
-	get_node("vbox/vbox_line/vbox_block/lines").set_text(data["lines"])
-	get_node("vbox/vbox_line/vbox_block/anim").set_text(data["anim"])
+	get_node("option/vbox_line/vbox_block/lines").set_text(data["lines"])
+	get_node("option/vbox_line/vbox_block/anim").set_text(data["anim"])
 	get_node("vbox/not_said").set_pressed(data["not_said"])
 	if data.has("repeat"):
 		get_node("vbox/repeat").set_pressed(data["repeat"])
 	get_node("vbox/condition").set_text(data["condition"])
 	if data.has("hidden"):
 		if data["hidden"] == true:
-			get_node("vbox/vbox_line")._on_btn_hide_pressed()
+			get_node("option/vbox_line")._on_btn_hide_pressed()
 	
 
 func export_data(file, connections, labels):

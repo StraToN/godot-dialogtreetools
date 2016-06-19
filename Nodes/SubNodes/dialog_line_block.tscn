@@ -1,0 +1,537 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://Nodes/SubNodes/Scripts/dialog_line_block.gd" type="Script" id=1]
+
+[node name="vbox_line" type="VBoxContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 300.0
+margin/bottom = 134.0
+alignment = 0
+script/script = ExtResource( 1 )
+__meta__ = { "__editor_plugin_screen__":"Script" }
+
+[node name="hbox" type="HBoxContainer" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 300.0
+margin/bottom = 20.0
+alignment = 0
+
+[node name="id" type="Label" parent="hbox"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+margin/left = 0.0
+margin/top = 3.0
+margin/right = 8.0
+margin/bottom = 17.0
+text = "1"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="option_btn_action" type="OptionButton" parent="hbox"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 12.0
+margin/top = 0.0
+margin/right = 72.0
+margin/bottom = 20.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "say"
+flat = false
+align = 0
+selected = 0
+items = [ "say", null, false, 0, null, "anim", null, false, 1, null, "walkto", null, false, 2, null, "teleport", null, false, 3, null ]
+
+[node name="MarginContainer" type="MarginContainer" parent="hbox"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 76.0
+margin/top = 0.0
+margin/right = 84.0
+margin/bottom = 20.0
+
+[node name="btn_hide" type="Button" parent="hbox"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 88.0
+margin/top = 0.0
+margin/right = 110.0
+margin/bottom = 20.0
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+text = "H"
+flat = false
+
+[node name="lbl_first_line" type="Label" parent="hbox"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+margin/left = 114.0
+margin/top = 3.0
+margin/right = 114.0
+margin/bottom = 17.0
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="vbox_block" type="VBoxContainer" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 24.0
+margin/right = 300.0
+margin/bottom = 140.0
+alignment = 0
+
+[node name="hBoxContainer" type="HBoxContainer" parent="vbox_block"]
+
+rect/min_size = Vector2( 300, 20 )
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 300.0
+margin/bottom = 116.0
+alignment = 0
+
+[node name="box_say" type="VBoxContainer" parent="vbox_block/hBoxContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 300.0
+margin/bottom = 116.0
+alignment = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="vbox_block/hBoxContainer/box_say"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 300.0
+margin/bottom = 24.0
+alignment = 0
+
+[node name="lbl_actor" type="Label" parent="vbox_block/hBoxContainer/box_say/HBoxContainer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+margin/left = 0.0
+margin/top = 5.0
+margin/right = 34.0
+margin/bottom = 19.0
+text = "Actor"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="text" type="LineEdit" parent="vbox_block/hBoxContainer/box_say/HBoxContainer"]
+
+rect/min_size = Vector2( 150, 24 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 38.0
+margin/top = 0.0
+margin/right = 188.0
+margin/bottom = 24.0
+focus_mode = 2
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="vbox_block/hBoxContainer/box_say"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 28.0
+margin/right = 300.0
+margin/bottom = 116.0
+alignment = 0
+
+[node name="lbl_dialog" type="Label" parent="vbox_block/hBoxContainer/box_say/HBoxContainer2"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 300.0
+margin/bottom = 14.0
+text = "Dialog"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="dialog" type="LineEdit" parent="vbox_block/hBoxContainer/box_say/HBoxContainer2"]
+
+rect/min_size = Vector2( 300, 24 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 18.0
+margin/right = 300.0
+margin/bottom = 42.0
+focus_mode = 2
+
+[node name="lbl_animation" type="Label" parent="vbox_block/hBoxContainer/box_say/HBoxContainer2"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+margin/left = 0.0
+margin/top = 46.0
+margin/right = 300.0
+margin/bottom = 60.0
+text = "Animation speech"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="animation" type="LineEdit" parent="vbox_block/hBoxContainer/box_say/HBoxContainer2"]
+
+rect/min_size = Vector2( 0, 24 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 64.0
+margin/right = 300.0
+margin/bottom = 88.0
+focus_mode = 2
+
+[node name="box_anim" type="VBoxContainer" parent="vbox_block/hBoxContainer"]
+
+visibility/visible = false
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 270.0
+margin/bottom = 52.0
+alignment = 0
+
+[node name="HBoxContainer1" type="HBoxContainer" parent="vbox_block/hBoxContainer/box_anim"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 270.0
+margin/bottom = 24.0
+alignment = 0
+__meta__ = { "_editor_collapsed":true }
+
+[node name="actor_label" type="Label" parent="vbox_block/hBoxContainer/box_anim/HBoxContainer1"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+margin/left = 0.0
+margin/top = 5.0
+margin/right = 34.0
+margin/bottom = 19.0
+text = "Actor"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="actor" type="LineEdit" parent="vbox_block/hBoxContainer/box_anim/HBoxContainer1"]
+
+rect/min_size = Vector2( 200, 24 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 38.0
+margin/top = 0.0
+margin/right = 238.0
+margin/bottom = 24.0
+focus_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="vbox_block/hBoxContainer/box_anim"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 28.0
+margin/right = 270.0
+margin/bottom = 52.0
+alignment = 0
+__meta__ = { "_editor_collapsed":true }
+
+[node name="animation_label" type="Label" parent="vbox_block/hBoxContainer/box_anim/HBoxContainer2"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+margin/left = 0.0
+margin/top = 5.0
+margin/right = 66.0
+margin/bottom = 19.0
+text = "Animation"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="animation_say" type="LineEdit" parent="vbox_block/hBoxContainer/box_anim/HBoxContainer2"]
+
+rect/min_size = Vector2( 200, 24 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 70.0
+margin/top = 0.0
+margin/right = 270.0
+margin/bottom = 24.0
+focus_mode = 2
+
+[node name="box_walkto" type="VBoxContainer" parent="vbox_block/hBoxContainer"]
+
+visibility/visible = false
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 300.0
+margin/bottom = 98.0
+alignment = 0
+
+[node name="hbox" type="HBoxContainer" parent="vbox_block/hBoxContainer/box_walkto"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 300.0
+margin/bottom = 24.0
+alignment = 0
+__meta__ = { "_editor_collapsed":true }
+
+[node name="actor_label" type="Label" parent="vbox_block/hBoxContainer/box_walkto/hbox"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+margin/left = 0.0
+margin/top = 5.0
+margin/right = 34.0
+margin/bottom = 19.0
+text = "Actor"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="actor" type="LineEdit" parent="vbox_block/hBoxContainer/box_walkto/hbox"]
+
+rect/min_size = Vector2( 200, 24 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 38.0
+margin/top = 0.0
+margin/right = 238.0
+margin/bottom = 24.0
+focus_mode = 2
+
+[node name="vbox" type="VBoxContainer" parent="vbox_block/hBoxContainer/box_walkto"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 28.0
+margin/right = 300.0
+margin/bottom = 70.0
+alignment = 0
+__meta__ = { "_editor_collapsed":true }
+
+[node name="Position2D node" type="Label" parent="vbox_block/hBoxContainer/box_walkto/vbox"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 300.0
+margin/bottom = 14.0
+text = "Position2D NodePath"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="pos2d_nodepath" type="LineEdit" parent="vbox_block/hBoxContainer/box_walkto/vbox"]
+
+rect/min_size = Vector2( 300, 0 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 18.0
+margin/right = 300.0
+margin/bottom = 42.0
+focus_mode = 2
+
+[node name="box_teleport" type="VBoxContainer" parent="vbox_block/hBoxContainer"]
+
+visibility/visible = false
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 310.0
+margin/bottom = 52.0
+alignment = 0
+
+[node name="hbox" type="HBoxContainer" parent="vbox_block/hBoxContainer/box_teleport"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 310.0
+margin/bottom = 24.0
+alignment = 0
+
+[node name="actor_label" type="Label" parent="vbox_block/hBoxContainer/box_teleport/hbox"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+margin/left = 0.0
+margin/top = 5.0
+margin/right = 34.0
+margin/bottom = 19.0
+text = "Actor"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="actor" type="LineEdit" parent="vbox_block/hBoxContainer/box_teleport/hbox"]
+
+rect/min_size = Vector2( 200, 24 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 38.0
+margin/top = 0.0
+margin/right = 238.0
+margin/bottom = 24.0
+focus_mode = 2
+
+[node name="hbox1" type="HBoxContainer" parent="vbox_block/hBoxContainer/box_teleport"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 28.0
+margin/right = 310.0
+margin/bottom = 52.0
+alignment = 0
+
+[node name="Position2D node1" type="Label" parent="vbox_block/hBoxContainer/box_teleport/hbox1"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+margin/left = 0.0
+margin/top = 5.0
+margin/right = 106.0
+margin/bottom = 19.0
+text = "Position2D node"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="pos2d_nodepath1" type="LineEdit" parent="vbox_block/hBoxContainer/box_teleport/hbox1"]
+
+rect/min_size = Vector2( 200, 0 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 110.0
+margin/top = 0.0
+margin/right = 310.0
+margin/bottom = 24.0
+focus_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="."]
+
+rect/min_size = Vector2( 300, 0 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 144.0
+margin/right = 300.0
+margin/bottom = 147.0
+
+[connection signal="item_selected" from="hbox/option_btn_action" to="." method="_on_item_action_selected"]
+
+
