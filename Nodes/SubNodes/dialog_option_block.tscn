@@ -15,6 +15,7 @@ margin/bottom = 160.0
 custom_constants/separation = 5
 alignment = 0
 script/script = ExtResource( 1 )
+block_to_collapse_path = NodePath("vbox_params")
 
 [node name="hbox" type="HBoxContainer" parent="."]
 

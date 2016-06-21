@@ -145,9 +145,13 @@ func _on_remove_pressed(block):
 	set_size( Vector2(resize.x, 0 ) )
 
 # Show/Hide block button pressed, and resize GraphNode to its minimum size
-func _on_collapse_block_pressed(block_to_hide):
-	if block_to_hide.is_hidden():
-		block_to_hide.show()
+func _on_collapse_block_pressed(block):
+	# security : print error if node_to_collapse not set in the block node
+	if (block.get_block_to_collapse() == null):
+		printt("ERROR: Node to collapse not set in block ", block)
+		pass
+	if block.get_block_to_collapse().is_hidden():
+		block.get_block_to_collapse().show()
 	else:
-		block_to_hide.hide()
+		block.get_block_to_collapse().hide()
 		set_size( Vector2(get_minimum_size().x, 0))

@@ -15,6 +15,7 @@ margin/bottom = 134.0
 alignment = 0
 script/script = ExtResource( 1 )
 __meta__ = { "__editor_plugin_screen__":"Script" }
+block_to_collapse_path = NodePath("vbox_block")
 
 [node name="hbox" type="HBoxContainer" parent="."]
 
