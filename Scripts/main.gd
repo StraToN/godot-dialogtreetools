@@ -10,16 +10,19 @@ var currentSaveFile = null
 
 var list_groups = []
 
+# number of nodes
+onready var nb_nodes = 0
+
 
 func _on_menu_item(id):
 	if id == 0:
 		# NEW
-		print("new dialog...")
+		pass
 	elif id == 1:
 		# LOAD
 		if not get_node("save_dialog").is_hidden():
 			get_node("save_dialog").hide()
-		get_node("load_dialog").show()
+		get_node("load_dialog").popup_centered()
 		
 	elif id == 2:
 		# SAVE
@@ -28,12 +31,12 @@ func _on_menu_item(id):
 		else:
 			if not get_node("load_dialog").is_hidden():
 				get_node("load_dialog").hide()
-			get_node("save_dialog").show()
+			get_node("save_dialog").popup_centered()
 	elif id == 3:
 		#SAVE AS
 		if not get_node("load_dialog").is_hidden():
 			get_node("load_dialog").hide()
-		get_node("save_dialog").show()
+		get_node("save_dialog").popup_centered()
 	elif id == 4:
 		# QUIT
 		get_tree().quit()
@@ -72,7 +75,9 @@ func _ready():
 	load_.add_filter("*.json;JavaScript Object Notation")
 
 	#add start node to the scene
-	_add_node("startnode").get_node("vbox/name").set_text("start")
+	var startnode = _add_node("startnode")
+	startnode.get_node("vbox/name").set_text("start")
+	startnode.set_offset(startnode.get_offset() - Vector2(editor.get_size().x/3,0))
 	
 	# add signals to the frame
 	add_signals()
@@ -131,10 +136,8 @@ func _load_data( path ):
 func _add_node(type):
 	var node = load("res://Nodes/" + type + ".tscn").instance()
 	var offset = Vector2(hscroll.get_val(), vscroll.get_val())
-	var i = 1
-	while editor.get_node("node" + str(i)) != null:
-		i += 1
-	node.set_name("node" + str(i))
+	nb_nodes += 1
+	node.set_name("node" + str(nb_nodes))
 	editor.add_child(node)
 	node.set_offset(offset + (editor.get_size() - node.get_size()) / 2)
 	return node
@@ -153,14 +156,9 @@ func add_signals():
 	get_viewport().connect("size_changed", self, "_on_resized")
 
 
-func _on_focus_pressed():
-	make_groups_list()
-	print(list_groups)
-
-
 func make_groups_list():
 	list_groups = []
 	for gn in editor.get_children():
 		if gn extends DialogNode and gn.get_type() == "dialog_grouplabel":
-				list_groups.append(gn.get_group_name())
+			list_groups.append(gn.get_group_name())
 

@@ -4,10 +4,9 @@ extends GraphEdit
 
 func _ready():
 	connect("input_event", self, "input_event", [])
-	pass
 
 func input_event(ev):
-	if (ev.is_pressed() and ev.type==InputEvent.MOUSE_BUTTON and ev.button_index == BUTTON_RIGHT):
+	if (ev.is_pressed() and ev.type==InputEvent.MOUSE_BUTTON):
 		print("pressed")
 	elif (not ev.is_pressed() and ev.type==InputEvent.MOUSE_BUTTON and ev.button_index == BUTTON_RIGHT):
 		print("released")

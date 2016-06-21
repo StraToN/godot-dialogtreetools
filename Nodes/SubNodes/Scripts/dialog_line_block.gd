@@ -1,17 +1,5 @@
 
-extends VBoxContainer
-
-var id setget set_id,get_id
-
-func _ready():
-	get_node("hbox/btn_hide").connect("pressed", get_parent(), "_on_hide_block_pressed", [get_node("vbox_block")])
-
-func set_id(v):
-	id = v
-	get_node("hbox/id").set_text(str(id))
-
-func get_id():
-	return id
+extends "res://Nodes/Globals/dialognode_block.gd"
 
 func _on_item_action_selected( ID ):
 	var hbox_to_show = "box_" + get_node("hbox/option_btn_action").get_item_text(ID)

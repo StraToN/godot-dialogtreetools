@@ -18,12 +18,17 @@ title = "Set variable"
 show_close = true
 slot/0/left_enabled = true
 slot/0/left_type = 1
-slot/0/left_color = Color( 0.666667, 0.666667, 0.666667, 1 )
+slot/0/left_color = Color( 1, 1, 1, 1 )
 slot/0/right_enabled = true
 slot/0/right_type = 1
-slot/0/right_color = Color( 0.666667, 0.666667, 0.666667, 1 )
+slot/0/right_color = Color( 1, 1, 1, 1 )
 script/script = ExtResource( 1 )
 __meta__ = { "__editor_plugin_screen__":"2D" }
+new_block_collapsed = null
+first_left_slot = null
+first_right_slot = null
+new_block_adds_left_slot = null
+new_block_adds_right_slot = null
 
 [node name="vbox_main_container" type="VBoxContainer" parent="."]
 

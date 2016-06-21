@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=1]
 
 [ext_resource path="res://Nodes/Scripts/dialog_line_random.gd" type="Script" id=1]
-[ext_resource path="res://Nodes/SubNodes/dialog_line_block.scn" type="PackedScene" id=2]
+[ext_resource path="res://Nodes/SubNodes/dialog_line_block.tscn" type="PackedScene" id=2]
 
 [node name="line_random_node" type="GraphNode"]
 
@@ -30,6 +30,11 @@ slot/1/right_type = 0
 slot/1/right_color = Color( 1, 1, 1, 1 )
 script/script = ExtResource( 1 )
 __meta__ = { "__editor_plugin_screen__":"2D" }
+new_block_collapsed = null
+first_left_slot = null
+first_right_slot = null
+new_block_adds_left_slot = null
+new_block_adds_right_slot = null
 
 [node name="lbl_rappel%" type="Label" parent="."]
 
@@ -40,7 +45,7 @@ size_flags/horizontal = 2
 margin/left = 3.0
 margin/top = 24.0
 margin/right = 303.0
-margin/bottom = 54.0
+margin/bottom = 61.0
 text = "This node makes the character say one random line."
 autowrap = true
 percent_visible = 1.0
@@ -56,13 +61,15 @@ size_flags/vertical = 2
 margin/left = 3.0
 margin/top = 54.0
 margin/right = 303.0
-margin/bottom = 183.0
+margin/bottom = 201.0
 alignment = 0
 
 [node name="vbox_line" parent="vbox_main_container" instance=ExtResource( 2 )]
 
-margin/right = 300.0
-margin/bottom = 129.0
+margin/left = 6.0
+margin/top = 4.0
+margin/right = 306.0
+margin/bottom = 151.0
 
 [connection signal="close_request" from="." to="." method="_on_close_request"]
 

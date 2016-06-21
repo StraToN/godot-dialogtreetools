@@ -4,28 +4,15 @@ var nodes_variables = []
 
 func _init():
 	self.type = "dialog_setvar"
+	self.block_scene = "res://Nodes/SubNodes/dialog_setvar_block.tscn"
+	self.new_block_adds_left_slot = false
+	self.new_block_adds_right_slot = false
 	pass
 
 func _ready():
-	add_new_block("res://Nodes/SubNodes/dialog_setvar_block.tscn")
+	add_new_block()
 	pass
 	
-func _on_remove_pressed(node):
-	get_node("vbox_main_container").remove_child(node)
-	nodes_variables.remove( nodes_variables.find(node) )
-	nbVariables -= 1
-	
-	if nbVariables == 1:
-		nodes_variables[0].hide_rembutton()
-	
-	var resize = get_minimum_size()
-	set_size( Vector2(resize.x, 0 ) )
-
-
-func _on_close_request():
-	queue_free()
-
-
 func save_data(node_list):
 	node_list.push_back({
 		"type": self.type,

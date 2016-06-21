@@ -18,6 +18,7 @@ title = "Options"
 show_close = true
 script/script = ExtResource( 1 )
 __meta__ = { "__editor_plugin_screen__":"2D" }
+new_block_collapsed = null
 first_left_slot = true
 first_right_slot = true
 new_block_adds_left_slot = null

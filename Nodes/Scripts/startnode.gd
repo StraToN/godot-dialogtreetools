@@ -1,9 +1,8 @@
-extends "../Globals/dialognode.gd"
+extends "res://Nodes/Globals/dialognode.gd"
 
 
 func _init():
 	self.type = "startnode"
-	pass
 
 ##############
 
@@ -15,8 +14,6 @@ func save_data(nodes_list):
 		"y": get_offset().y,
 		"name": get_node("vbox/name").get_text()
 	})
-
-
 
 func load_data(data):
 	set_name( data["id"])

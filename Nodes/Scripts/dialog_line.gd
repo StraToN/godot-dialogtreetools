@@ -1,4 +1,4 @@
-extends "../Globals/dialognode.gd"
+extends "res://Nodes/Globals/dialognode.gd"
 
 var nbBlockLines = 0
 var nodes_lines = []	# list of line blocks
