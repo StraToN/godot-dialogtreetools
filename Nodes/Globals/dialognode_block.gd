@@ -7,7 +7,7 @@ var block_to_collapse setget set_block_to_collapse,get_block_to_collapse
 func _ready():
 	if (block_to_collapse_path != null):
 		set_block_to_collapse(get_node(block_to_collapse_path))
-	get_node("hbox/btn_hide").connect("pressed", get_parent(), "_on_collapse_block_pressed", [self])
+	get_node("hbox/btn_hide").connect("pressed", self, "_on_collapse_block_pressed")
 
 func set_id(v):
 	id = v
@@ -28,3 +28,16 @@ func set_block_to_collapse(v):
 
 func get_block_to_collapse():
 	return block_to_collapse
+
+# Show/Hide block button pressed, and resize GraphNode to its minimum size
+func _on_collapse_block_pressed():
+	# security : print error if node_to_collapse not set in the block node
+	if (block_to_collapse == null):
+		printt("ERROR: Node to collapse not set in block ", self.get_name())
+		pass
+	if block_to_collapse.is_hidden():
+		block_to_collapse.show()
+	else:
+		block_to_collapse.hide()
+		get_parent().set_size( Vector2(get_parent().get_minimum_size().x, 0) )
+ 

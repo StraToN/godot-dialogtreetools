@@ -111,7 +111,7 @@ size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 24.0
 margin/right = 300.0
-margin/bottom = 140.0
+margin/bottom = 141.0
 alignment = 0
 
 [node name="hBoxContainer" type="HBoxContainer" parent="vbox_block"]
@@ -124,7 +124,7 @@ size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
 margin/right = 300.0
-margin/bottom = 116.0
+margin/bottom = 117.0
 alignment = 0
 
 [node name="box_say" type="VBoxContainer" parent="vbox_block/hBoxContainer"]
@@ -136,7 +136,7 @@ size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
 margin/right = 300.0
-margin/bottom = 116.0
+margin/bottom = 117.0
 alignment = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="vbox_block/hBoxContainer/box_say"]
@@ -187,7 +187,7 @@ size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 28.0
 margin/right = 300.0
-margin/bottom = 116.0
+margin/bottom = 117.0
 alignment = 0
 
 [node name="lbl_dialog" type="Label" parent="vbox_block/hBoxContainer/box_say/HBoxContainer2"]
@@ -204,18 +204,19 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="dialog" type="LineEdit" parent="vbox_block/hBoxContainer/box_say/HBoxContainer2"]
+[node name="dialog" type="TextEdit" parent="vbox_block/hBoxContainer/box_say/HBoxContainer2"]
 
-rect/min_size = Vector2( 300, 24 )
+rect/min_size = Vector2( 300, 25 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 0.0
+margin/left = 1.0
 margin/top = 18.0
-margin/right = 300.0
-margin/bottom = 42.0
-focus_mode = 2
+margin/right = 301.0
+margin/bottom = 43.0
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
 
 [node name="lbl_animation" type="Label" parent="vbox_block/hBoxContainer/box_say/HBoxContainer2"]
 
@@ -223,9 +224,9 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 margin/left = 0.0
-margin/top = 46.0
+margin/top = 47.0
 margin/right = 300.0
-margin/bottom = 60.0
+margin/bottom = 61.0
 text = "Animation speech"
 percent_visible = 1.0
 lines_skipped = 0
@@ -239,9 +240,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 64.0
+margin/top = 65.0
 margin/right = 300.0
-margin/bottom = 88.0
+margin/bottom = 89.0
 focus_mode = 2
 
 [node name="box_anim" type="VBoxContainer" parent="vbox_block/hBoxContainer"]
@@ -529,9 +530,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 144.0
+margin/top = 145.0
 margin/right = 300.0
-margin/bottom = 147.0
+margin/bottom = 148.0
 
 [connection signal="item_selected" from="hbox/option_btn_action" to="." method="_on_item_action_selected"]
 

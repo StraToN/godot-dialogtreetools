@@ -39,9 +39,6 @@ func _ready():
 
 	if (not is_connected("close_request", self, "_on_close_request")):
 		connect("close_request", self, "_on_close_request")
-		
-	connect("raise_request", self, "_on_raise_request")
-	connect("focus_exit", self, "_on_focus_exit")
 
 func set_type(new):
 	type = new
@@ -61,12 +58,6 @@ func get_block_scene():
 # delete GraphNode on close request
 func _on_close_request():
 	queue_free()
-
-func _on_raise_request():
-	print("raise req !")
-	
-func _on_focus_exit():
-	print("focus exit !")
 
 # instance a scene to add as a block in the GraphNode.
 func add_new_block():
@@ -94,10 +85,10 @@ func add_new_block():
 	# enable/disable slots of the GraphNode for this block EXCEPT BLOCK 1
 	print(nb_blocks)
 	if (nb_blocks == 1):
-		print("FIRST BLOCK", str(first_left_slot), str(first_right_slot))
+		#print("FIRST BLOCK", str(first_left_slot), str(first_right_slot))
 		set_slot(nb_blocks-1, first_left_slot, 0, Color(1.0, 1.0, 1.0), first_right_slot, 0, Color(1.0, 1.0, 1.0))
 	else:
-		print("NEW BLOCK", str(new_block_adds_left_slot), str(new_block_adds_right_slot))
+		#print("NEW BLOCK", str(new_block_adds_left_slot), str(new_block_adds_right_slot))
 		set_slot(nb_blocks-1, new_block_adds_left_slot, 0, Color(1.0, 1.0, 1.0), new_block_adds_right_slot, 0, Color(1.0, 1.0, 1.0))
 	
 	if (new_block_collapsed):
@@ -144,14 +135,3 @@ func _on_remove_pressed(block):
 	var resize = get_minimum_size()
 	set_size( Vector2(resize.x, 0 ) )
 
-# Show/Hide block button pressed, and resize GraphNode to its minimum size
-func _on_collapse_block_pressed(block):
-	# security : print error if node_to_collapse not set in the block node
-	if (block.get_block_to_collapse() == null):
-		printt("ERROR: Node to collapse not set in block ", block)
-		pass
-	if block.get_block_to_collapse().is_hidden():
-		block.get_block_to_collapse().show()
-	else:
-		block.get_block_to_collapse().hide()
-		set_size( Vector2(get_minimum_size().x, 0))

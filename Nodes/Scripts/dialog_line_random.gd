@@ -2,14 +2,9 @@ extends "../Globals/dialognode.gd"
 
 func _init():
 	self.type = "dialog_line_random"
-	pass
 
 func _ready():
-	get_node("vbox_main_container/vbox_line").parentPanel = self
 	pass
-
-func _on_close_request():
-	queue_free()
 
 func save_data(node_list):
 	node_list.push_back({
