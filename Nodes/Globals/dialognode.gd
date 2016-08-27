@@ -39,6 +39,11 @@ func _ready():
 
 	if (not is_connected("close_request", self, "_on_close_request")):
 		connect("close_request", self, "_on_close_request")
+		
+	connect("raise_request", self, "_on_raise_request", [self])
+
+func _on_raise_request(raised_node):
+	print("raise_request!!" + raised_node.get_name())
 
 func set_type(new):
 	type = new

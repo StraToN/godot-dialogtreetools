@@ -1,4 +1,4 @@
-
+tool
 extends Control
 
 
@@ -9,10 +9,6 @@ var vscroll
 var currentSaveFile = null
 
 var list_groups = []
-
-# number of nodes
-onready var nb_nodes = 0
-
 
 func _on_menu_item(id):
 	if id == 0:
@@ -46,7 +42,6 @@ func _ready():
 	OS.set_low_processor_usage_mode(true)
 	
 	editor = get_node("editor")
-	editor.set_right_disconnects(true)	# autoriser les déconnexions
 	
 	for c in editor.get_children():
 		if not c extends GraphNode:
@@ -54,36 +49,29 @@ func _ready():
 			vscroll = c.get_node("_v_scroll")
 		if not hscroll == null and not vscroll == null:
 			break
-	
-	var file_menu = get_node("toppanel/toolbar/Button").get_popup()
-	file_menu.connect("item_pressed", self, "_on_menu_item")
-	file_menu.add_item("New dialog") 	#0
-	file_menu.add_item("Load")			#1
-	file_menu.add_item("Save")			#2
-	file_menu.add_item("Save as...")	#3
-	file_menu.add_separator()			
-	file_menu.add_item("Quit")			#4
-	
-	var save = get_node("save_dialog")
-	save.set_access(save.ACCESS_FILESYSTEM)
-	save.set_mode(save.MODE_SAVE_FILE)
-	save.add_filter("*.json;JavaScript Object Notation")
-	
-	var load_ = get_node("load_dialog")
-	load_.set_access(save.ACCESS_FILESYSTEM)
-	load_.set_mode(save.MODE_OPEN_FILE)
-	load_.add_filter("*.json;JavaScript Object Notation")
-
-	#add start node to the scene
-	var startnode = _add_node("startnode")
-	startnode.get_node("vbox/name").set_text("start")
-	startnode.set_offset(startnode.get_offset() - Vector2(editor.get_size().x/3,0))
+#	
+#	var file_menu = get_node("toppanel/toolbar/Button").get_popup()
+#	file_menu.connect("item_pressed", self, "_on_menu_item")
+#	file_menu.add_item("New dialog") 	#0
+#	file_menu.add_item("Load")			#1
+#	file_menu.add_item("Save")			#2
+#	file_menu.add_item("Save as...")	#3
+#	file_menu.add_separator()			
+#	file_menu.add_item("Quit")			#4
+#	
+#	var save = get_node("save_dialog")
+#	save.set_access(save.ACCESS_FILESYSTEM)
+#	save.set_mode(save.MODE_SAVE_FILE)
+#	save.add_filter("*.json;JavaScript Object Notation")
+#	
+#	var load_ = get_node("load_dialog")
+#	load_.set_access(save.ACCESS_FILESYSTEM)
+#	load_.set_mode(save.MODE_OPEN_FILE)
+#	load_.add_filter("*.json;JavaScript Object Notation")
 	
 	# add signals to the frame
 	add_signals()
 	
-	
-
 
 func _save_data(path):
 	currentSaveFile = path
@@ -133,24 +121,16 @@ func _load_data( path ):
 		editor.connect_node(c["from"], c["from_port"], c["to"], c["to_port"])
 
 
-func _add_node(type):
-	var node = load("res://Nodes/" + type + ".tscn").instance()
-	var offset = Vector2(hscroll.get_val(), vscroll.get_val())
-	nb_nodes += 1
-	node.set_name("node" + str(nb_nodes))
-	editor.add_child(node)
-	node.set_offset(offset + (editor.get_size() - node.get_size()) / 2)
-	return node
+
 
 
 func _on_resized():
 	# set the size of the top panel and GraphEdit to the same as the frame on resize
 	var vpSize = get_tree().get_root().get_rect().size
-	var newSizeEditor = Vector2(vpSize.x,vpSize.y - get_node("toppanel").get_size().y)
-	get_node("editor").set_size( newSizeEditor )
-	var newSizeTopPanel = Vector2(vpSize.x, get_node("toppanel").get_minimum_size().y)
-	get_node("toppanel").set_size( newSizeTopPanel )
+	print(vpSize)
+	get_node("editor").set_size( vpSize )
 	
+
 
 func add_signals():
 	get_viewport().connect("size_changed", self, "_on_resized")

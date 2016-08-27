@@ -34,6 +34,7 @@ alignment = 0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
+size_flags/vertical = 0
 margin/left = 0.0
 margin/top = 3.0
 margin/right = 8.0
@@ -107,7 +108,10 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 230.0
 margin/bottom = 24.0
+placeholder/alpha = 0.6
 focus_mode = 2
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
 
 [node name="vbox_params" type="VBoxContainer" parent="."]
 
@@ -117,7 +121,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 54.0
-margin/right = 281.0
+margin/right = 230.0
 margin/bottom = 134.0
 alignment = 0
 
@@ -129,7 +133,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 281.0
+margin/right = 230.0
 margin/bottom = 23.0
 toggle_mode = true
 enabled_focus_mode = 2
@@ -162,9 +166,10 @@ align = 0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
+size_flags/vertical = 0
 margin/left = 0.0
 margin/top = 27.0
-margin/right = 281.0
+margin/right = 230.0
 margin/bottom = 41.0
 text = "Visible on Condition"
 percent_visible = 1.0
@@ -179,9 +184,12 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 45.0
-margin/right = 281.0
+margin/right = 230.0
 margin/bottom = 69.0
+placeholder/alpha = 0.6
 focus_mode = 2
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
 
 [node name="spacer" type="Control" parent="vbox_params"]
 
@@ -191,19 +199,19 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 73.0
-margin/right = 281.0
+margin/right = 230.0
 margin/bottom = 73.0
 
 [node name="HSeparator" type="HSeparator" parent="vbox_params"]
 
-rect/min_size = Vector2( 250, 0 )
+rect/min_size = Vector2( 230, 0 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 77.0
-margin/right = 281.0
+margin/right = 230.0
 margin/bottom = 80.0
 
 

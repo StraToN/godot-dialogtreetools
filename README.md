@@ -3,6 +3,13 @@
 Tool for creating dialog trees for Adventure or RPG games in the form of a Graph.
 Made using Godot Engine.
 
+Icons credits :
+Racing flag, Path Selection, Variable, Puzzle, Jump: Freepik
+Dialog cloud: Appzgear
+Dice, Hierarchical Structure: Gregor Cresnar
+Cycling arrows: Appzgear
+
+
 
 
 ##Thanks
