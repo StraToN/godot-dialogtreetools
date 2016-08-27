@@ -21,8 +21,8 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 1680.0
-margin/bottom = 1049.0
+margin/right = 800.0
+margin/bottom = 600.0
 script/script = ExtResource( 1 )
 __meta__ = { "__editor_plugin_screen__":"2D", "_edit_lock_":true }
 
@@ -75,8 +75,8 @@ size_flags/horizontal = 3
 size_flags/vertical = 1
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 880.0
-margin/bottom = 449.0
+margin/right = 0.0
+margin/bottom = 0.0
 script/script = ExtResource( 2 )
 
 [connection signal="file_selected" from="save_dialog" to="." method="_save_data"]

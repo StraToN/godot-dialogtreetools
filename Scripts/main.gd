@@ -127,7 +127,6 @@ func _load_data( path ):
 func _on_resized():
 	# set the size of the top panel and GraphEdit to the same as the frame on resize
 	var vpSize = get_tree().get_root().get_rect().size
-	print(vpSize)
 	get_node("editor").set_size( vpSize )
 	
 

@@ -1,12 +1,10 @@
 tool
 extends EditorPlugin
 
-var dock = null
-
-var window
+var window = null
 
 func _enter_tree():
-	window = preload("res://window.tscn").instance()
+	window = preload("res://addons/godot-dialogtreetools/window.tscn").instance()
 
 	add_control_to_bottom_panel ( window, "Tree editor" )
 
