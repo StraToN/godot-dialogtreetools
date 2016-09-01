@@ -15,7 +15,7 @@ margin/bottom = 73.0
 alignment = 0
 script/script = ExtResource( 1 )
 __meta__ = { "__editor_plugin_screen__":"Script" }
-id = null
+block_to_collapse_path = NodePath("hbox1")
 
 [node name="hbox" type="HBoxContainer" parent="."]
 
@@ -29,14 +29,30 @@ margin/right = 241.0
 margin/bottom = 24.0
 alignment = 0
 
+[node name="id" type="Label" parent="hbox"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 5.0
+margin/right = 8.0
+margin/bottom = 19.0
+text = "0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [node name="label" type="Label" parent="hbox"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
-margin/left = 0.0
+size_flags/vertical = 0
+margin/left = 12.0
 margin/top = 5.0
-margin/right = 38.0
+margin/right = 50.0
 margin/bottom = 19.0
 text = "Name"
 percent_visible = 1.0
@@ -50,11 +66,30 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 42.0
+margin/left = 54.0
 margin/top = 0.0
-margin/right = 192.0
+margin/right = 204.0
 margin/bottom = 24.0
+placeholder/alpha = 0.6
 focus_mode = 2
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
+
+[node name="btn_hide" type="Button" parent="hbox"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 208.0
+margin/top = 0.0
+margin/right = 230.0
+margin/bottom = 24.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "H"
+flat = false
 
 [node name="hbox1" type="HBoxContainer" parent="."]
 
@@ -73,6 +108,7 @@ alignment = 0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
+size_flags/vertical = 0
 margin/left = 0.0
 margin/top = 4.0
 margin/right = 30.0
@@ -90,24 +126,26 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 34.0
 margin/top = 0.0
-margin/right = 73.0
+margin/right = 116.0
 margin/bottom = 23.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
+text = "Item 0"
 flat = false
 align = 0
-selected = -1
-items = [  ]
+selected = 0
+items = [ "Boolean", null, false, 0, null, "Integer", null, false, 1, null, "Float", null, false, 2, null, "String", null, false, 3, null ]
 
 [node name="Label" type="Label" parent="hbox1"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
-margin/left = 77.0
+size_flags/vertical = 0
+margin/left = 120.0
 margin/top = 4.0
-margin/right = 112.0
+margin/right = 155.0
 margin/bottom = 18.0
 text = "Value"
 percent_visible = 1.0
@@ -120,9 +158,9 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 116.0
+margin/left = 159.0
 margin/top = 0.0
-margin/right = 142.0
+margin/right = 185.0
 margin/bottom = 23.0
 toggle_mode = true
 enabled_focus_mode = 2
@@ -137,11 +175,14 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 72.0
+margin/left = 189.0
 margin/top = 0.0
-margin/right = 118.0
-margin/bottom = 23.0
+margin/right = 247.0
+margin/bottom = 24.0
+placeholder/alpha = 0.6
 focus_mode = 2
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
 
 [node name="HSeparator" type="HSeparator" parent="."]
 

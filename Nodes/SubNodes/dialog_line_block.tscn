@@ -34,6 +34,7 @@ alignment = 0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
+size_flags/vertical = 0
 margin/left = 0.0
 margin/top = 3.0
 margin/right = 8.0
@@ -94,6 +95,7 @@ flat = false
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
+size_flags/vertical = 0
 margin/left = 114.0
 margin/top = 3.0
 margin/right = 114.0
@@ -111,7 +113,7 @@ size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 24.0
 margin/right = 300.0
-margin/bottom = 141.0
+margin/bottom = 162.0
 alignment = 0
 
 [node name="hBoxContainer" type="HBoxContainer" parent="vbox_block"]
@@ -124,11 +126,12 @@ size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
 margin/right = 300.0
-margin/bottom = 117.0
+margin/bottom = 138.0
 alignment = 0
 
 [node name="box_say" type="VBoxContainer" parent="vbox_block/hBoxContainer"]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
@@ -136,11 +139,12 @@ size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
 margin/right = 300.0
-margin/bottom = 117.0
+margin/bottom = 138.0
 alignment = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="vbox_block/hBoxContainer/box_say"]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
@@ -156,6 +160,7 @@ alignment = 0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
+size_flags/vertical = 0
 margin/left = 0.0
 margin/top = 5.0
 margin/right = 34.0
@@ -176,7 +181,10 @@ margin/left = 38.0
 margin/top = 0.0
 margin/right = 188.0
 margin/bottom = 24.0
+placeholder/alpha = 0.6
 focus_mode = 2
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
 
 [node name="HBoxContainer2" type="VBoxContainer" parent="vbox_block/hBoxContainer/box_say"]
 
@@ -187,7 +195,7 @@ size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 28.0
 margin/right = 300.0
-margin/bottom = 117.0
+margin/bottom = 138.0
 alignment = 0
 
 [node name="lbl_dialog" type="Label" parent="vbox_block/hBoxContainer/box_say/HBoxContainer2"]
@@ -195,6 +203,7 @@ alignment = 0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
+size_flags/vertical = 0
 margin/left = 0.0
 margin/top = 0.0
 margin/right = 300.0
@@ -206,16 +215,20 @@ max_lines_visible = -1
 
 [node name="dialog" type="TextEdit" parent="vbox_block/hBoxContainer/box_say/HBoxContainer2"]
 
-rect/min_size = Vector2( 300, 25 )
+rect/min_size = Vector2( 300, 46 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 1.0
+margin/left = 0.0
 margin/top = 18.0
-margin/right = 301.0
-margin/bottom = 43.0
-caret/caret_blink = false
+margin/right = 300.0
+margin/bottom = 64.0
+syntax_highlighting = false
+show_line_numbers = false
+highlight_all_occurrences = false
+caret/block_caret = false
+caret/caret_blink = true
 caret/caret_blink_speed = 0.65
 
 [node name="lbl_animation" type="Label" parent="vbox_block/hBoxContainer/box_say/HBoxContainer2"]
@@ -223,10 +236,11 @@ caret/caret_blink_speed = 0.65
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
+size_flags/vertical = 0
 margin/left = 0.0
-margin/top = 47.0
+margin/top = 68.0
 margin/right = 300.0
-margin/bottom = 61.0
+margin/bottom = 82.0
 text = "Animation speech"
 percent_visible = 1.0
 lines_skipped = 0
@@ -240,10 +254,13 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 65.0
+margin/top = 86.0
 margin/right = 300.0
-margin/bottom = 89.0
+margin/bottom = 110.0
+placeholder/alpha = 0.6
 focus_mode = 2
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
 
 [node name="box_anim" type="VBoxContainer" parent="vbox_block/hBoxContainer"]
 
@@ -252,10 +269,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 0.0
+margin/left = 304.0
 margin/top = 0.0
-margin/right = 270.0
-margin/bottom = 52.0
+margin/right = 574.0
+margin/bottom = 138.0
 alignment = 0
 
 [node name="HBoxContainer1" type="HBoxContainer" parent="vbox_block/hBoxContainer/box_anim"]
@@ -269,13 +286,13 @@ margin/top = 0.0
 margin/right = 270.0
 margin/bottom = 24.0
 alignment = 0
-__meta__ = { "_editor_collapsed":true }
 
 [node name="actor_label" type="Label" parent="vbox_block/hBoxContainer/box_anim/HBoxContainer1"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
+size_flags/vertical = 0
 margin/left = 0.0
 margin/top = 5.0
 margin/right = 34.0
@@ -296,7 +313,10 @@ margin/left = 38.0
 margin/top = 0.0
 margin/right = 238.0
 margin/bottom = 24.0
+placeholder/alpha = 0.6
 focus_mode = 2
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="vbox_block/hBoxContainer/box_anim"]
 
@@ -309,13 +329,13 @@ margin/top = 28.0
 margin/right = 270.0
 margin/bottom = 52.0
 alignment = 0
-__meta__ = { "_editor_collapsed":true }
 
 [node name="animation_label" type="Label" parent="vbox_block/hBoxContainer/box_anim/HBoxContainer2"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
+size_flags/vertical = 0
 margin/left = 0.0
 margin/top = 5.0
 margin/right = 66.0
@@ -325,7 +345,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="animation_say" type="LineEdit" parent="vbox_block/hBoxContainer/box_anim/HBoxContainer2"]
+[node name="animation" type="LineEdit" parent="vbox_block/hBoxContainer/box_anim/HBoxContainer2"]
 
 rect/min_size = Vector2( 200, 24 )
 focus/ignore_mouse = false
@@ -336,7 +356,10 @@ margin/left = 70.0
 margin/top = 0.0
 margin/right = 270.0
 margin/bottom = 24.0
+placeholder/alpha = 0.6
 focus_mode = 2
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
 
 [node name="box_walkto" type="VBoxContainer" parent="vbox_block/hBoxContainer"]
 
@@ -345,10 +368,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 0.0
+margin/left = 304.0
 margin/top = 0.0
-margin/right = 300.0
-margin/bottom = 98.0
+margin/right = 604.0
+margin/bottom = 138.0
 alignment = 0
 
 [node name="hbox" type="HBoxContainer" parent="vbox_block/hBoxContainer/box_walkto"]
@@ -362,13 +385,13 @@ margin/top = 0.0
 margin/right = 300.0
 margin/bottom = 24.0
 alignment = 0
-__meta__ = { "_editor_collapsed":true }
 
 [node name="actor_label" type="Label" parent="vbox_block/hBoxContainer/box_walkto/hbox"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
+size_flags/vertical = 0
 margin/left = 0.0
 margin/top = 5.0
 margin/right = 34.0
@@ -389,7 +412,10 @@ margin/left = 38.0
 margin/top = 0.0
 margin/right = 238.0
 margin/bottom = 24.0
+placeholder/alpha = 0.6
 focus_mode = 2
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
 
 [node name="vbox" type="VBoxContainer" parent="vbox_block/hBoxContainer/box_walkto"]
 
@@ -402,13 +428,13 @@ margin/top = 28.0
 margin/right = 300.0
 margin/bottom = 70.0
 alignment = 0
-__meta__ = { "_editor_collapsed":true }
 
 [node name="Position2D node" type="Label" parent="vbox_block/hBoxContainer/box_walkto/vbox"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
+size_flags/vertical = 0
 margin/left = 0.0
 margin/top = 0.0
 margin/right = 300.0
@@ -429,7 +455,10 @@ margin/left = 0.0
 margin/top = 18.0
 margin/right = 300.0
 margin/bottom = 42.0
+placeholder/alpha = 0.6
 focus_mode = 2
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
 
 [node name="box_teleport" type="VBoxContainer" parent="vbox_block/hBoxContainer"]
 
@@ -461,6 +490,7 @@ alignment = 0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
+size_flags/vertical = 0
 margin/left = 0.0
 margin/top = 5.0
 margin/right = 34.0
@@ -481,7 +511,10 @@ margin/left = 38.0
 margin/top = 0.0
 margin/right = 238.0
 margin/bottom = 24.0
+placeholder/alpha = 0.6
 focus_mode = 2
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
 
 [node name="hbox1" type="HBoxContainer" parent="vbox_block/hBoxContainer/box_teleport"]
 
@@ -500,6 +533,7 @@ alignment = 0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
+size_flags/vertical = 0
 margin/left = 0.0
 margin/top = 5.0
 margin/right = 106.0
@@ -520,7 +554,10 @@ margin/left = 110.0
 margin/top = 0.0
 margin/right = 310.0
 margin/bottom = 24.0
+placeholder/alpha = 0.6
 focus_mode = 2
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
 
 [node name="HSeparator" type="HSeparator" parent="."]
 
@@ -530,9 +567,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 145.0
+margin/top = 166.0
 margin/right = 300.0
-margin/bottom = 148.0
+margin/bottom = 169.0
 
 [connection signal="item_selected" from="hbox/option_btn_action" to="." method="_on_item_action_selected"]
 

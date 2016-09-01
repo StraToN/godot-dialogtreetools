@@ -3,45 +3,16 @@ extends Control
 
 
 const DialogNode = preload("../Nodes/Globals/dialognode.gd")
-var editor
+onready var editor = get_node("editor")
 var hscroll
 var vscroll
 var currentSaveFile = null
 
 var list_groups = []
 
-func _on_menu_item(id):
-	if id == 0:
-		# NEW
-		pass
-	elif id == 1:
-		# LOAD
-		if not get_node("save_dialog").is_hidden():
-			get_node("save_dialog").hide()
-		get_node("load_dialog").popup_centered()
-		
-	elif id == 2:
-		# SAVE
-		if currentSaveFile != null:
-			_save_data(currentSaveFile)
-		else:
-			if not get_node("load_dialog").is_hidden():
-				get_node("load_dialog").hide()
-			get_node("save_dialog").popup_centered()
-	elif id == 3:
-		#SAVE AS
-		if not get_node("load_dialog").is_hidden():
-			get_node("load_dialog").hide()
-		get_node("save_dialog").popup_centered()
-	elif id == 4:
-		# QUIT
-		get_tree().quit()
-
 
 func _ready():
 	OS.set_low_processor_usage_mode(true)
-	
-	editor = get_node("editor")
 	
 	for c in editor.get_children():
 		if not c extends GraphNode:
@@ -49,28 +20,19 @@ func _ready():
 			vscroll = c.get_node("_v_scroll")
 		if not hscroll == null and not vscroll == null:
 			break
-#	
-#	var file_menu = get_node("toppanel/toolbar/Button").get_popup()
-#	file_menu.connect("item_pressed", self, "_on_menu_item")
-#	file_menu.add_item("New dialog") 	#0
-#	file_menu.add_item("Load")			#1
-#	file_menu.add_item("Save")			#2
-#	file_menu.add_item("Save as...")	#3
-#	file_menu.add_separator()			
-#	file_menu.add_item("Quit")			#4
-#	
-#	var save = get_node("save_dialog")
-#	save.set_access(save.ACCESS_FILESYSTEM)
-#	save.set_mode(save.MODE_SAVE_FILE)
-#	save.add_filter("*.json;JavaScript Object Notation")
-#	
-#	var load_ = get_node("load_dialog")
-#	load_.set_access(save.ACCESS_FILESYSTEM)
-#	load_.set_mode(save.MODE_OPEN_FILE)
-#	load_.add_filter("*.json;JavaScript Object Notation")
+
+	var save = get_node("save_dialog")
+	save.set_access(save.ACCESS_FILESYSTEM)
+	save.set_mode(save.MODE_SAVE_FILE)
+	save.add_filter("*.json;JavaScript Object Notation")
+	
+	var load_ = get_node("load_dialog")
+	load_.set_access(save.ACCESS_FILESYSTEM)
+	load_.set_mode(save.MODE_OPEN_FILE)
+	load_.add_filter("*.json;JavaScript Object Notation")
 	
 	# add signals to the frame
-	add_signals()
+	get_viewport().connect("size_changed", self, "_on_resized")
 	
 
 func _save_data(path):
@@ -113,26 +75,14 @@ func _load_data( path ):
 			editor.remove_child(ndel)
 	# add new nodes
 	for n in jsonData["nodes"]:
-		var new_node = _add_node(n["type"])
+		var new_node = get_node("editor")._add_node(n["type"])
+		print("New node: ")
+		print(n)
 		new_node.load_data(n)
 		
 	# apply connections
 	for c in jsonData["connections"]:
 		editor.connect_node(c["from"], c["from_port"], c["to"], c["to_port"])
-
-
-
-
-
-func _on_resized():
-	# set the size of the top panel and GraphEdit to the same as the frame on resize
-	var vpSize = get_tree().get_root().get_rect().size
-	get_node("editor").set_size( vpSize )
-	
-
-
-func add_signals():
-	get_viewport().connect("size_changed", self, "_on_resized")
 
 
 func make_groups_list():
@@ -141,3 +91,18 @@ func make_groups_list():
 		if gn extends DialogNode and gn.get_type() == "dialog_grouplabel":
 			list_groups.append(gn.get_group_name())
 
+func _on_resized():
+	# set the size of the top panel and GraphEdit to the same as the frame on resize
+	var vpSize = get_tree().get_root().get_rect().size
+	get_node("editor").set_size( vpSize )
+
+func _on_import_button_pressed():
+	if not get_node("save_dialog").is_hidden():
+		get_node("save_dialog").hide()
+	get_node("load_dialog").popup_centered()
+
+
+func _on_export_button_pressed():
+	if not get_node("load_dialog").is_hidden():
+		get_node("load_dialog").hide()
+	get_node("save_dialog").popup_centered()

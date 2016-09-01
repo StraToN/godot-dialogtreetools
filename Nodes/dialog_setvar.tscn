@@ -30,13 +30,13 @@ first_right_slot = null
 new_block_adds_left_slot = null
 new_block_adds_right_slot = null
 
-[node name="vbox_main_container" type="VBoxContainer" parent="."]
+[node name="slot" type="VBoxContainer" parent="."]
 
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 3.0
+margin/left = 16.0
 margin/top = 24.0
 margin/right = 257.0
 margin/bottom = 24.0

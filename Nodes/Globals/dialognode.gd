@@ -1,6 +1,7 @@
 
 extends GraphNode
 
+var id setget set_id,get_id
 # Type of node
 var type setget set_type,get_type
 # path to scene used to create new blocks
@@ -18,9 +19,6 @@ export(bool) var new_block_adds_right_slot
 ## BLOCKS VARS
 onready var nb_blocks = 0
 onready var nodes_blocks = []
-
-# FOCUS
-var has_focus
 
 
 
@@ -43,19 +41,51 @@ func _ready():
 	connect("raise_request", self, "_on_raise_request", [self])
 
 func _on_raise_request(raised_node):
-	print("raise_request!!" + raised_node.get_name())
+	pass
 
 func set_type(new):
 	type = new
 	
 func get_type():
 	return type
+	
+func set_id(new):
+	id = new
+	
+func get_id():
+	return id
 
 func set_block_scene(new):
 	block_scene = new
 	
 func get_block_scene():
 	return block_scene
+
+###########################################
+###########################################
+
+# Default Save node function. Basically, saves global data of the node 
+# and gets the data of each block contained in the node to JSON format.
+# Must be overriden in the node script if it needs specific save.
+func save_data(node_list):
+	var nodeDict = {
+			"type": self.type,
+			"id": get_name(),
+			"x": get_offset().x,
+			"y": get_offset().y
+			}
+	for i in range(0, nb_blocks):
+		var block = nodes_blocks[i]
+		nodeDict["data"+str(block.get_id())] = block.get_data()
+		
+	node_list.push_back(nodeDict)
+
+# Default Load function (from json string)
+# Does nothing, needs to be overriden in the node script.
+func load_data(json_data):
+	print("INFO: Default load_data() method called. This method does nothing and needs to be overriden.")
+	pass
+
 
 ###########################################
 ###########################################
@@ -73,14 +103,14 @@ func add_new_block():
 	if (nb_blocks+1 <= 1):
 		hide_rembutton(block)
 	
+	# add the '+' button to add new blocks into this block
 	add_addbutton(block)
 	
-	# add new line block to the main container
-	#if (!new_blocks_in_new_container):
-		#get_node("vbox_main_container").add_child(block)
 	add_child(block)
-		
+	
+	# add this block to the blocks list
 	nodes_blocks.append(block)
+	
 	nb_blocks += 1
 	
 	# at least 2 variables, add remove button to first variable so it can be deleted
@@ -88,7 +118,6 @@ func add_new_block():
 		show_rembutton(nodes_blocks[0])
 	
 	# enable/disable slots of the GraphNode for this block EXCEPT BLOCK 1
-	print(nb_blocks)
 	if (nb_blocks == 1):
 		#print("FIRST BLOCK", str(first_left_slot), str(first_right_slot))
 		set_slot(nb_blocks-1, first_left_slot, 0, Color(1.0, 1.0, 1.0), first_right_slot, 0, Color(1.0, 1.0, 1.0))
@@ -124,12 +153,12 @@ func hide_rembutton(block):
 func show_rembutton(block):
 	block.get_node("hbox/rembtn").show()
 
+# Add block button pressed
 func _on_add_pressed():
 	add_new_block()
 
 # Remove block button pressed
 func _on_remove_pressed(block):
-	print(block.get_name())
 	remove_child(block)
 	nodes_blocks.remove( nodes_blocks.find(block) )
 	nb_blocks -= 1

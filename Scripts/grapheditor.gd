@@ -22,7 +22,7 @@ func _ready():
 	#add start node to the scene
 	var startnode = _add_node("startnode")
 	startnode.get_node("vbox/name").set_text("start")
-	startnode.set_offset(startnode.get_offset() - Vector2(get_size().x/3,0))
+	startnode.set_offset(startnode.get_offset() - Vector2(get_size().x/2.5,200))
 
 func _input_event(ev):
 	if (ev != null):

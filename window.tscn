@@ -41,8 +41,8 @@ popup/exclusive = false
 window/title = "Save a File"
 dialog/hide_on_ok = false
 mode = 4
-access = 0
-filters = StringArray(  )
+access = 2
+filters = StringArray( "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation" )
 show_hidden_files = false
 
 [node name="load_dialog" type="FileDialog" parent="."]
@@ -52,16 +52,16 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 257.0
+margin/left = 1377.0
 margin/top = 226.0
-margin/right = 899.0
+margin/right = 2019.0
 margin/bottom = 676.0
 popup/exclusive = false
-window/title = "Save a File"
+window/title = "Open a File"
 dialog/hide_on_ok = false
-mode = 4
-access = 0
-filters = StringArray(  )
+mode = 0
+access = 2
+filters = StringArray( "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation" )
 show_hidden_files = false
 
 [node name="editor" type="GraphEdit" parent="."]
@@ -78,6 +78,43 @@ margin/top = 0.0
 margin/right = 0.0
 margin/bottom = 0.0
 script/script = ExtResource( 2 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="import_button" type="Button" parent="editor"]
+
+anchor/left = 1
+anchor/right = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 150.0
+margin/top = 10.0
+margin/right = 90.0
+margin/bottom = 20.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Import"
+flat = false
+
+[node name="export_button" type="Button" parent="editor"]
+
+anchor/left = 1
+anchor/right = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 80.0
+margin/top = 10.0
+margin/right = 20.0
+margin/bottom = 20.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Export"
+flat = false
 
 [connection signal="file_selected" from="save_dialog" to="." method="_save_data"]
 
@@ -86,5 +123,9 @@ script/script = ExtResource( 2 )
 [connection signal="connection_request" from="editor" to="editor" method="_on_editor_connection_request"]
 
 [connection signal="disconnection_request" from="editor" to="editor" method="_on_editor_disconnection_request"]
+
+[connection signal="pressed" from="editor/import_button" to="." method="_on_import_button_pressed"]
+
+[connection signal="pressed" from="editor/export_button" to="." method="_on_export_button_pressed"]
 
 

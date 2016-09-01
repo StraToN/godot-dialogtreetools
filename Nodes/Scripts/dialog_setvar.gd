@@ -7,25 +7,15 @@ func _init():
 	self.block_scene = "res://Nodes/SubNodes/dialog_setvar_block.tscn"
 	self.new_block_adds_left_slot = false
 	self.new_block_adds_right_slot = false
-	pass
 
 func _ready():
 	add_new_block()
-	pass
-	
-func save_data(node_list):
-	node_list.push_back({
-		"type": self.type,
-		"id": get_name(),
-		"x": get_offset().x,
-		"y": get_offset().y,
-		"statement": get_node("vbox/statement").get_text().percent_encode()
-	})
+	move_child(get_node("slot"), 1)
 
 func load_data(data):
-	set_name( data["id"])
+	set_id( data["id"] )
 	set_offset( Vector2(data["x"], data["y"]))
-	get_node("vbox/statement").set_text(data["statement"])
+	set_type( data["type"] )
 
 func export_data(file, connections, labels):
 	file.store_line("func " + get_name() + "(c):")

@@ -3,6 +3,7 @@ extends Container
 var id setget set_id,get_id
 export(NodePath) var block_to_collapse_path setget set_block_to_collapse_path,get_block_to_collapse_path
 var block_to_collapse setget set_block_to_collapse,get_block_to_collapse
+onready var is_collapsed = false setget ,is_collapsed
 	
 func _ready():
 	if (block_to_collapse_path != null):
@@ -28,6 +29,9 @@ func set_block_to_collapse(v):
 
 func get_block_to_collapse():
 	return block_to_collapse
+	
+func is_collapsed():
+	return is_collapsed
 
 # Show/Hide block button pressed, and resize GraphNode to its minimum size
 func _on_collapse_block_pressed():
@@ -37,7 +41,9 @@ func _on_collapse_block_pressed():
 		pass
 	if block_to_collapse.is_hidden():
 		block_to_collapse.show()
+		is_collapsed = false
 	else:
 		block_to_collapse.hide()
+		is_collapsed = true
 		get_parent().set_size( Vector2(get_parent().get_minimum_size().x, 0) )
  
