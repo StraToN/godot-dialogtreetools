@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://tree-tools/Nodes/Scripts/dialog_setvar.gd" type="Script" id=1]
+
+[node name="setvar_node" type="GraphNode"]
+
+rect/min_size = Vector2( 200, 0 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 273.0
+margin/bottom = 105.0
+custom_constants/separation = 5
+title = "Set variable"
+show_close = true
+slot/0/left_enabled = true
+slot/0/left_type = 1
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = true
+slot/0/right_type = 1
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script/script = ExtResource( 1 )
+__meta__ = { "__editor_plugin_screen__":"2D" }
+new_block_collapsed = null
+first_left_slot = null
+first_right_slot = null
+new_block_adds_left_slot = null
+new_block_adds_right_slot = null
+
+[node name="slot" type="VBoxContainer" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 16.0
+margin/top = 24.0
+margin/right = 257.0
+margin/bottom = 24.0
+alignment = 0
+
+[connection signal="close_request" from="." to="." method="_on_close_request"]
+
+

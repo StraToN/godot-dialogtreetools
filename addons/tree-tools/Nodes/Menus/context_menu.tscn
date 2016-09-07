@@ -1,0 +1,29 @@
+[gd_scene load_steps=11 format=1]
+
+[ext_resource path="res://tree-tools/Nodes/Icons/racing-flag.png" type="Texture" id=1]
+[ext_resource path="res://tree-tools/Nodes/Icons/dialogue-cloud-symbol.png" type="Texture" id=2]
+[ext_resource path="res://tree-tools/Nodes/Icons/dice.png" type="Texture" id=3]
+[ext_resource path="res://tree-tools/Nodes/Icons/path-selection.png" type="Texture" id=4]
+[ext_resource path="res://tree-tools/Nodes/Icons/icon.png" type="Texture" id=5]
+[ext_resource path="res://tree-tools/Nodes/Icons/hierarchical-structure.png" type="Texture" id=6]
+[ext_resource path="res://tree-tools/Nodes/Icons/puzzle.png" type="Texture" id=7]
+[ext_resource path="res://tree-tools/Nodes/Icons/jump-hand-drawn-arrow.png" type="Texture" id=8]
+[ext_resource path="res://tree-tools/Nodes/Icons/two-circling-arrows.png" type="Texture" id=9]
+[ext_resource path="res://tree-tools/Nodes/Menus/context_menu.gd" type="Script" id=10]
+
+[node name="PopupMenu" type="PopupMenu"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = -1.0
+margin/right = 173.0
+margin/bottom = 267.0
+custom_constants/hseparation = 10
+popup/exclusive = false
+items = [ "Start node", ExtResource( 1 ), false, false, false, 0, 0, null, "", false, "Action/Line node", ExtResource( 2 ), false, false, false, 1, 0, null, "", false, "Random Line node", ExtResource( 3 ), false, false, false, 2, 0, null, "", false, "Option node", ExtResource( 4 ), false, false, false, 3, 0, null, "", false, "Variable set node", ExtResource( 5 ), false, false, false, 4, 0, null, "", false, "Group node", ExtResource( 6 ), false, false, false, 5, 0, null, "", false, "Condition node", ExtResource( 7 ), false, false, false, 6, 0, null, "", false, "Jump node", ExtResource( 8 ), false, false, false, 7, 0, null, "", false, "Loop node", ExtResource( 9 ), false, false, false, 8, 0, null, "", false ]
+script/script = ExtResource( 10 )
+
+

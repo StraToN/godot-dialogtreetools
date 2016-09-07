@@ -1,0 +1,26 @@
+extends "../Globals/dialognode.gd"
+
+
+func _init():
+	self.type = "dialog_line"
+	self.block_scene = "res://tree-tools/Nodes/SubNodes/dialog_line_block.tscn"
+	self.new_block_adds_left_slot = false
+	self.new_block_adds_right_slot = false
+
+func _ready():
+	add_new_block()
+
+
+func load_data(data):
+	print("LINE LOAD")
+	clear_blocks()
+	set_id( data["id"] )
+	set_offset( Vector2(data["x"], data["y"]))
+
+	var currentBlock = 0
+	var keyData = "data" 
+	while data.has( keyData + str(currentBlock)):
+		var new_block = add_new_block()
+		new_block.set_data( data[keyData + str(currentBlock)] )
+		
+		currentBlock += 1

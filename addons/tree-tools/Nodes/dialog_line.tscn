@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://tree-tools/Nodes/Scripts/dialog_line.gd" type="Script" id=1]
+
+[node name="line_node" type="GraphNode"]
+
+rect/min_size = Vector2( 200, 100 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 300.0
+margin/bottom = 100.0
+title = "Text / Animation"
+show_close = true
+script/script = ExtResource( 1 )
+__meta__ = { "__editor_plugin_screen__":"2D" }
+new_block_collapsed = null
+first_left_slot = null
+first_right_slot = null
+new_block_adds_left_slot = null
+new_block_adds_right_slot = null
+
+[connection signal="close_request" from="." to="." method="_on_close_request"]
+
+
