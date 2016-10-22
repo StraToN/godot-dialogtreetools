@@ -14,8 +14,23 @@ _data = { "shaders":[ [ 0, 33, Vector2( 350, 40 ), null, null, [  ], 1, 0, Vecto
 shader/shader = SubResource( 1 )
 shader/shading_mode = 0
 
-[node name="Control" type="Control"]
+[node name="Tree-tools" type="Control"]
 
+rect/min_size = Vector2( 640, 480 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+script/script = ExtResource( 1 )
+__meta__ = { "__editor_plugin_screen__":"2D", "_edit_lock_":true }
+
+[node name="Panel" type="Panel" parent="."]
+
+rect/min_size = Vector2( 800, 600 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -24,8 +39,62 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 800.0
 margin/bottom = 600.0
-script/script = ExtResource( 1 )
-__meta__ = { "__editor_plugin_screen__":"2D", "_edit_lock_":true }
+
+[node name="editor" type="GraphEdit" parent="Panel"]
+
+material/material = SubResource( 2 )
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 1
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+script/script = ExtResource( 2 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="import_button" type="Button" parent="Panel/editor"]
+
+anchor/left = 1
+anchor/right = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 150.0
+margin/top = 10.0
+margin/right = 90.0
+margin/bottom = 20.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Import"
+flat = false
+
+[node name="export_button" type="Button" parent="Panel/editor"]
+
+anchor/left = 1
+anchor/right = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 80.0
+margin/top = 10.0
+margin/right = 20.0
+margin/bottom = 20.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Export"
+flat = false
+
+[node name="PopupMenu" parent="Panel/editor" instance=ExtResource( 3 )]
+
+visibility/visible = false
 
 [node name="save_dialog" type="FileDialog" parent="."]
 
@@ -43,7 +112,7 @@ window/title = "Save a File"
 dialog/hide_on_ok = false
 mode = 4
 access = 2
-filters = StringArray( "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation" )
+filters = StringArray( "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation" )
 show_hidden_files = false
 
 [node name="load_dialog" type="FileDialog" parent="."]
@@ -62,75 +131,19 @@ window/title = "Open a File"
 dialog/hide_on_ok = false
 mode = 0
 access = 2
-filters = StringArray( "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation" )
+filters = StringArray( "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation" )
 show_hidden_files = false
 
-[node name="editor" type="GraphEdit" parent="."]
+[connection signal="connection_request" from="Panel/editor" to="Panel/editor" method="_on_editor_connection_request"]
 
-material/material = SubResource( 2 )
-anchor/right = 1
-anchor/bottom = 1
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 3
-size_flags/vertical = 1
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 0.0
-margin/bottom = 0.0
-script/script = ExtResource( 2 )
-__meta__ = { "_edit_lock_":true }
+[connection signal="disconnection_request" from="Panel/editor" to="Panel/editor" method="_on_editor_disconnection_request"]
 
-[node name="import_button" type="Button" parent="editor"]
+[connection signal="pressed" from="Panel/editor/import_button" to="." method="_on_import_button_pressed"]
 
-anchor/left = 1
-anchor/right = 1
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 150.0
-margin/top = 10.0
-margin/right = 90.0
-margin/bottom = 20.0
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-text = "Import"
-flat = false
-
-[node name="export_button" type="Button" parent="editor"]
-
-anchor/left = 1
-anchor/right = 1
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 80.0
-margin/top = 10.0
-margin/right = 20.0
-margin/bottom = 20.0
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-text = "Export"
-flat = false
-
-[node name="PopupMenu" parent="editor" instance=ExtResource( 3 )]
-
-visibility/visible = false
+[connection signal="pressed" from="Panel/editor/export_button" to="." method="_on_export_button_pressed"]
 
 [connection signal="file_selected" from="save_dialog" to="." method="_save_data"]
 
 [connection signal="file_selected" from="load_dialog" to="." method="_load_data"]
-
-[connection signal="connection_request" from="editor" to="editor" method="_on_editor_connection_request"]
-
-[connection signal="disconnection_request" from="editor" to="editor" method="_on_editor_disconnection_request"]
-
-[connection signal="pressed" from="editor/import_button" to="." method="_on_import_button_pressed"]
-
-[connection signal="pressed" from="editor/export_button" to="." method="_on_export_button_pressed"]
 
 

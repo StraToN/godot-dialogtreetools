@@ -3,7 +3,7 @@ extends Control
 
 
 const DialogNode = preload("../Nodes/Globals/dialognode.gd")
-onready var editor = get_node("editor")
+onready var editor = get_node("Panel/editor")
 var hscroll
 var vscroll
 var currentSaveFile = null
@@ -11,7 +11,7 @@ var currentSaveFile = null
 var list_groups = []
 
 
-func _ready():
+func ready():
 	OS.set_low_processor_usage_mode(true)
 	
 	for c in editor.get_children():
@@ -32,8 +32,8 @@ func _ready():
 	load_.add_filter("*.json;JavaScript Object Notation")
 	
 	# add signals to the frame
-	get_viewport().connect("size_changed", self, "_on_resized")
-	_on_resized()
+	#get_viewport().connect("size_changed", self, "_on_resized")
+	#_on_resized()
 	
 
 func _save_data(path):
@@ -76,7 +76,7 @@ func _load_data( path ):
 			editor.remove_child(ndel)
 	# add new nodes
 	for n in jsonData["nodes"]:
-		var new_node = get_node("editor")._add_node(n["type"])
+		var new_node = editor._add_node(n["type"])
 		print("New node: ")
 		print(n)
 		new_node.load_data(n)
@@ -95,7 +95,7 @@ func make_groups_list():
 func _on_resized():
 	# set the size of the top panel and GraphEdit to the same as the frame on resize
 	#var vpSize = get_tree().get_root().get_rect().size
-	get_node("editor").set_size( get_rect().size )
+	editor.set_size( get_rect().size )
 
 func _on_import_button_pressed():
 	if not get_node("save_dialog").is_hidden():

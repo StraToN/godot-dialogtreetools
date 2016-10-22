@@ -8,6 +8,9 @@ var hscroll
 var vscroll
 
 func _ready():
+	init()
+	
+func init():
 	set_right_disconnects(true)
 	
 	for c in get_children():
