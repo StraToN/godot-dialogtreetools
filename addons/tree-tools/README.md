@@ -8,6 +8,7 @@ Racing flag, Path Selection, Variable, Puzzle, Jump: Freepik
 Dialog cloud: Appzgear
 Dice, Hierarchical Structure: Gregor Cresnar
 Cycling arrows: Appzgear
+Gears: Vaadim
 
 
 
