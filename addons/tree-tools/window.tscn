@@ -1,10 +1,8 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=6 format=1]
 
-[ext_resource path="res://tree-tools/Scripts/main.gd" type="Script" id=1]
-[ext_resource path="res://tree-tools/Scripts/grapheditor.gd" type="Script" id=2]
-[ext_resource path="res://tree-tools/Nodes/Menus/context_menu.tscn" type="PackedScene" id=3]
-[ext_resource path="res://addons/tree-tools/TreeNode/TreeNode.gd" type="Script" id=4]
-[ext_resource path="res://addons/tree-tools/TreeNode/icons/gear.png" type="Texture" id=5]
+[ext_resource path="res://addons/tree-tools/Scripts/main.gd" type="Script" id=1]
+[ext_resource path="res://addons/tree-tools/Scripts/grapheditor.gd" type="Script" id=2]
+[ext_resource path="res://addons/tree-tools/Nodes/Menus/context_menu.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CanvasItemShaderGraph" id=1]
 
@@ -18,7 +16,6 @@ shader/shading_mode = 0
 
 [node name="Tree-tools" type="Control"]
 
-rect/min_size = Vector2( 640, 480 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -57,6 +54,24 @@ margin/right = 0.0
 margin/bottom = 0.0
 script/script = ExtResource( 2 )
 __meta__ = { "_edit_lock_":true }
+
+[node name="clear_button" type="Button" parent="Panel/editor"]
+
+anchor/left = 1
+anchor/right = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 220.0
+margin/top = 10.0
+margin/right = 160.0
+margin/bottom = 30.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Clear"
+flat = false
 
 [node name="import_button" type="Button" parent="Panel/editor"]
 
@@ -136,26 +151,19 @@ access = 2
 filters = StringArray( "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation" )
 show_hidden_files = false
 
-[node name="TreeNode" type="Control" parent="."]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 40.0
-margin/bottom = 40.0
-script/script = ExtResource( 4 )
-__meta__ = { "_editor_icon":ExtResource( 5 ) }
-
 [connection signal="connection_request" from="Panel/editor" to="Panel/editor" method="_on_editor_connection_request"]
 
 [connection signal="disconnection_request" from="Panel/editor" to="Panel/editor" method="_on_editor_disconnection_request"]
 
+[connection signal="pressed" from="Panel/editor/clear_button" to="Panel/editor" method="clear"]
+
 [connection signal="pressed" from="Panel/editor/import_button" to="." method="_on_import_button_pressed"]
 
 [connection signal="pressed" from="Panel/editor/export_button" to="." method="_on_export_button_pressed"]
+
+[connection signal="close_request" from="Panel/editor/node1" to="Panel/editor/node1" method="_on_close_request"]
+
+[connection signal="close_request" from="Panel/editor/node2" to="Panel/editor/node2" method="_on_close_request"]
 
 [connection signal="file_selected" from="save_dialog" to="." method="_save_data"]
 

@@ -1,4 +1,5 @@
-extends "res://tree-tools/Nodes/Globals/dialognode.gd"
+tool
+extends "../Globals/dialognode.gd"
 
 
 func _init():

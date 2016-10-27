@@ -1,7 +1,6 @@
 [gd_scene load_steps=2 format=1]
 
-[ext_resource path="res://tree-tools/Nodes/Scripts/dialog_condition.gd" type="Script" id=1]
-
+[ext_resource path="res://addons/tree-tools/Nodes/Scripts/dialog_condition.gd" type="Script" id=1]
 
 [node name="condition_node" type="GraphNode"]
 
@@ -17,6 +16,7 @@ margin/bottom = 114.0
 custom_constants/separation = 5
 title = "Condition"
 show_close = true
+resizeable = false
 slot/0/left_enabled = false
 slot/0/left_type = 1
 slot/0/left_color = Color( 1, 1, 1, 1 )
@@ -88,6 +88,7 @@ margin/top = 19.0
 margin/right = 168.0
 margin/bottom = 43.0
 placeholder/alpha = 0.6
+expand_to_len = false
 focus_mode = 2
 caret/caret_blink = false
 caret/caret_blink_speed = 0.65

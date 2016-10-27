@@ -3,11 +3,12 @@ extends EditorPlugin
 
 var tree_tools = null
 const TreeNode = preload("res://addons/tree-tools/TreeNode/TreeNode.gd")
+const node_icon = preload("res://addons/tree-tools/TreeNode/icons/gear.png")
 
 var current_object
 
 func _enter_tree():
-	add_custom_type("TreeNode", "Node", preload("res://addons/tree-tools/TreeNode/TreeNode.gd"), preload("res://addons/tree-tools/TreeNode/icons/gear.png"))
+	add_custom_type("TreeNode", "Node", TreeNode, node_icon)
 	
 	tree_tools = preload("res://addons/tree-tools/window.tscn").instance()
 	
@@ -37,7 +38,24 @@ func handles(object):
 
 
 func edit(object):
+	if current_object == object:
+		return
+	if current_object == null:
+		current_object = object
+	print("old treenode " + current_object.get_name() + " contains: ", current_object.get_json())
+	# save the content of the graphedit in the TreeNode we're leaving from
+	var json_save = {}
+	json_save.parse_json(tree_tools.get_json())
+	current_object.set_json(json_save)
+	
+	# get the json content saved in the newly selected TreeNode and load it into the graphedit
 	current_object = object
+	tree_tools.get_node("Panel/editor").clear()
+	
+	if (current_object.get_json() == null):
+		current_object.set_json({"connections":[], "nodes":[]})
+	printt("new treenode = " + current_object.get_name() + " contains: ", current_object.get_json())
+	tree_tools.load_from_json(current_object.get_json())
 	
 
 func make_visible(visible):
@@ -48,7 +66,6 @@ func make_visible(visible):
 
 
 func _on_resized():
-	print("RESIZED!")
 	var viewport_size = get_editor_viewport().get_size()
 	tree_tools.set_size(viewport_size)
 	tree_tools.get_node("Panel").set_size(viewport_size)

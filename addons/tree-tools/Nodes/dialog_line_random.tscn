@@ -1,7 +1,9 @@
 [gd_scene load_steps=3 format=1]
 
-[ext_resource path="res://tree-tools/Nodes/Scripts/dialog_line_random.gd" type="Script" id=1]
-[ext_resource path="res://tree-tools/Nodes/SubNodes/dialog_line_block.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/tree-tools/Nodes/Scripts/dialog_line_random.gd" type="Script" id=1]
+[ext_resource path="res://addons/tree-tools/Nodes/SubNodes/dialog_line_block.tscn" type="PackedScene" id=2]
+
+
 
 
 

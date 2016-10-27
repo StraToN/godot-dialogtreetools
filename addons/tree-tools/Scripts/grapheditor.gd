@@ -1,4 +1,4 @@
-
+tool
 extends GraphEdit
 
 # number of nodes
@@ -9,7 +9,13 @@ var vscroll
 
 func _ready():
 	init()
-	
+
+
+func clear():
+	for c in get_children():
+		if c extends GraphNode:
+			c.queue_free()
+
 func init():
 	set_right_disconnects(true)
 	
@@ -31,7 +37,7 @@ func _input_event(ev):
 	if (ev != null):
 		if (ev.is_pressed() and ev.type==InputEvent.MOUSE_BUTTON):
 			if (ev.button_index == 2):
-				context_menu.set_pos(ev.pos)
+				context_menu.set_pos(get_global_mouse_pos())
 				context_menu.popup()
 
 func _on_editor_connection_request(from, from_slot, to, to_slot):
@@ -54,3 +60,14 @@ func _add_node(type):
 	add_child(node)
 	node.set_offset(offset + (get_size() - node.get_size()) / 2)
 	return node
+
+func set_children_graphnodes(list_graphnodes):
+	for gn in list_graphnodes:
+		add_child(gn)
+		
+func get_children_graphnodes():
+	var list_graphnodes = []
+	for gn in get_children():
+		if gn extends GraphNode:
+			list_graphnodes.append(gn)
+	return list_graphnodes

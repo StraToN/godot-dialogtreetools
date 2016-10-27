@@ -1,8 +1,6 @@
 [gd_scene load_steps=2 format=1]
 
-[ext_resource path="res://tree-tools/Nodes/SubNodes/Scripts/dialog_setvar_block.gd" type="Script" id=1]
-
-
+[ext_resource path="res://addons/tree-tools/Nodes/SubNodes/Scripts/dialog_setvar_block.gd" type="Script" id=1]
 
 [node name="setvar_block" type="VBoxContainer"]
 
@@ -73,6 +71,7 @@ margin/top = 0.0
 margin/right = 204.0
 margin/bottom = 24.0
 placeholder/alpha = 0.6
+expand_to_len = false
 focus_mode = 2
 caret/caret_blink = false
 caret/caret_blink_speed = 0.65
@@ -128,12 +127,12 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 34.0
 margin/top = 0.0
-margin/right = 116.0
+margin/right = 125.0
 margin/bottom = 23.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-text = "Item 0"
+text = "Boolean"
 flat = false
 align = 0
 selected = 0
@@ -145,9 +144,9 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 120.0
+margin/left = 129.0
 margin/top = 4.0
-margin/right = 155.0
+margin/right = 164.0
 margin/bottom = 18.0
 text = "Value"
 percent_visible = 1.0
@@ -160,9 +159,9 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 159.0
+margin/left = 168.0
 margin/top = 0.0
-margin/right = 185.0
+margin/right = 194.0
 margin/bottom = 23.0
 toggle_mode = true
 enabled_focus_mode = 2
@@ -182,6 +181,7 @@ margin/top = 0.0
 margin/right = 247.0
 margin/bottom = 24.0
 placeholder/alpha = 0.6
+expand_to_len = false
 focus_mode = 2
 caret/caret_blink = false
 caret/caret_blink_speed = 0.65

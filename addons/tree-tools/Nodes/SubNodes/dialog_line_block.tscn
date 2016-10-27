@@ -1,8 +1,6 @@
 [gd_scene load_steps=2 format=1]
 
-[ext_resource path="res://tree-tools/Nodes/SubNodes/Scripts/dialog_line_block.gd" type="Script" id=1]
-
-
+[ext_resource path="res://addons/tree-tools/Nodes/SubNodes/Scripts/dialog_line_block.gd" type="Script" id=1]
 
 [node name="vbox_line" type="VBoxContainer"]
 
@@ -184,6 +182,7 @@ margin/top = 0.0
 margin/right = 188.0
 margin/bottom = 24.0
 placeholder/alpha = 0.6
+expand_to_len = false
 focus_mode = 2
 caret/caret_blink = false
 caret/caret_blink_speed = 0.65
@@ -260,6 +259,7 @@ margin/top = 86.0
 margin/right = 300.0
 margin/bottom = 110.0
 placeholder/alpha = 0.6
+expand_to_len = false
 focus_mode = 2
 caret/caret_blink = false
 caret/caret_blink_speed = 0.65
@@ -316,6 +316,7 @@ margin/top = 0.0
 margin/right = 238.0
 margin/bottom = 24.0
 placeholder/alpha = 0.6
+expand_to_len = false
 focus_mode = 2
 caret/caret_blink = false
 caret/caret_blink_speed = 0.65
@@ -359,6 +360,7 @@ margin/top = 0.0
 margin/right = 270.0
 margin/bottom = 24.0
 placeholder/alpha = 0.6
+expand_to_len = false
 focus_mode = 2
 caret/caret_blink = false
 caret/caret_blink_speed = 0.65
@@ -415,6 +417,7 @@ margin/top = 0.0
 margin/right = 238.0
 margin/bottom = 24.0
 placeholder/alpha = 0.6
+expand_to_len = false
 focus_mode = 2
 caret/caret_blink = false
 caret/caret_blink_speed = 0.65
@@ -458,6 +461,7 @@ margin/top = 18.0
 margin/right = 300.0
 margin/bottom = 42.0
 placeholder/alpha = 0.6
+expand_to_len = false
 focus_mode = 2
 caret/caret_blink = false
 caret/caret_blink_speed = 0.65
@@ -514,6 +518,7 @@ margin/top = 0.0
 margin/right = 238.0
 margin/bottom = 24.0
 placeholder/alpha = 0.6
+expand_to_len = false
 focus_mode = 2
 caret/caret_blink = false
 caret/caret_blink_speed = 0.65
@@ -557,6 +562,7 @@ margin/top = 0.0
 margin/right = 310.0
 margin/bottom = 24.0
 placeholder/alpha = 0.6
+expand_to_len = false
 focus_mode = 2
 caret/caret_blink = false
 caret/caret_blink_speed = 0.65

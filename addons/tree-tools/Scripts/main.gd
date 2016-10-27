@@ -34,25 +34,32 @@ func ready():
 	# add signals to the frame
 	#get_viewport().connect("size_changed", self, "_on_resized")
 	#_on_resized()
-	
 
-func _save_data(path):
-	currentSaveFile = path
+func get_json():
+	var json = ""
 	var nodes_list = []
-	
-	# on cherche uniquement les nodes racines
 	for gn in editor.get_children():
 		if gn extends GraphNode:
 			gn.save_data(nodes_list)
-	
 	var data = {
 		"connections": editor.get_connection_list(),
 		"nodes": nodes_list
 		}
 		
+	return data.to_json()
+	
+	var data = {
+		"connections": editor.get_connection_list(),
+		"nodes": nodes_list
+		}
+
+func _save_data(path):
+	currentSaveFile = path
+	var json_data = get_json()
+		
 	var file = File.new()
 	file.open(path, file.WRITE)
-	file.store_string(data.to_json())
+	file.store_string(json_data)
 	file.close()
 
 
@@ -68,7 +75,10 @@ func _load_data( path ):
 	# parse json
 	var jsonData = {}
 	jsonData.parse_json(jsonString)
-	
+	load_from_json(jsonData)
+
+
+func load_from_json(jsonData):
 	# remove all nodes in editor
 	var list_nodes_editor = editor.get_children()
 	for ndel in list_nodes_editor:
@@ -84,7 +94,6 @@ func _load_data( path ):
 	# apply connections
 	for c in jsonData["connections"]:
 		editor.connect_node(c["from"], c["from_port"], c["to"], c["to_port"])
-
 
 func make_groups_list():
 	list_groups = []

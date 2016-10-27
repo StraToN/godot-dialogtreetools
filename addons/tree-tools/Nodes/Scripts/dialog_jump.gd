@@ -1,3 +1,4 @@
+tool
 extends "../Globals/dialognode.gd"
 
 func _init():

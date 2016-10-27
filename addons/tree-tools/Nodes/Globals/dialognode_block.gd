@@ -1,3 +1,4 @@
+tool
 extends Container
 
 var id setget set_id,get_id

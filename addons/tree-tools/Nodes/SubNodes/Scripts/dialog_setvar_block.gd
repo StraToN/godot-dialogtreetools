@@ -1,4 +1,4 @@
-
+tool
 extends "../../Globals/dialognode_block.gd"
 
 

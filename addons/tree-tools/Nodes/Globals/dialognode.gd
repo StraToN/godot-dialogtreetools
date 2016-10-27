@@ -1,4 +1,4 @@
-
+tool
 extends GraphNode
 
 var id setget set_id,get_id

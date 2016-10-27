@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=1]
 
-[ext_resource path="res://tree-tools/Nodes/Scripts/dialog_grouplabel.gd" type="Script" id=1]
+[ext_resource path="res://addons/tree-tools/Nodes/Scripts/dialog_grouplabel.gd" type="Script" id=1]
 
 [node name="group_node" type="GraphNode"]
 
@@ -14,6 +14,7 @@ margin/right = 161.0
 margin/bottom = 76.0
 title = "Dialog group label"
 show_close = true
+resizeable = false
 slot/0/left_enabled = true
 slot/0/left_type = 1
 slot/0/left_color = Color( 1, 1, 1, 1 )
@@ -66,6 +67,7 @@ margin/top = 18.0
 margin/right = 129.0
 margin/bottom = 42.0
 placeholder/alpha = 0.6
+expand_to_len = false
 focus_mode = 2
 caret/caret_blink = false
 caret/caret_blink_speed = 0.65

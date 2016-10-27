@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=1]
 
-[ext_resource path="res://tree-tools/Nodes/Scripts/dialog_loop.gd" type="Script" id=1]
+[ext_resource path="res://addons/tree-tools/Nodes/Scripts/dialog_loop.gd" type="Script" id=1]
+
 
 [node name="loop_node" type="GraphNode"]
 

@@ -1,10 +1,11 @@
+tool
 extends "../Globals/dialognode.gd"
 
 var nodes_variables = []
 
 func _init():
 	self.type = "dialog_setvar"
-	self.block_scene = "res://tree-tools/Nodes/SubNodes/dialog_setvar_block.tscn"
+	self.block_scene = "res://addons/tree-tools/Nodes/SubNodes/dialog_setvar_block.tscn"
 	self.new_block_adds_left_slot = false
 	self.new_block_adds_right_slot = false
 
