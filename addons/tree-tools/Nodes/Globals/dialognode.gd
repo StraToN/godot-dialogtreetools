@@ -41,6 +41,7 @@ func _ready():
 	connect("raise_request", self, "_on_raise_request", [self])
 
 func _on_raise_request(raised_node):
+	print(get_name())
 	pass
 
 func set_type(new):

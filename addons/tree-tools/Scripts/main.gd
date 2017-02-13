@@ -36,7 +36,6 @@ func ready():
 	#_on_resized()
 
 func get_json():
-	var json = ""
 	var nodes_list = []
 	for gn in editor.get_children():
 		if gn extends GraphNode:
@@ -45,14 +44,10 @@ func get_json():
 		"connections": editor.get_connection_list(),
 		"nodes": nodes_list
 		}
-		
+	print(data.to_json())
 	return data.to_json()
-	
-	var data = {
-		"connections": editor.get_connection_list(),
-		"nodes": nodes_list
-		}
 
+# Save a complete tree into a JSON file at given path
 func _save_data(path):
 	currentSaveFile = path
 	var json_data = get_json()
@@ -62,7 +57,7 @@ func _save_data(path):
 	file.store_string(json_data)
 	file.close()
 
-
+# Load a complete tree from a JSON file at given path
 func _load_data( path ):
 	currentSaveFile = path
 	
@@ -77,23 +72,35 @@ func _load_data( path ):
 	jsonData.parse_json(jsonString)
 	load_from_json(jsonData)
 
+# Helper function to clear the GraphEdit
+func clear():
+	editor.clear()
 
+# Load data from a JSON string (given in jsonData)
 func load_from_json(jsonData):
 	# remove all nodes in editor
-	var list_nodes_editor = editor.get_children()
-	for ndel in list_nodes_editor:
-		if ndel extends GraphNode:
-			editor.remove_child(ndel)
-	# add new nodes
-	for n in jsonData["nodes"]:
-		var new_node = editor._add_node(n["type"])
-		print("New node: ")
-		print(n)
-		new_node.load_data(n)
-		
-	# apply connections
-	for c in jsonData["connections"]:
-		editor.connect_node(c["from"], c["from_port"], c["to"], c["to_port"])
+	clear()
+	
+	if (is_jsondata_valid(jsonData)):
+		# add new nodes
+		for n in jsonData["nodes"]:
+			var new_node = editor._add_node(n["type"])
+			printt("New node: ", n)
+			new_node.load_data(n)
+			
+		print(editor.get_children())
+			
+		# apply connections
+		for c in jsonData["connections"]:
+			printt("connect: ", c["from"], c["to"])
+			editor.connect_node(c["from"], c["from_port"], c["to"], c["to_port"])
+
+func is_jsondata_valid(jsonData):
+	if (jsonData extends TYPE_DICTIONARY):
+		if (!jsonData.has("nodes") or !jsonData.has("connections")):
+			return false
+		else:
+			return true 
 
 func make_groups_list():
 	list_groups = []

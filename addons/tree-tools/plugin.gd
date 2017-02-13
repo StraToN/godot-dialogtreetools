@@ -23,7 +23,8 @@ func _enter_tree():
 
 
 func _exit_tree():
-	tree_tools.queue_free()
+	if (tree_tools != null):
+		tree_tools.queue_free()
 	remove_custom_type("TreeNode")
 
 
@@ -42,15 +43,14 @@ func edit(object):
 		return
 	if current_object == null:
 		current_object = object
-	print("old treenode " + current_object.get_name() + " contains: ", current_object.get_json())
+	
 	# save the content of the graphedit in the TreeNode we're leaving from
-	var json_save = {}
-	json_save.parse_json(tree_tools.get_json())
-	current_object.set_json(json_save)
+	current_object.set_json(tree_tools.get_json())
+	print("\nold treenode " + current_object.get_name() + " contains: ", current_object.get_json())
 	
 	# get the json content saved in the newly selected TreeNode and load it into the graphedit
 	current_object = object
-	tree_tools.get_node("Panel/editor").clear()
+	tree_tools.clear()
 	
 	if (current_object.get_json() == null):
 		current_object.set_json({"connections":[], "nodes":[]})

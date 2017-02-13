@@ -161,10 +161,6 @@ show_hidden_files = false
 
 [connection signal="pressed" from="Panel/editor/export_button" to="." method="_on_export_button_pressed"]
 
-[connection signal="close_request" from="Panel/editor/node1" to="Panel/editor/node1" method="_on_close_request"]
-
-[connection signal="close_request" from="Panel/editor/node2" to="Panel/editor/node2" method="_on_close_request"]
-
 [connection signal="file_selected" from="save_dialog" to="." method="_save_data"]
 
 [connection signal="file_selected" from="load_dialog" to="." method="_load_data"]

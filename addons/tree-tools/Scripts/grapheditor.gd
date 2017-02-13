@@ -12,9 +12,10 @@ func _ready():
 
 
 func clear():
-	for c in get_children():
-		if c extends GraphNode:
-			c.queue_free()
+	# remove all nodes in editor
+	for ndel in  get_children():
+		if ndel extends GraphNode:
+			remove_child(ndel)
 
 func init():
 	set_right_disconnects(true)
