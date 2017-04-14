@@ -35,7 +35,8 @@ func ready():
 	#get_viewport().connect("size_changed", self, "_on_resized")
 	#_on_resized()
 
-func get_json():
+# returns data in a json string
+func get_json_string():
 	var nodes_list = []
 	for gn in editor.get_children():
 		if gn extends GraphNode:
@@ -77,30 +78,41 @@ func clear():
 	editor.clear()
 
 # Load data from a JSON string (given in jsonData)
-func load_from_json(jsonData):
+func load_from_json(jsonDataString):
 	# remove all nodes in editor
 	clear()
 	
-	if (is_jsondata_valid(jsonData)):
+	if (is_jsondata_valid(jsonDataString)):
+		var jsonData = {}
+		jsonData.parse_json(jsonDataString)
+		
 		# add new nodes
 		for n in jsonData["nodes"]:
 			var new_node = editor._add_node(n["type"])
 			printt("New node: ", n)
 			new_node.load_data(n)
 			
-		print(editor.get_children())
+		for i in editor.get_children():
+			if (i extends GraphNode):
+				print(i.get_name())
 			
 		# apply connections
+		printt("LOADING CONNECTIONS = ", jsonData["connections"])
 		for c in jsonData["connections"]:
 			printt("connect: ", c["from"], c["to"])
 			editor.connect_node(c["from"], c["from_port"], c["to"], c["to_port"])
 
-func is_jsondata_valid(jsonData):
-	if (jsonData extends TYPE_DICTIONARY):
+func is_jsondata_valid(jsonDataString):
+	var isValid = true
+	if (jsonDataString == null):
+		isValid = false
+	else:
+		var jsonData = {}
+		jsonData.parse_json(jsonDataString)
+		print("JSONDATASTRING IS NOT NULL - OK")
 		if (!jsonData.has("nodes") or !jsonData.has("connections")):
-			return false
-		else:
-			return true 
+			isValid = false
+	return isValid
 
 func make_groups_list():
 	list_groups = []

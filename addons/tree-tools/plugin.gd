@@ -45,8 +45,8 @@ func edit(object):
 		current_object = object
 	
 	# save the content of the graphedit in the TreeNode we're leaving from
-	current_object.set_json(tree_tools.get_json())
-	print("\nold treenode " + current_object.get_name() + " contains: ", current_object.get_json())
+	current_object.set_json(tree_tools.get_json_string())
+	#print("\nold treenode " + current_object.get_name() + " contains: ", current_object.get_json())
 	
 	# get the json content saved in the newly selected TreeNode and load it into the graphedit
 	current_object = object
@@ -54,9 +54,11 @@ func edit(object):
 	
 	if (current_object.get_json() == null):
 		current_object.set_json({"connections":[], "nodes":[]})
-	printt("new treenode = " + current_object.get_name() + " contains: ", current_object.get_json())
+	#printt("new treenode = " + current_object.get_name() + " contains: ", current_object.get_json())
 	tree_tools.load_from_json(current_object.get_json())
-	
+
+func save_external_data():
+	pass
 
 func make_visible(visible):
 	if (visible):
@@ -69,4 +71,3 @@ func _on_resized():
 	var viewport_size = get_editor_viewport().get_size()
 	tree_tools.set_size(viewport_size)
 	tree_tools.get_node("Panel").set_size(viewport_size)
-	#tree_tools.get_node("Panel/editor").set_size(viewport_size)

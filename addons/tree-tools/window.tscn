@@ -6,8 +6,17 @@
 
 [sub_resource type="CanvasItemShaderGraph" id=1]
 
-_code = { "fragment":"", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
-_data = { "shaders":[ [ 0, 33, Vector2( 350, 40 ), null, null, [  ], 1, 0, Vector2( 50, 40 ), null, null, [  ] ], [ 0, 33, Vector2( 350, 40 ), null, null, [  ], 1, 0, Vector2( 50, 40 ), null, null, [  ] ], [ 0, 33, Vector2( 350, 40 ), null, null, [  ], 1, 0, Vector2( 50, 40 ), null, null, [  ] ] ] }
+_code = {
+"fragment": "",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
+_data = {
+"shaders": [ [ 0, 33, Vector2( 350, 40 ), null, null, [  ], 1, 0, Vector2( 50, 40 ), null, null, [  ] ], [ 0, 33, Vector2( 350, 40 ), null, null, [  ], 1, 0, Vector2( 50, 40 ), null, null, [  ] ], [ 0, 33, Vector2( 350, 40 ), null, null, [  ], 1, 0, Vector2( 50, 40 ), null, null, [  ] ] ]
+}
 
 [sub_resource type="CanvasItemMaterial" id=2]
 
@@ -25,7 +34,10 @@ margin/top = 0.0
 margin/right = 0.0
 margin/bottom = 0.0
 script/script = ExtResource( 1 )
-__meta__ = { "__editor_plugin_screen__":"2D", "_edit_lock_":true }
+__meta__ = {
+"__editor_plugin_screen__": "2D",
+"_edit_lock_": true
+}
 
 [node name="Panel" type="Panel" parent="."]
 
@@ -53,7 +65,9 @@ margin/top = 0.0
 margin/right = 0.0
 margin/bottom = 0.0
 script/script = ExtResource( 2 )
-__meta__ = { "_edit_lock_":true }
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="clear_button" type="Button" parent="Panel/editor"]
 
@@ -160,6 +174,16 @@ show_hidden_files = false
 [connection signal="pressed" from="Panel/editor/import_button" to="." method="_on_import_button_pressed"]
 
 [connection signal="pressed" from="Panel/editor/export_button" to="." method="_on_export_button_pressed"]
+
+[connection signal="close_request" from="Panel/editor/node1" to="Panel/editor/node1" method="_on_close_request"]
+
+[connection signal="close_request" from="Panel/editor/node1 2" to="Panel/editor/node1 2" method="_on_close_request"]
+
+[connection signal="close_request" from="Panel/editor/node1 3" to="Panel/editor/node1 3" method="_on_close_request"]
+
+[connection signal="close_request" from="Panel/editor/node1 4" to="Panel/editor/node1 4" method="_on_close_request"]
+
+[connection signal="close_request" from="Panel/editor/node1 5" to="Panel/editor/node1 5" method="_on_close_request"]
 
 [connection signal="file_selected" from="save_dialog" to="." method="_save_data"]
 

@@ -12,9 +12,9 @@ func _ready():
 	add_new_block()
 
 func load_data(data):
-	print("LINE LOAD")
 	clear_blocks()
 	set_id( data["id"] )
+	set_name(  data["id"] )
 	set_offset( Vector2(data["x"], data["y"]))
 
 	var currentBlock = 0
