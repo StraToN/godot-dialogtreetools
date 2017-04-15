@@ -16,3 +16,4 @@ func _ready():
 
 func load_data(data):
 	set_id( data["id"] )
+	set_name( data["id"] )

@@ -17,6 +17,7 @@ func save_data(nodes_list):
 	})
 
 func load_data(data):
+	set_id( data["id"])
 	set_name( data["id"])
 	set_offset( Vector2(data["x"], data["y"]))
 	get_node("vbox/name").set_text(data["name"])

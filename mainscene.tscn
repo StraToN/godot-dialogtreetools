@@ -8,6 +8,7 @@
 
 [node name="Sprite" type="Sprite" parent="."]
 
+transform/pos = Vector2( 4, 12 )
 texture = ExtResource( 1 )
 
 [node name="TreeNode" type="Node" parent="Sprite"]
@@ -16,6 +17,7 @@ script/script = ExtResource( 2 )
 __meta__ = {
 "_editor_icon": ExtResource( 3 )
 }
+json = "{\"connections\":[{\"to\":\"node9\", \"from\":\"node1\", \"to_port\":0, \"from_port\":0}], \"nodes\":[{\"id\":\"node1\", \"x\":-475, \"name\":\"start\", \"y\":61.5, \"type\":\"startnode\"}, {\"id\":\"node9\", \"x\":-229.5, \"y\":-20, \"data0\":{\"id\":0, \"collapsed\":false, \"animation\":\"\", \"dialog\":\"\", \"actor\":\"\", \"action_id\":0}, \"type\":\"dialog_line\"}]}"
 
 [node name="Sprite2" type="Sprite" parent="."]
 
@@ -28,5 +30,6 @@ script/script = ExtResource( 2 )
 __meta__ = {
 "_editor_icon": ExtResource( 3 )
 }
+json = "{\"connections\":[], \"nodes\":[{\"id\":\"node3\", \"x\":-299.5, \"name\":\"\", \"y\":40.5, \"type\":\"startnode\"}]}"
 
 

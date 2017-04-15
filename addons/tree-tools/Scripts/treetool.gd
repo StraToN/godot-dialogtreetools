@@ -34,6 +34,8 @@ func ready():
 	# add signals to the frame
 	#get_viewport().connect("size_changed", self, "_on_resized")
 	#_on_resized()
+	
+	print("INIT PLUGIN DONE")
 
 # returns data in a json string
 func get_json_string():
@@ -45,7 +47,7 @@ func get_json_string():
 		"connections": editor.get_connection_list(),
 		"nodes": nodes_list
 		}
-	print(data.to_json())
+#	print(data.to_json())
 	return data.to_json()
 
 # Save a complete tree into a JSON file at given path
@@ -89,17 +91,17 @@ func load_from_json(jsonDataString):
 		# add new nodes
 		for n in jsonData["nodes"]:
 			var new_node = editor._add_node(n["type"])
-			printt("New node: ", n)
+#			printt("New node: ", n)
 			new_node.load_data(n)
 			
-		for i in editor.get_children():
-			if (i extends GraphNode):
-				print(i.get_name())
+#		for i in editor.get_children():
+#			if (i extends GraphNode):
+#				print(i.get_name())
 			
 		# apply connections
-		printt("LOADING CONNECTIONS = ", jsonData["connections"])
+#		printt("LOADING CONNECTIONS = ", jsonData["connections"])
 		for c in jsonData["connections"]:
-			printt("connect: ", c["from"], c["to"])
+#			printt("connect: ", c["from"], c["to"])
 			editor.connect_node(c["from"], c["from_port"], c["to"], c["to_port"])
 
 func is_jsondata_valid(jsonDataString):
@@ -109,7 +111,7 @@ func is_jsondata_valid(jsonDataString):
 	else:
 		var jsonData = {}
 		jsonData.parse_json(jsonDataString)
-		print("JSONDATASTRING IS NOT NULL - OK")
+#		print("JSONDATASTRING IS NOT NULL - OK")
 		if (!jsonData.has("nodes") or !jsonData.has("connections")):
 			isValid = false
 	return isValid
@@ -119,6 +121,16 @@ func make_groups_list():
 	for gn in editor.get_children():
 		if gn extends DialogNode and gn.get_type() == "dialog_grouplabel":
 			list_groups.append(gn.get_group_name())
+			
+
+func set_state(state):
+	pass
+	
+func get_state(state):
+	pass
+	
+func clear_state():
+	pass
 
 func _on_resized():
 	# set the size of the top panel and GraphEdit to the same as the frame on resize

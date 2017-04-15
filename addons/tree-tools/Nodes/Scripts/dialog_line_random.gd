@@ -13,16 +13,17 @@ func save_data(node_list):
 		"id": get_name(),
 		"x": get_offset().x,
 		"y": get_offset().y,
-		"lines": get_node("vbox_main_container/vbox_line/vbox_block/lines").get_text().percent_encode(),
-		"anim": get_node("vbox_main_container/vbox_line/vbox_block/anim").get_text().percent_encode(),
+#		"lines": get_node("vbox_main_container/vbox_line/vbox_block/lines").get_text().percent_encode(),
+#		"anim": get_node("vbox_main_container/vbox_line/vbox_block/anim").get_text().percent_encode(),
 		"hidden": get_node("vbox_main_container/vbox_line").is_hidden_state()
 	})
 
 func load_data(data):
+	set_id(data["id"])
 	set_name( data["id"])
 	set_offset( Vector2(data["x"], data["y"]))
-	get_node("vbox_main_container/vbox_line/vbox_block/lines").set_text(data["lines"])
-	get_node("vbox_main_container/vbox_line/vbox_block/anim").set_text(data["anim"])
+#	get_node("vbox_main_container/vbox_line/vbox_block/lines").set_text(data["lines"])
+#	get_node("vbox_main_container/vbox_line/vbox_block/anim").set_text(data["anim"])
 	if data.has("hidden"):
 		if data["hidden"] == true:
 			get_node("vbox_main_container/vbox_line")._on_btn_hide_pressed()

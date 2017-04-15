@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=1]
 
-[ext_resource path="res://addons/tree-tools/Scripts/main.gd" type="Script" id=1]
+[ext_resource path="res://addons/tree-tools/Scripts/treetool.gd" type="Script" id=1]
 [ext_resource path="res://addons/tree-tools/Scripts/grapheditor.gd" type="Script" id=2]
 [ext_resource path="res://addons/tree-tools/Nodes/Menus/context_menu.tscn" type="PackedScene" id=3]
 
@@ -176,14 +176,6 @@ show_hidden_files = false
 [connection signal="pressed" from="Panel/editor/export_button" to="." method="_on_export_button_pressed"]
 
 [connection signal="close_request" from="Panel/editor/node1" to="Panel/editor/node1" method="_on_close_request"]
-
-[connection signal="close_request" from="Panel/editor/node1 2" to="Panel/editor/node1 2" method="_on_close_request"]
-
-[connection signal="close_request" from="Panel/editor/node1 3" to="Panel/editor/node1 3" method="_on_close_request"]
-
-[connection signal="close_request" from="Panel/editor/node1 4" to="Panel/editor/node1 4" method="_on_close_request"]
-
-[connection signal="close_request" from="Panel/editor/node1 5" to="Panel/editor/node1 5" method="_on_close_request"]
 
 [connection signal="file_selected" from="save_dialog" to="." method="_save_data"]
 

@@ -9,17 +9,15 @@ var current_object
 
 func _enter_tree():
 	add_custom_type("TreeNode", "Node", TreeNode, node_icon)
-	
-	tree_tools = preload("res://addons/tree-tools/window.tscn").instance()
+	tree_tools = preload("res://addons/tree-tools/treetool.tscn").instance()
 	
 	# resize
 	_on_resized()
 	get_editor_viewport().connect("resized", self, "_on_resized")
 	
 	make_visible(false)
-	
+
 	get_editor_viewport().add_child(tree_tools)
-#	tree_tools.get_node("Panel/editor").init()
 
 
 func _exit_tree():
@@ -34,6 +32,7 @@ func get_name():
 func has_main_screen():
 	return true
 
+# function called by editor to ask if the object is managed by plugin
 func handles(object):
 	return object extends TreeNode
 
@@ -57,8 +56,17 @@ func edit(object):
 	#printt("new treenode = " + current_object.get_name() + " contains: ", current_object.get_json())
 	tree_tools.load_from_json(current_object.get_json())
 
-func save_external_data():
-	pass
+
+func set_state(state):
+	tree_tools.set_state(state)
+	
+func get_state():
+	var state = {}
+	tree_tools.get_state(state)
+	return state
+
+func clear():
+	tree_tools.clear_state()
 
 func make_visible(visible):
 	if (visible):
