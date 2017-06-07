@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://addons/tree-tools/Scripts/treetool.gd" type="Script" id=1]
 [ext_resource path="res://addons/tree-tools/Scripts/grapheditor.gd" type="Script" id=2]
 [ext_resource path="res://addons/tree-tools/Nodes/Menus/context_menu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/tree-tools/Nodes/Menus/menu_button_add.gd" type="Script" id=4]
 
 [sub_resource type="CanvasItemShaderGraph" id=1]
 
@@ -127,6 +128,43 @@ flat = false
 
 visibility/visible = false
 
+[node name="Label" type="Label" parent="Panel/editor"]
+
+anchor/left = 1
+anchor/right = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 174.0
+margin/top = 36.0
+margin/right = 21.0
+margin/bottom = 50.0
+text = "Right-click to add nodes"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="add_button" type="Button" parent="Panel/editor"]
+
+anchor/left = 1
+anchor/right = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 251.0
+margin/top = 10.0
+margin/right = 231.0
+margin/bottom = 30.0
+toggle_mode = false
+click_on_press = true
+enabled_focus_mode = 0
+shortcut = null
+text = "+"
+flat = false
+script/script = ExtResource( 4 )
+
 [node name="save_dialog" type="FileDialog" parent="."]
 
 visibility/visible = false
@@ -182,3 +220,4 @@ show_hidden_files = false
 [connection signal="file_selected" from="load_dialog" to="." method="_load_data"]
 
 
+[editable path="Panel/editor/PopupMenu"]

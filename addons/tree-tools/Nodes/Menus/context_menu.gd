@@ -1,10 +1,13 @@
 tool
 extends PopupMenu
 
+export(NodePath) var editor_path = "Panel/editor"
+
 func _ready():
 	connect("item_pressed", self, "on_item_pressed")
 
 func on_item_pressed(item_id):
+	print(item_id)
 	var node_type
 	if (item_id) == 0:
 		node_type = "startnode"
@@ -24,4 +27,4 @@ func on_item_pressed(item_id):
 		node_type = "dialog_jump"
 	elif (item_id == 8):
 		node_type = "dialog_loop"
-	get_node("..")._add_node(node_type)
+	get_node(editor_path)._add_node(node_type)

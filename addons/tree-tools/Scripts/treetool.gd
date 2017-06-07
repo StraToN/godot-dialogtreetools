@@ -34,11 +34,14 @@ func ready():
 	# add signals to the frame
 	#get_viewport().connect("size_changed", self, "_on_resized")
 	#_on_resized()
-	
-	print("INIT PLUGIN DONE")
 
 # returns data in a json string
 func get_json_string():
+	return get_dictionary().to_json()
+	
+	
+# returns data in a dictionary
+func get_dictionary():
 	var nodes_list = []
 	for gn in editor.get_children():
 		if gn extends GraphNode:
@@ -48,7 +51,7 @@ func get_json_string():
 		"nodes": nodes_list
 		}
 #	print(data.to_json())
-	return data.to_json()
+	return data
 
 # Save a complete tree into a JSON file at given path
 func _save_data(path):
@@ -88,21 +91,26 @@ func load_from_json(jsonDataString):
 		var jsonData = {}
 		jsonData.parse_json(jsonDataString)
 		
-		# add new nodes
-		for n in jsonData["nodes"]:
-			var new_node = editor._add_node(n["type"])
+		load_from_dict(jsonData)
+
+# Load graph data from dictionary
+func load_from_dict(dict):
+	# add new nodes
+	for n in dict["nodes"]:
+		var new_node = editor._add_node(n["type"])
 #			printt("New node: ", n)
-			new_node.load_data(n)
-			
+		new_node.load_data(n)
+		
 #		for i in editor.get_children():
 #			if (i extends GraphNode):
 #				print(i.get_name())
-			
-		# apply connections
-#		printt("LOADING CONNECTIONS = ", jsonData["connections"])
-		for c in jsonData["connections"]:
+		
+	# apply connections
+#		printt("LOADING CONNECTIONS = ", dict["connections"])
+	for c in dict["connections"]:
 #			printt("connect: ", c["from"], c["to"])
-			editor.connect_node(c["from"], c["from_port"], c["to"], c["to_port"])
+		editor.connect_node(c["from"], c["from_port"], c["to"], c["to_port"])
+
 
 func is_jsondata_valid(jsonDataString):
 	var isValid = true

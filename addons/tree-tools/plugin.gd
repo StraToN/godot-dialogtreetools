@@ -1,14 +1,19 @@
 tool
 extends EditorPlugin
 
-var tree_tools = null
-const TreeNode = preload("res://addons/tree-tools/TreeNode/TreeNode.gd")
-const node_icon = preload("res://addons/tree-tools/TreeNode/icons/gear.png")
 
+const TreeNode = preload("res://addons/tree-tools/TreeNode/TreeNode.gd")
+const TreeNodeResource = preload("res://addons/tree-tools/TreeNode/TreeNodeResource.gd")
+
+var tree_tools = null # plugin container
 var current_object
+var current_resource
 
 func _enter_tree():
+	var node_icon = preload("res://addons/tree-tools/TreeNode/icons/gear.png")
 	add_custom_type("TreeNode", "Node", TreeNode, node_icon)
+	add_custom_type("TreeNodeResource", "Resource", TreeNodeResource, null)
+	
 	tree_tools = preload("res://addons/tree-tools/treetool.tscn").instance()
 	
 	# resize
@@ -19,42 +24,72 @@ func _enter_tree():
 
 	get_editor_viewport().add_child(tree_tools)
 
-
+# Free every custom types and resources when disabling the plugin
 func _exit_tree():
 	if (tree_tools != null):
 		tree_tools.queue_free()
 	remove_custom_type("TreeNode")
+	remove_custom_type("TreeNodeResource")
 
-
+# Plugin name
 func get_name():
 	return "Tree-tools"
 
+# Plugin does have a main screen view
 func has_main_screen():
 	return true
 
 # function called by editor to ask if the object is managed by plugin
 func handles(object):
-	return object extends TreeNode
+	return object extends TreeNodeResource || (object extends TreeNode && object.get_resource() != null)
 
 
 func edit(object):
-	if current_object == object:
+
+	print("JUST SELECTED")
+	debug_print(object)
+	
+	print("CURRENT")
+	debug_print(current_object)
+	
+	if current_object != null:
+		# save current graph to current_object
+		if current_object extends TreeNode:
+			
+			
+			print("THE RESOURCE = ", current_object.get_resource())
+			if current_object.get_resource() extends TreeNodeResource:
+				print("YES")
+			else:
+				print("NO :(")
+			
+			
+			
+			current_object.get_resource().set_dictionary(tree_tools.get_dictionary())
+			current_object.get_resource().set_external_path("res://dialogtrees_resources/"+current_object.get_parent().get_name()+".tres")
+		elif current_object extends TreeNodeResource:
+			current_object.set_dictionary(tree_tools.get_dictionary())
+			current_object.set_external_path("res://dialogtrees_resources/"+current_object.get_parent().get_name()+".tres")
+		save_external_data()
+
+	# switch current_object
+	if current_object == object || !handles(object) || object == null:
 		return
-	if current_object == null:
-		current_object = object
-	
-	# save the content of the graphedit in the TreeNode we're leaving from
-	current_object.set_json(tree_tools.get_json_string())
-	#print("\nold treenode " + current_object.get_name() + " contains: ", current_object.get_json())
-	
-	# get the json content saved in the newly selected TreeNode and load it into the graphedit
 	current_object = object
-	tree_tools.clear()
 	
-	if (current_object.get_json() == null):
-		current_object.set_json({"connections":[], "nodes":[]})
-	#printt("new treenode = " + current_object.get_name() + " contains: ", current_object.get_json())
-	tree_tools.load_from_json(current_object.get_json())
+	print("NEW CURRENT")
+	debug_print(current_object)
+	
+	# load new current_object data into graph
+	tree_tools.clear()
+
+	if current_object extends TreeNode:
+		if current_object.get_resource() != null && current_object.get_resource() extends TreeNodeResource:
+			tree_tools.load_from_dict(current_object.get_resource().get_dictionary())
+	elif current_object extends TreeNodeResource:
+		tree_tools.load_from_dict(current_object.get_dictionary())
+	
+	print("END EDIT.\n")
 
 
 func set_state(state):
@@ -74,8 +109,35 @@ func make_visible(visible):
 	else:
 		tree_tools.hide()
 
+func save_external_data():
+	print("ON SAVE CALLED")
+	if current_object != null:
+		print("current_object=", current_object)
+		if current_object extends TreeNodeResource:
+			ResourceSaver.save(current_object.get_external_path(), current_object)
+		elif current_object extends TreeNode:
+			ResourceSaver.save(current_object.get_resource().get_external_path(), current_object.get_resource())
+#	if current_object != null and current_object extends TreeNode:
+#		var current_resource = current_object.get_resource()
+#		if current_resource != null and current_resource extends TreeNodeResource:
+#			var err = ResourceSaver.save("res://test.res", current_resource)
+#			if err != OK:
+#				OS.alert("ERROR: %d" % err, "ERROR")
 
 func _on_resized():
 	var viewport_size = get_editor_viewport().get_size()
 	tree_tools.set_size(viewport_size)
 	tree_tools.get_node("Panel").set_size(viewport_size)
+
+
+func debug_print(object):
+	if object != null:
+		printt("\tobject: ", object)
+		if object extends TreeNode:
+			printt("\ttype:", "TreeNode")
+		elif object extends TreeNodeResource:
+			printt("\ttype:", "TreeNodeResource")
+		printt("\tCONTAINS:")
+		if object.get_resource() != null && object.get_resource() extends TreeNodeResource:
+			printt("\t\t", object.get_resource().get_dictionary())
+	
