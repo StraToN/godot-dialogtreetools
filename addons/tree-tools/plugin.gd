@@ -41,7 +41,7 @@ func has_main_screen():
 
 # function called by editor to ask if the object is managed by plugin
 func handles(object):
-	return object extends TreeNodeResource || (object extends TreeNode && object.get_resource() != null)
+	return object extends TreeNodeResource || (object extends TreeNode && object.resource != null)
 
 
 func edit(object):
@@ -55,13 +55,13 @@ func edit(object):
 	if current_object != null:
 		# save current graph to current_object
 		if current_object extends TreeNode:
-			current_object.get_resource().set_dictionary(tree_tools.get_dictionary())
+			current_object.resource.dict = tree_tools.get_dictionary()
 			var res_file = "res://dialogtrees_resources/" + current_object.get_name()+".tres"
-			current_object.get_resource().set_external_path(res_file)
+			current_object.resource.external_path = res_file
 		elif current_object extends TreeNodeResource:
-			current_object.set_dictionary(tree_tools.get_dictionary())
+			current_object.dict = tree_tools.get_dictionary()
 			var res_file = "res://dialogtrees_resources/" + current_object.get_parent().get_name()+".tres"
-			current_object.set_external_path("res://dialogtrees_resources/"+current_object.get_parent().get_name()+".tres")
+			current_object.external_path = "res://dialogtrees_resources/"+current_object.get_parent().get_name()+".tres"
 		#save_external_data()
 
 	# switch current_object
@@ -80,10 +80,10 @@ func edit(object):
 	tree_tools.clear()
 
 	if current_object extends TreeNode:
-		if current_object.get_resource() != null && current_object.get_resource() extends TreeNodeResource:
-			tree_tools.load_from_dict(current_object.get_resource().get_dictionary())
+		if current_object.resource != null && current_object.resource extends TreeNodeResource:
+			tree_tools.load_from_dict(current_object.resource.dict)
 	elif current_object extends TreeNodeResource:
-		tree_tools.load_from_dict(current_object.get_dictionary())
+		tree_tools.load_from_dict(current_object.dict)
 	
 
 func set_state(state):
@@ -108,12 +108,12 @@ func save_external_data():
 	if current_object != null:
 		print("current_object=", current_object)
 		if current_object extends TreeNodeResource:
-			ResourceSaver.save(current_object.get_external_path(), current_object)
-			print("Saving TreeNodeResource in > ", current_object.get_external_path())
+			ResourceSaver.save(current_object.external_path, current_object)
+			print("Saving TreeNodeResource in > ", current_object.external_path)
 		elif current_object extends TreeNode:
-			if (current_object.get_resource().get_external_path() != null):
-				ResourceSaver.save(current_object.get_resource().get_external_path(), current_object.get_resource())
-				print("Saving TreeNode in > ", current_object.get_resource().get_external_path())
+			if (current_object.resource.external_path != null):
+				ResourceSaver.save(current_object.resource.external_path, current_object.resource)
+				print("Saving TreeNode in > ", current_object.resource.external_path)
 			else:
 				print("Error saving TreeNode: Resource external path is null")
 
@@ -132,6 +132,6 @@ func debug_print(object):
 		elif object extends TreeNodeResource:
 			printt("\ttype:", "TreeNodeResource")
 		printt("\tCONTAINS:")
-		if object.get_resource() != null && object.get_resource() extends TreeNodeResource:
-			printt("\t\t", object.get_resource().get_dictionary())
+		if object.resource != null && object.resource extends TreeNodeResource:
+			printt("\t\t", object.resource.dict)
 	

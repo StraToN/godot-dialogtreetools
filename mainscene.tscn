@@ -9,12 +9,7 @@
 
 script/script = ExtResource( 4 )
 dict = {
-"connections": [ {
-"from": "node1",
-"from_port": 0,
-"to": "node3",
-"to_port": 0
-} ],
+"connections": [  ],
 "nodes": [ {
 "id": "node1",
 "name": "start",
@@ -23,47 +18,13 @@ dict = {
 "y": 48.0
 }, {
 "data0": {
-"action_id": 0,
-"actor": "",
-"animation": "",
-"collapsed": false,
-"dialog": "",
-"id": 0
-},
-"data1": {
-"action_id": 0,
-"actor": "",
-"animation": "",
-"collapsed": false,
-"dialog": "",
-"id": 1
-},
-"id": "node3",
-"type": "dialog_line",
-"x": 164.0,
-"y": 3.0
-}, {
-"data0": {
-"collapsed": false,
-"condition": "",
-"id": 0,
-"not_said": false,
-"option": "",
-"repeat": false
-},
-"id": "node27",
-"type": "dialog_option",
-"x": 269.41,
-"y": 256.5
-}, {
-"data0": {
 "bool_value": false,
 "collapsed": false,
 "id": 0,
 "name": "",
 "type": 0
 },
-"id": "node68",
+"id": "node16",
 "type": "dialog_setvar",
 "x": -168.09,
 "y": 516.5
@@ -80,17 +41,49 @@ dict = {
 "x": 491.41,
 "y": 485.0
 }, {
-"id": "node62",
-"jump_to": "",
-"type": "dialog_jump",
-"x": 678.41,
-"y": 76.5
-}, {
 "id": "node72",
 "time_loop": "",
 "type": "dialog_loop",
 "x": -119.09,
 "y": 259.5
+}, {
+"id": "node62",
+"jump_to": "",
+"type": "dialog_jump",
+"x": 577.41,
+"y": 103.5
+}, {
+"data0": {
+"action_id": 0,
+"actor": "",
+"animation": "",
+"collapsed": false,
+"dialog": "",
+"id": 0
+},
+"id": "node3 2",
+"type": "dialog_line",
+"x": 117.0,
+"y": -86.0
+}, {
+"data0": {
+"collapsed": false,
+"condition": "",
+"id": 0,
+"not_said": false,
+"option": "",
+"repeat": false
+},
+"id": "node27",
+"type": "dialog_option",
+"x": 107.0,
+"y": 150.5
+}, {
+"hidden": true,
+"id": "node21",
+"type": "dialog_line_random",
+"x": 459.5,
+"y": 205.0
 } ]
 }
 

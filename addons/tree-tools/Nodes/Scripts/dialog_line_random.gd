@@ -15,7 +15,7 @@ func save_data(node_list):
 		"y": get_offset().y,
 #		"lines": get_node("vbox_main_container/vbox_line/vbox_block/lines").get_text().percent_encode(),
 #		"anim": get_node("vbox_main_container/vbox_line/vbox_block/anim").get_text().percent_encode(),
-		"hidden": get_node("VBoxContainer/vbox_block/vbox_block").is_hidden_state()
+		"hidden": get_node("VBoxContainer/vbox_block").is_collapsed()
 	})
 
 func load_data(data):
@@ -26,7 +26,7 @@ func load_data(data):
 #	get_node("vbox_main_container/vbox_line/vbox_block/anim").set_text(data["anim"])
 	if data.has("hidden"):
 		if data["hidden"] == true:
-			get_node("vbox_main_container/vbox_line")._on_btn_hide_pressed()
+			get_node("VBoxContainer/vbox_block")._on_collapse_block_pressed()
 
 func export_data(file, connections, labels):
 	file.store_line("func " + get_name() + "(c):")

@@ -66,10 +66,6 @@ max_lines_visible = -1
 margin/top = 39.0
 margin/bottom = 208.0
 
-[node name="hbox" parent="VBoxContainer/vbox_block"]
-
-editor/display_folded = true
-
 [node name="option_btn_action" parent="VBoxContainer/vbox_block/hbox"]
 
 items = [ "say", null, false, 0, null, "anim", null, false, 1, null, "walkto", null, false, 2, null, "teleport", null, false, 3, null ]
