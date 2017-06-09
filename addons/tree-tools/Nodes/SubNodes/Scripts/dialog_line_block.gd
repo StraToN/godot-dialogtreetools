@@ -1,5 +1,5 @@
 tool
-extends "../../Globals/dialognode_block.gd"
+extends "res://addons/tree-tools/Nodes/Globals/dialognode_block.gd"
 
 func _ready():
 	pass
@@ -20,7 +20,7 @@ func get_data():
 	data["id"] = id
 	data["action_id"] = action_id
 	data["collapsed"] = is_collapsed()
-	
+
 	if (action_id == 0): # SAY
 		var actor = get_node("vbox_block/hBoxContainer/box_say/HBoxContainer/text").get_text()
 		var dialog = get_node("vbox_block/hBoxContainer/box_say/HBoxContainer2/dialog").get_text()

@@ -2,7 +2,6 @@
 
 [ext_resource path="res://addons/tree-tools/Nodes/Scripts/dialog_jump.gd" type="Script" id=1]
 
-
 [node name="label_node" type="GraphNode"]
 
 rect/min_size = Vector2( 150, 0 )
@@ -18,18 +17,20 @@ custom_constants/separation = 5
 title = "Jump"
 show_close = true
 slot/0/left_enabled = true
-slot/0/left_type = 1
+slot/0/left_type = 0
 slot/0/left_color = Color( 1, 1, 1, 1 )
 slot/0/right_enabled = false
 slot/0/right_type = 0
 slot/0/right_color = Color( 1, 1, 1, 1 )
 script/script = ExtResource( 1 )
-__meta__ = { "__editor_plugin_screen__":"2D" }
-new_block_collapsed = null
-first_left_slot = null
-first_right_slot = null
-new_block_adds_left_slot = null
-new_block_adds_right_slot = null
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
+new_block_collapsed = false
+first_left_slot = true
+first_right_slot = true
+new_block_adds_left_slot = false
+new_block_adds_right_slot = false
 
 [node name="vbox" type="VBoxContainer" parent="."]
 
@@ -37,7 +38,7 @@ focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 16.0
+margin/left = 3.0
 margin/top = 24.0
 margin/right = 134.0
 margin/bottom = 72.0
@@ -52,7 +53,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 118.0
+margin/right = 131.0
 margin/bottom = 14.0
 text = "Label"
 percent_visible = 1.0
@@ -67,7 +68,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 3
 margin/left = 0.0
 margin/top = 19.0
-margin/right = 118.0
+margin/right = 131.0
 margin/bottom = 43.0
 placeholder/alpha = 0.6
 focus_mode = 2
@@ -82,7 +83,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 48.0
-margin/right = 118.0
+margin/right = 131.0
 margin/bottom = 48.0
 
 [connection signal="close_request" from="." to="." method="_on_close_request"]

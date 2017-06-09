@@ -1,0 +1,93 @@
+[gd_resource type="Resource" load_steps=2 format=1]
+
+[ext_resource path="res://addons/tree-tools/TreeNode/TreeNodeResource.gd" type="Script" id=1]
+
+[resource]
+
+script/script = ExtResource( 1 )
+dict = {
+"connections": [ {
+"from": "node1",
+"from_port": 0,
+"to": "node3",
+"to_port": 0
+} ],
+"nodes": [ {
+"id": "node1",
+"name": "start",
+"type": "startnode",
+"x": -136.0,
+"y": 48.0
+}, {
+"data0": {
+"action_id": 0,
+"actor": "",
+"animation": "",
+"collapsed": false,
+"dialog": "",
+"id": 0
+},
+"data1": {
+"action_id": 0,
+"actor": "",
+"animation": "",
+"collapsed": false,
+"dialog": "",
+"id": 1
+},
+"id": "node3",
+"type": "dialog_line",
+"x": 164.0,
+"y": 3.0
+}, {
+"data0": {
+"collapsed": false,
+"condition": "",
+"id": 0,
+"not_said": false,
+"option": "",
+"repeat": false
+},
+"id": "node27",
+"type": "dialog_option",
+"x": 269.41,
+"y": 256.5
+}, {
+"data0": {
+"bool_value": false,
+"collapsed": false,
+"id": 0,
+"name": "",
+"type": 0
+},
+"id": "node68",
+"type": "dialog_setvar",
+"x": -168.09,
+"y": 516.5
+}, {
+"groupname": "",
+"id": "node45",
+"type": "dialog_grouplabel",
+"x": 254.91,
+"y": 492.0
+}, {
+"id": "node53",
+"statement": "",
+"type": "dialog_condition",
+"x": 491.41,
+"y": 485.0
+}, {
+"id": "node62",
+"jump_to": "",
+"type": "dialog_jump",
+"x": 678.41,
+"y": 76.5
+}, {
+"id": "node72",
+"time_loop": "",
+"type": "dialog_loop",
+"x": -119.09,
+"y": 259.5
+} ]
+}
+

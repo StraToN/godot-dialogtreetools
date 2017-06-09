@@ -12,6 +12,7 @@ export(Resource) var resource setget set_resource,get_resource
 # Here go all tree parsing functions !
 
 func execute():
+	get_node("../dialog").set_text("Hello World!")
 	pass
 
 ##################

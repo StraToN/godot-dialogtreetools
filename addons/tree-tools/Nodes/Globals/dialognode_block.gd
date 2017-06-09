@@ -20,13 +20,15 @@ func get_id():
 
 func set_block_to_collapse_path(v):
 	block_to_collapse_path = v
-	block_to_collapse = get_node(v)
+	set_block_to_collapse(get_node(v))
 
 func get_block_to_collapse_path():
 	return block_to_collapse_path
 
 func set_block_to_collapse(v):
-	block_to_collapse = v
+	block_to_collapse = null
+	if (v != null):
+		block_to_collapse = v
 
 func get_block_to_collapse():
 	return block_to_collapse

@@ -1,5 +1,5 @@
 tool
-extends "../Globals/dialognode.gd"
+extends "res://addons/tree-tools/Nodes/Globals/dialognode.gd"
 
 func _init():
 	self.type = "dialog_option"
