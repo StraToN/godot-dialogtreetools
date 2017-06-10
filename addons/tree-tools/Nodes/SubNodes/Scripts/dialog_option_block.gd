@@ -1,5 +1,5 @@
 tool
-extends "../../Globals/dialognode_block.gd"
+extends "res://addons/tree-tools/Nodes/Globals/dialognode_block.gd"
 
 func _ready():
 	pass

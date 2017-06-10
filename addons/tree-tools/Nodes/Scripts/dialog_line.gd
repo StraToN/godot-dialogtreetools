@@ -7,6 +7,8 @@ func _init():
 	self.block_scene = "res://addons/tree-tools/Nodes/SubNodes/dialog_line_block.tscn"
 	self.new_block_adds_left_slot = false
 	self.new_block_adds_right_slot = false
+	self.left_slot_type = 0
+	self.right_slot_type = 0
 
 func _ready():
 	add_new_block()

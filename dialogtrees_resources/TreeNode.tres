@@ -6,49 +6,18 @@
 
 script/script = ExtResource( 1 )
 dict = {
-"connections": [  ],
+"connections": [ {
+"from": "node2",
+"from_port": 0,
+"to": "node3",
+"to_port": 0
+} ],
 "nodes": [ {
-"id": "node1",
-"name": "start",
-"type": "startnode",
-"x": -136.0,
-"y": 48.0
-}, {
-"data0": {
-"bool_value": false,
-"collapsed": false,
-"id": 0,
+"id": "node2",
 "name": "",
-"type": 0
-},
-"id": "node16",
-"type": "dialog_setvar",
-"x": -168.09,
-"y": 516.5
-}, {
-"groupname": "",
-"id": "node45",
-"type": "dialog_grouplabel",
-"x": 254.91,
-"y": 492.0
-}, {
-"id": "node53",
-"statement": "",
-"type": "dialog_condition",
-"x": 491.41,
-"y": 485.0
-}, {
-"id": "node72",
-"time_loop": "",
-"type": "dialog_loop",
-"x": -119.09,
-"y": 259.5
-}, {
-"id": "node62",
-"jump_to": "",
-"type": "dialog_jump",
-"x": 577.41,
-"y": 103.5
+"type": "startnode",
+"x": 249.0,
+"y": 186.5
 }, {
 "data0": {
 "action_id": 0,
@@ -58,29 +27,10 @@ dict = {
 "dialog": "",
 "id": 0
 },
-"id": "node3 2",
+"id": "node3",
 "type": "dialog_line",
-"x": 117.0,
-"y": -86.0
-}, {
-"data0": {
-"collapsed": false,
-"condition": "",
-"id": 0,
-"not_said": false,
-"option": "",
-"repeat": false
-},
-"id": "node27",
-"type": "dialog_option",
-"x": 107.0,
-"y": 150.5
-}, {
-"hidden": true,
-"id": "node21",
-"type": "dialog_line_random",
-"x": 459.5,
-"y": 205.0
+"x": 453.0,
+"y": 179.0
 } ]
 }
 

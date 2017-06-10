@@ -132,6 +132,7 @@ func debug_print(object):
 		elif object extends TreeNodeResource:
 			printt("\ttype:", "TreeNodeResource")
 		printt("\tCONTAINS:")
-		if object.resource != null && object.resource extends TreeNodeResource:
-			printt("\t\t", object.resource.dict)
+		if object extends TreeNode:
+			if object.resource != null && object.resource extends TreeNodeResource:
+				printt("\t\t", object.resource.dict)
 	

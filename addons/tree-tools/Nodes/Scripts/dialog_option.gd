@@ -9,6 +9,8 @@ func _init():
 	self.first_right_slot = true
 	self.new_block_adds_left_slot = false
 	self.new_block_adds_right_slot = true
+	self.left_slot_type = 0
+	self.right_slot_type = 0
 
 func _ready():
 	add_new_block()

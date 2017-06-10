@@ -43,7 +43,8 @@ func _input_event(ev):
 
 func _on_editor_connection_request(from, from_slot, to, to_slot):
 	var from_node = self.get_node(from)
-	if from_node.get_slot_type_right(from_slot) == 0:
+	# This block of code allows use to define a slot type that is limited to 1 connection
+	if from_node.get_slot_type_right(from_slot) == 1:
 		for x in self.get_connection_list():
 			if x["from"] == from and x["from_port"] == from_slot:
 				self.disconnect_node(from, from_slot, x["to"], x["to_port"])

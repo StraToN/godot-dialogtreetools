@@ -28,11 +28,6 @@ script/script = ExtResource( 1 )
 __meta__ = {
 "__editor_plugin_screen__": "2D"
 }
-new_block_collapsed = false
-first_left_slot = true
-first_right_slot = true
-new_block_adds_left_slot = false
-new_block_adds_right_slot = false
 
 [node name="vbox" type="VBoxContainer" parent="."]
 
@@ -40,9 +35,9 @@ focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 5.0
+margin/left = 3.0
 margin/top = 24.0
-margin/right = 136.0
+margin/right = 134.0
 margin/bottom = 72.0
 custom_constants/separation = 5
 alignment = 1

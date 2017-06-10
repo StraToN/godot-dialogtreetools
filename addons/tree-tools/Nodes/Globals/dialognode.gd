@@ -15,6 +15,11 @@ export(bool) var first_right_slot
 # Does a new block add new slots (left/right)?
 export(bool) var new_block_adds_left_slot
 export(bool) var new_block_adds_right_slot
+# Left/right slots types for blocks
+export(int,9) var left_slot_type = 0
+export(int,9) var right_slot_type = 0
+
+var typecol = [Color(1,1,1), Color(0.9, 0.4, 1), Color(0.8, 1, 0.2), Color(1, 0.2, 0.2), Color(0, 1, 1)]
 
 ## BLOCKS VARS
 onready var nb_blocks = 0
@@ -121,13 +126,13 @@ func add_new_block():
 	# enable/disable slots of the GraphNode for this block EXCEPT BLOCK 1
 	if (nb_blocks == 1):
 		#print("FIRST BLOCK", str(first_left_slot), str(first_right_slot))
-		set_slot(nb_blocks-1, first_left_slot, 0, Color(1.0, 1.0, 1.0), first_right_slot, 0, Color(1.0, 1.0, 1.0))
+		set_slot(nb_blocks-1, first_left_slot, left_slot_type, typecol[left_slot_type], first_right_slot, right_slot_type, typecol[right_slot_type])
 	else:
 		#print("NEW BLOCK", str(new_block_adds_left_slot), str(new_block_adds_right_slot))
-		set_slot(nb_blocks-1, new_block_adds_left_slot, 0, Color(1.0, 1.0, 1.0), new_block_adds_right_slot, 0, Color(1.0, 1.0, 1.0))
+		set_slot(nb_blocks-1, new_block_adds_left_slot, left_slot_type, typecol[left_slot_type], new_block_adds_right_slot, right_slot_type, typecol[right_slot_type])
 	
-	if (new_block_collapsed):
-		_on_collapse_block_pressed(block.get_block_to_collapse())
+	if (new_block_collapsed && block.block_to_collapse != null):
+		block._on_collapse_block_pressed()
 		
 	return block
 
