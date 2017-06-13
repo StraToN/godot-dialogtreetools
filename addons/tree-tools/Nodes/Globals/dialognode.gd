@@ -24,6 +24,8 @@ var typecol = [Color(1,1,1), Color(0.9, 0.4, 1), Color(0.8, 1, 0.2), Color(1, 0.
 ## BLOCKS VARS
 onready var nb_blocks = 0
 onready var nodes_blocks = []
+onready var free_ids = []
+onready var max_id_blocks = 0
 
 
 
@@ -103,7 +105,16 @@ func _on_close_request():
 # instance a scene to add as a block in the GraphNode.
 func add_new_block():
 	var block = load(block_scene).instance()
-	block.set_id(nb_blocks)
+	
+	# Set a free id if there is
+	if !free_ids.empty():
+		block.set_id(free_ids[0])
+		free_ids.remove(0)
+	else:
+		block.set_id(nb_blocks)
+	
+	if block.id > max_id_blocks:
+		max_id_blocks = block.id
 	
 	add_rembutton(block)
 	if (nb_blocks+1 <= 1):
@@ -133,6 +144,10 @@ func add_new_block():
 	
 	if (new_block_collapsed && block.block_to_collapse != null):
 		block._on_collapse_block_pressed()
+	
+	# do we need sorting the blocks? If the last id entered is != nb_blocks, then yes we do.
+	if block.id != nb_blocks:
+		sort_blocks()
 		
 	return block
 
@@ -167,6 +182,12 @@ func _on_add_pressed():
 
 # Remove block button pressed
 func _on_remove_pressed(block):
+	
+	# if block to be removed is not the last one created, we add its id to the free_ids list
+	if block.id < max_id_blocks+1:
+		free_ids.append(block.id)
+		free_ids.sort()
+
 	remove_child(block)
 	nodes_blocks.remove( nodes_blocks.find(block) )
 	nb_blocks -= 1
@@ -183,3 +204,22 @@ func clear_blocks():
 		_on_remove_pressed(block)
 	nodes_blocks.clear()
 	nb_blocks = 0
+
+# This function sorts the blocks according to their ids.
+func sort_blocks():
+	var blocks_list = []
+	var blocks_list_unsorted = []
+	
+	for b in get_children():
+		blocks_list.append(b)
+		blocks_list_unsorted.append(b)
+		remove_child(b)
+		
+	blocks_list.sort_custom(self, "sort_ids")
+	
+	for b in blocks_list:
+		add_child(b)
+
+
+func sort_ids(blockA, blockB):
+	return blockA.id < blockB.id

@@ -21,10 +21,11 @@ dict = {
 }, {
 "data0": {
 "action_id": 0,
-"actor": "",
+"actor": "Sprite",
 "animation": "",
 "collapsed": false,
-"dialog": "",
+"dialog": "Hi player!
+I am Sprite.",
 "id": 0
 },
 "id": "node3",
