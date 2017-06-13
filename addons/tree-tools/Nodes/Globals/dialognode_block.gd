@@ -9,7 +9,9 @@ onready var is_collapsed = false setget ,is_collapsed
 func _ready():
 	if (block_to_collapse_path != null):
 		set_block_to_collapse(get_node(block_to_collapse_path))
-	get_node("hbox/btn_hide").connect("pressed", self, "_on_collapse_block_pressed")
+	if (get_node("hbox/btn_hide") != null):
+		if (!get_node("hbox/btn_hide").is_connected("pressed", self, "_on_collapse_block_pressed")):
+			get_node("hbox/btn_hide").connect("pressed", self, "_on_collapse_block_pressed")
 
 func set_id(v):
 	id = v

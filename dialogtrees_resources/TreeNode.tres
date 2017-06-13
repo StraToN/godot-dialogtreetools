@@ -7,31 +7,97 @@
 script/script = ExtResource( 1 )
 dict = {
 "connections": [ {
-"from": "node2",
+"from": "node4",
 "from_port": 0,
 "to": "node3",
 "to_port": 0
+}, {
+"from": "node3",
+"from_port": 0,
+"to": "node4 2",
+"to_port": 0
+}, {
+"from": "node4 2",
+"from_port": 0,
+"to": "node5",
+"to_port": 0
+}, {
+"from": "node4 2",
+"from_port": 1,
+"to": "node6",
+"to_port": 0
 } ],
 "nodes": [ {
-"id": "node2",
+"id": "node4",
 "name": "",
 "type": "startnode",
-"x": 249.0,
-"y": 186.5
+"x": 698.0,
+"y": 298.5
 }, {
 "data0": {
 "action_id": 0,
-"actor": "Sprite",
+"actor": "Red",
 "animation": "",
 "collapsed": false,
-"dialog": "Hi player!
-I am Sprite.",
+"dialog": "Hey !
+I'm Red. What's your name?",
 "id": 0
 },
 "id": "node3",
+"nb_blocks": 1,
 "type": "dialog_line",
-"x": 453.0,
-"y": 179.0
+"x": 949.0,
+"y": 170.0
+}, {
+"data0": {
+"collapsed": false,
+"condition": "",
+"id": 0,
+"not_said": false,
+"option": "I'm Player.",
+"repeat": false
+},
+"data1": {
+"collapsed": false,
+"condition": "",
+"id": 1,
+"not_said": false,
+"option": "Why do you bother?",
+"repeat": false
+},
+"id": "node4 2",
+"nb_blocks": 2,
+"type": "dialog_option",
+"x": 1336.0,
+"y": 203.0
+}, {
+"data0": {
+"action_id": 0,
+"actor": "Red",
+"animation": "",
+"collapsed": false,
+"dialog": "Nice to meet you, Player.",
+"id": 0
+},
+"id": "node5",
+"nb_blocks": 1,
+"type": "dialog_line",
+"x": 1716.0,
+"y": 8.0
+}, {
+"data0": {
+"action_id": 0,
+"actor": "Red",
+"animation": "",
+"collapsed": false,
+"dialog": "Oh, not in the mood, huh?",
+"id": 0
+},
+"id": "node6",
+"nb_blocks": 1,
+"type": "dialog_line",
+"x": 1723.0,
+"y": 328.0
 } ]
 }
 

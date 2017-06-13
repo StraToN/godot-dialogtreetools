@@ -12,9 +12,15 @@ size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
 margin/right = 332.0
-margin/bottom = 368.0
+margin/bottom = 198.0
 title = "Text / Animation"
 show_close = true
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
 script/script = ExtResource( 1 )
 __meta__ = {
 "__editor_plugin_screen__": "2D"

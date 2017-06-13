@@ -80,7 +80,8 @@ func save_data(node_list):
 			"type": self.type,
 			"id": get_name(),
 			"x": get_offset().x,
-			"y": get_offset().y
+			"y": get_offset().y,
+			"nb_blocks": nb_blocks
 			}
 	for i in range(0, nb_blocks):
 		var block = nodes_blocks[i]
