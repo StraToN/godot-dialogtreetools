@@ -17,5 +17,16 @@ func _ready():
 
 
 func load_data(data):
+	clear_blocks()
 	set_id( data["id"] )
 	set_name( data["id"] )
+	
+	set_offset( Vector2(data["x"], data["y"]))
+
+	var currentBlock = 0
+	var keyData = "data" 
+	while data.has( keyData + str(currentBlock)):
+		var new_block = add_new_block()
+		new_block.set_data( data[keyData + str(currentBlock)] )
+		
+		currentBlock += 1

@@ -27,6 +27,7 @@ func _enter_tree():
 # Free every custom types and resources when disabling the plugin
 func _exit_tree():
 	if (tree_tools != null):
+		tree_tools.clear()
 		tree_tools.queue_free()
 	remove_custom_type("TreeNode")
 	remove_custom_type("TreeNodeResource")
@@ -41,8 +42,8 @@ func has_main_screen():
 
 # function called by editor to ask if the object is managed by plugin
 func handles(object):
-	return object extends TreeNodeResource || (object extends TreeNode && object.resource != null)
-
+	#return object extends TreeNodeResource || (object extends TreeNode && object.resource != null)
+	return object extends TreeNode && object.resource != null
 
 func edit(object):
 
@@ -57,20 +58,14 @@ func edit(object):
 		if current_object extends TreeNode:
 			current_object.resource.dict = tree_tools.get_dictionary()
 			var res_file = "res://dialogtrees_resources/" + current_object.get_name()+".tres"
-			current_object.resource.external_path = res_file
-		elif current_object extends TreeNodeResource:
-			current_object.dict = tree_tools.get_dictionary()
-			var res_file = "res://dialogtrees_resources/" + current_object.get_parent().get_name()+".tres"
-			current_object.external_path = "res://dialogtrees_resources/"+current_object.get_parent().get_name()+".tres"
-		#save_external_data()
+			current_object.external_path = res_file
+		save_external_data()
 
 	# switch current_object
 	if current_object == object || !handles(object) || object == null:
 		return
 	
 	# add new object in list of objects
-	
-	
 	current_object = object
 	
 	print("NEW CURRENT")
@@ -108,12 +103,15 @@ func save_external_data():
 	if current_object != null:
 		print("current_object=", current_object)
 		if current_object extends TreeNodeResource:
+			current_object.dict = tree_tools.get_dictionary()
 			ResourceSaver.save(current_object.external_path, current_object)
 			print("Saving TreeNodeResource in > ", current_object.external_path)
 		elif current_object extends TreeNode:
-			if (current_object.resource.external_path != null):
-				ResourceSaver.save(current_object.resource.external_path, current_object.resource)
-				print("Saving TreeNode in > ", current_object.resource.external_path)
+			if current_object extends TreeNode:
+				current_object.resource.dict = tree_tools.get_dictionary()
+			if (current_object.external_path != null):
+				ResourceSaver.save(current_object.external_path, current_object.resource)
+				print("Saving TreeNode in > ", current_object.external_path)
 			else:
 				print("Error saving TreeNode: Resource external path is null")
 

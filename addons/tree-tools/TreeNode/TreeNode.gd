@@ -6,6 +6,7 @@ extends Node
 const TreeNodeResource = preload("res://addons/tree-tools/TreeNode/TreeNodeResource.gd")
 var json setget set_json,get_json
 export(Resource) var resource setget set_resource,get_resource
+var external_path setget set_external_path,get_external_path
 
 # tree parsing variables
 var root # root of the tree
@@ -65,3 +66,8 @@ func set_resource(r):
 func get_resource():
 	return resource
 
+func set_external_path(ep):
+	external_path = ep
+
+func get_external_path():
+	return external_path

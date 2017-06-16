@@ -21,7 +21,8 @@ func get_data():
 
 func set_data(data):
 	get_node("hbox/id").set_text(str(data["id"]))
-	set_collapsed(data["collapsed"])
+	if (data["collapsed"]):
+		_on_collapse_block_pressed()
 	get_node("vbox_line/box_say/HBoxContainer/text").set_text(data["option"])
 	get_node("vbox_params/repeat").set_pressed(data["repeat"])
 	get_node("vbox_params/not_said").set_pressed(data["not_said"])
