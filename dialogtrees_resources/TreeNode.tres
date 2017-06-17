@@ -33,7 +33,7 @@ dict = {
 "condition": "",
 "id": 0,
 "not_said": false,
-"option": "00000",
+"option": "My name is Player.",
 "repeat": false
 },
 "data1": {
@@ -41,7 +41,7 @@ dict = {
 "condition": "",
 "id": 1,
 "not_said": false,
-"option": "22222",
+"option": "Why would I tell you?",
 "repeat": false
 },
 "id": "node6 2",
@@ -61,7 +61,7 @@ dict = {
 "actor": "Red",
 "animation": "",
 "collapsed": false,
-"dialog": "Hey ! I'm Red.%%What's your name?%%Or maybe you don't want to tell?",
+"dialog": "Hey ! I'm Red.%%What's your name?",
 "id": 0
 },
 "id": "node3",
