@@ -16,7 +16,7 @@ var currentsList = [] # current elements of the tree (if > 1, currents probably 
 ##################
 # Here go all tree parsing functions !
 
-func execute():
+func advance_state():
 	if (root == null):
 		root = find_root()
 		currentsList = get_nexts(root)

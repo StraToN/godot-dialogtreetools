@@ -1,52 +1,60 @@
 
-onready var timer = Timer.new()
 onready var timerDialog = Timer.new()
-onready var current_counter = 0
 
-signal dialog_node_finished
-
-var dialogsList
+var line = ""
+var lines_list
+var dialogs_count_in_state
 
 func _ready():
-	add_child(timer)
-	
-	timerDialog.connect("timeout", self, "display_dialogs_list")
+	timerDialog.connect("timeout", self, "update_line")
 	add_child(timerDialog)
+
+
+func state_finished():
+	print("STATE FINISHED")
+	execute_dialog()
 	
-	connect("dialog_node_finished", self, "execute_dialog")
 
 func execute_dialog():
-	var nodesList = get_node("TreeNode").execute()
-	print("NODES LIST")
+	var nodesList = get_node("TreeNode").advance_state()
 	print(nodesList)
-
+	
 	var node = nodesList[0]
 	print("NODE:")
 	print(node)
 	
 	if node.type == "dialog_line":
-		dialogsList = node.data0.dialog.split("\n")
-		display_dialogs_list()
+		lines_list = node.data0.dialog.split("%%")
+		dialogs_count_in_state = 0
+		update_line()
 		
 	elif node.type == "dialog_option":
 		var optionsList = []
 		for i in range(0, node.nb_blocks):
 			optionsList.append(node["data"+str(i)])
+		
 		print("OPTIONS LIST")
 		print(optionsList)
-			
+		## Manage options...
+		get_node("../player/dialog").set_text("OPTION")
 
-func display_dialogs_list():
-	if (current_counter == dialogsList.size()):
+
+func update_line():
+	if (dialogs_count_in_state >= lines_list.size()):
+		timerDialog.stop()
 		get_node("dialog").set_text("")
-		emit_signal("dialog_node_finished")
-		print("SIGNAL EMITTED")
+		state_finished()
 		return
-		
-	get_node("dialog").set_text(dialogsList[current_counter])
-	var number_of_spaces = dialogsList[current_counter].split(" ").size()
-	var time_line = dialogsList[current_counter].length() * 0.4 / number_of_spaces
-	print(time_line)
+
+	line = lines_list[dialogs_count_in_state]
+	say_line(line)
+	dialogs_count_in_state += 1
+	print(dialogs_count_in_state)
+	
+func say_line(l):
+	get_node("dialog").set_text(l)
+	var number_of_spaces = l.split(" ").size()
+	var time_line = l.length() * 0.4 / number_of_spaces
 	timerDialog.set_wait_time(time_line)
-	current_counter += 1
 	timerDialog.start()
+

@@ -61,7 +61,7 @@ dict = {
 "actor": "Red",
 "animation": "",
 "collapsed": false,
-"dialog": "Hey ! I'm Red.%%What's your name?%%Or maybe you don't want to tell?",
+"dialog": "Hey ! I'm Red.%%What's your name?",
 "id": 0
 },
 "id": "node3",
