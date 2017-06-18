@@ -162,6 +162,22 @@ text = "+"
 flat = false
 script/script = ExtResource( 4 )
 
+[node name="clear_confirmation_popup" type="ConfirmationDialog" parent="Panel/editor"]
+
+visibility/visible = false
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 234.0
+margin/top = 276.0
+margin/right = 621.0
+margin/bottom = 334.0
+popup/exclusive = false
+window/title = "Please Confirm..."
+dialog/text = "The content of the TreeNode will be erased. Are you sure?"
+dialog/hide_on_ok = true
+
 [node name="save_dialog" type="FileDialog" parent="."]
 
 visibility/visible = false
@@ -204,7 +220,7 @@ show_hidden_files = false
 
 [connection signal="disconnection_request" from="Panel/editor" to="Panel/editor" method="_on_editor_disconnection_request"]
 
-[connection signal="pressed" from="Panel/editor/clear_button" to="Panel/editor" method="clear"]
+[connection signal="pressed" from="Panel/editor/clear_button" to="Panel/editor" method="raise_clear_confirm"]
 
 [connection signal="pressed" from="Panel/editor/import_button" to="." method="_on_import_button_pressed"]
 
@@ -212,7 +228,7 @@ show_hidden_files = false
 
 [connection signal="close_request" from="Panel/editor/node1" to="Panel/editor/node1" method="_on_close_request"]
 
-[connection signal="close_request" from="Panel/editor/node1 2" to="Panel/editor/node1 2" method="_on_close_request"]
+[connection signal="confirmed" from="Panel/editor/clear_confirmation_popup" to="Panel/editor" method="clear"]
 
 [connection signal="file_selected" from="save_dialog" to="." method="_save_data"]
 

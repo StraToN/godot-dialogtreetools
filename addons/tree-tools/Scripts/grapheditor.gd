@@ -11,8 +11,13 @@ func _ready():
 	init()
 
 
+func raise_clear_confirm():
+	var clear_popup = get_node("clear_confirmation_popup")
+	clear_popup.popup_centered()
+
+
+# remove all nodes in editor
 func clear():
-	# remove all nodes in editor
 	for ndel in  get_children():
 		if ndel extends GraphNode:
 			remove_child(ndel)
