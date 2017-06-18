@@ -1,12 +1,110 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://addons/tree-tools/TreeNode/TreeNode.gd" type="Script" id=2]
 [ext_resource path="res://addons/tree-tools/TreeNode/icons/gear.png" type="Texture" id=3]
-[ext_resource path="res://dialogtrees_resources/TreeNode.tres" type="Resource" id=4]
+[ext_resource path="res://addons/tree-tools/TreeNode/TreeNodeResource.gd" type="Script" id=4]
 [ext_resource path="res://run_dialog.gd" type="Script" id=5]
 [ext_resource path="res://dialog_manager.gd" type="Script" id=6]
 [ext_resource path="res://option_chooser.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Resource" id=1]
+
+script/script = ExtResource( 4 )
+dict = {
+"connections": [ {
+"from": "node3",
+"from_port": 0,
+"to": "node4",
+"to_port": 0
+}, {
+"from": "node4",
+"from_port": 0,
+"to": "node5",
+"to_port": 0
+}, {
+"from": "node5",
+"from_port": 0,
+"to": "node6",
+"to_port": 0
+}, {
+"from": "node5",
+"from_port": 1,
+"to": "node7",
+"to_port": 0
+} ],
+"nodes": [ {
+"id": "node3",
+"name": "start",
+"type": "startnode",
+"x": -837.0,
+"y": -77.5
+}, {
+"data0": {
+"action_id": 0,
+"actor": "Red",
+"animation": "",
+"collapsed": false,
+"dialog": "Hey!%%What's your name?",
+"id": 0
+},
+"id": "node4",
+"nb_blocks": 1,
+"type": "dialog_line",
+"x": -641.0,
+"y": -138.0
+}, {
+"data0": {
+"collapsed": false,
+"condition": "",
+"id": 0,
+"not_said": false,
+"option": "My name is Player.",
+"repeat": false
+},
+"data1": {
+"collapsed": false,
+"condition": "",
+"id": 1,
+"not_said": false,
+"option": "Why do you bother?",
+"repeat": false
+},
+"id": "node5",
+"nb_blocks": 2,
+"type": "dialog_option",
+"x": -274.0,
+"y": -136.0
+}, {
+"data0": {
+"action_id": 0,
+"actor": "Red",
+"animation": "",
+"collapsed": false,
+"dialog": "Nice to meet you Player.",
+"id": 0
+},
+"id": "node6",
+"nb_blocks": 1,
+"type": "dialog_line",
+"x": 90.0,
+"y": -205.0
+}, {
+"data0": {
+"action_id": 0,
+"actor": "Red",
+"animation": "",
+"collapsed": false,
+"dialog": "Not so nice!",
+"id": 0
+},
+"id": "node7",
+"nb_blocks": 1,
+"type": "dialog_line",
+"x": 97.0,
+"y": 33.0
+} ]
+}
 
 [node name="Node2D" type="Node2D"]
 
@@ -22,7 +120,7 @@ script/script = ExtResource( 2 )
 __meta__ = {
 "_editor_icon": ExtResource( 3 )
 }
-resource = ExtResource( 4 )
+resource = SubResource( 1 )
 
 [node name="dialog" type="Label" parent="Sprite"]
 
