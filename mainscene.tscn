@@ -32,6 +32,36 @@ dict = {
 "from_port": 1,
 "to": "node7",
 "to_port": 0
+}, {
+"from": "node6",
+"from_port": 0,
+"to": "node7 2",
+"to_port": 0
+}, {
+"from": "node7 2",
+"from_port": 1,
+"to": "node8",
+"to_port": 0
+}, {
+"from": "node7 2",
+"from_port": 0,
+"to": "node9",
+"to_port": 0
+}, {
+"from": "node8",
+"from_port": 0,
+"to": "node10",
+"to_port": 0
+}, {
+"from": "node10",
+"from_port": 1,
+"to": "node11",
+"to_port": 0
+}, {
+"from": "node10",
+"from_port": 0,
+"to": "node12",
+"to_port": 0
 } ],
 "nodes": [ {
 "id": "node3",
@@ -103,6 +133,106 @@ dict = {
 "type": "dialog_line",
 "x": 97.0,
 "y": 33.0
+}, {
+"data0": {
+"collapsed": false,
+"condition": "",
+"id": 0,
+"not_said": false,
+"option": "What's going on?",
+"repeat": false
+},
+"data1": {
+"collapsed": false,
+"condition": "",
+"id": 1,
+"not_said": false,
+"option": "Do you want to know a secret?",
+"repeat": false
+},
+"id": "node7 2",
+"nb_blocks": 2,
+"type": "dialog_option",
+"x": 484.0,
+"y": -241.0
+}, {
+"data0": {
+"action_id": 0,
+"actor": "",
+"animation": "",
+"collapsed": false,
+"dialog": "Sure, what is it?",
+"id": 0
+},
+"id": "node8",
+"nb_blocks": 1,
+"type": "dialog_line",
+"x": 862.0,
+"y": -193.0
+}, {
+"data0": {
+"action_id": 0,
+"actor": "",
+"animation": "",
+"collapsed": false,
+"dialog": "Well... Nothing interesting.",
+"id": 0
+},
+"id": "node9",
+"nb_blocks": 1,
+"type": "dialog_line",
+"x": 892.0,
+"y": -430.0
+}, {
+"data0": {
+"collapsed": false,
+"condition": "",
+"id": 0,
+"not_said": false,
+"option": "Well, I think I love you.",
+"repeat": false
+},
+"data1": {
+"collapsed": false,
+"condition": "",
+"id": 1,
+"not_said": false,
+"option": "On second thought, I can't tell you.",
+"repeat": false
+},
+"id": "node10",
+"nb_blocks": 2,
+"type": "dialog_option",
+"x": 1290.0,
+"y": -134.0
+}, {
+"data0": {
+"action_id": 0,
+"actor": "",
+"animation": "",
+"collapsed": false,
+"dialog": "Oh come on, tell me !",
+"id": 0
+},
+"id": "node11",
+"nb_blocks": 1,
+"type": "dialog_line",
+"x": 1664.0,
+"y": -50.0
+}, {
+"data0": {
+"action_id": 0,
+"actor": "",
+"animation": "",
+"collapsed": false,
+"dialog": "Aww, that's cute!",
+"id": 0
+},
+"id": "node12",
+"nb_blocks": 1,
+"type": "dialog_line",
+"x": 1723.0,
+"y": -295.0
 } ]
 }
 

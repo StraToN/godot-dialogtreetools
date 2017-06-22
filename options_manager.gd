@@ -7,8 +7,10 @@ var option_id
 
 func on_option_pressed(c):
 	get_node("..").answer_option(option_id, option_button[c])
-	for button in get_children():
+	for button in get_node("VBoxContainer").get_children():
+		print(button)
 		remove_child(button)
+		button.queue_free()
 	
 
 func set_options(option_id, options_list):
