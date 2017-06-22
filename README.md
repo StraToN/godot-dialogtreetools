@@ -7,7 +7,7 @@ Made using Godot Engine.
 
 ## Documentation
 
-[[>>>> HOW TO USE <<<<|How to use]]
+[How to use](https://github.com/StraToN/godot-dialogtreetools/wiki/How-to-use)
 
 ## Objectives
 
@@ -15,7 +15,7 @@ This project aims at providing a tool helping the creation of advanced trees def
 
 GraphNodes provided by this tool may or may not respond to every use case. You are then required to modify existing nodes, or add new ones.
 
-Basic usage: add the provided [[TreeNode custom node|TreeNode node]] as a child of your target node: after creating a Resource (attach TreeNodeResource.gd file), selecting this specific node opens a GraphEditor allowing tree building. 
+Basic usage: add the provided [TreeNode custom node](https://github.com/StraToN/godot-dialogtreetools/wiki/TreeNode-node) as a child of your target node: after creating a Resource (attach TreeNodeResource.gd file), selecting this specific node opens a GraphEditor allowing tree building. 
 
 You have then 2 solutions for parsing:
 - Either call this TreeNode's functions using get_node() in your target node's script.
