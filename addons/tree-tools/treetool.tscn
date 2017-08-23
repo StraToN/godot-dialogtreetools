@@ -1,28 +1,9 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://addons/tree-tools/Scripts/treetool.gd" type="Script" id=1]
 [ext_resource path="res://addons/tree-tools/Scripts/grapheditor.gd" type="Script" id=2]
 [ext_resource path="res://addons/tree-tools/Nodes/Menus/context_menu.tscn" type="PackedScene" id=3]
 [ext_resource path="res://addons/tree-tools/Nodes/Menus/menu_button_add.gd" type="Script" id=4]
-
-[sub_resource type="CanvasItemShaderGraph" id=1]
-
-_code = {
-"fragment": "",
-"fragment_ofs": 0,
-"light": "",
-"light_ofs": 0,
-"vertex": "",
-"vertex_ofs": 0
-}
-_data = {
-"shaders": [ [ 0, 33, Vector2( 350, 40 ), null, null, [  ], 1, 0, Vector2( 50, 40 ), null, null, [  ] ], [ 0, 33, Vector2( 350, 40 ), null, null, [  ], 1, 0, Vector2( 50, 40 ), null, null, [  ] ], [ 0, 33, Vector2( 350, 40 ), null, null, [  ], 1, 0, Vector2( 50, 40 ), null, null, [  ] ] ]
-}
-
-[sub_resource type="CanvasItemMaterial" id=2]
-
-shader/shader = SubResource( 1 )
-shader/shading_mode = 0
 
 [node name="Tree-tools" type="Control"]
 
@@ -54,7 +35,6 @@ margin/bottom = 600.0
 
 [node name="editor" type="GraphEdit" parent="Panel"]
 
-material/material = SubResource( 2 )
 anchor/right = 1
 anchor/bottom = 1
 focus/ignore_mouse = false
@@ -226,9 +206,9 @@ show_hidden_files = false
 
 [connection signal="pressed" from="Panel/editor/export_button" to="." method="_on_export_button_pressed"]
 
-[connection signal="close_request" from="Panel/editor/node1" to="Panel/editor/node1" method="_on_close_request"]
-
 [connection signal="confirmed" from="Panel/editor/clear_confirmation_popup" to="Panel/editor" method="clear"]
+
+[connection signal="close_request" from="Panel/editor/node1" to="Panel/editor/node1" method="_on_close_request"]
 
 [connection signal="file_selected" from="save_dialog" to="." method="_save_data"]
 

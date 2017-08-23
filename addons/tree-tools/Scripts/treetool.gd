@@ -56,11 +56,11 @@ func get_dictionary():
 # Save a complete tree into a JSON file at given path
 func _save_data(path):
 	currentSaveFile = path
-	var json_data = get_json()
+	var json_data = get_dictionary()
 		
 	var file = File.new()
 	file.open(path, file.WRITE)
-	file.store_string(json_data)
+	file.store_string(json_data.to_json())
 	file.close()
 
 # Load a complete tree from a JSON file at given path
@@ -92,6 +92,8 @@ func load_from_json(jsonDataString):
 		jsonData.parse_json(jsonDataString)
 		
 		load_from_dict(jsonData)
+	else:
+		print("ERROR: invalid json string.")
 
 # Load graph data from dictionary
 func load_from_dict(dict):
