@@ -5,14 +5,5 @@
 [resource]
 
 script/script = ExtResource( 1 )
-dict = {
-"connections": [  ],
-"nodes": [ {
-"id": "node1",
-"name": "start",
-"type": "startnode",
-"x": 0,
-"y": 0
-} ]
-}
+dict = null
 

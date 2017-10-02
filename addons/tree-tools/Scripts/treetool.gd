@@ -74,9 +74,7 @@ func _load_data( path ):
 	file.close()
 	
 	# parse json
-	var jsonData = {}
-	jsonData.parse_json(jsonString)
-	load_from_json(jsonData)
+	load_from_json(jsonString)
 
 # Helper function to clear the GraphEdit
 func clear():
@@ -94,6 +92,7 @@ func load_from_json(jsonDataString):
 		load_from_dict(jsonData)
 	else:
 		print("ERROR: invalid json string.")
+		print(jsonDataString)
 
 # Load graph data from dictionary
 func load_from_dict(dict):
@@ -121,8 +120,8 @@ func is_jsondata_valid(jsonDataString):
 	else:
 		var jsonData = {}
 		jsonData.parse_json(jsonDataString)
-#		print("JSONDATASTRING IS NOT NULL - OK")
 		if (!jsonData.has("nodes") or !jsonData.has("connections")):
+			print("ERROR: JSON dict doesn't contain required keys.")
 			isValid = false
 	return isValid
 

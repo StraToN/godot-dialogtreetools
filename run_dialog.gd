@@ -6,5 +6,5 @@ extends Button
 
 func _ready():
 	print(get_tree().get_root().get_node("dialog_manager"))
-	connect("pressed", get_node("../../dialog_manager"), "execute_dialog", [self.get_parent()])
+	connect("pressed", get_node("../dialog_manager"), "execute_dialog", [get_node("../Sprite")])
 
