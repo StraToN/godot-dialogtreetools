@@ -1,10 +1,10 @@
-[gd_resource type="Resource" load_steps=2 format=1]
+[gd_resource type="Resource" load_steps=1 format=2]
 
 [ext_resource path="res://addons/tree-tools/TreeNode/TreeNodeResource.gd" type="Script" id=1]
 
 [resource]
 
-script/script = ExtResource( 1 )
+script = ExtResource( 1 )
 dict = {
 "connections": [  ],
 "nodes": [ {
@@ -15,4 +15,3 @@ dict = {
 "y": 0
 } ]
 }
-

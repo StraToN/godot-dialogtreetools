@@ -1,0 +1,21 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=3
+
+[application]
+
+config/name="Dialog Tree Tools"
+run/main_scene="res://mainscene.tscn"
+icon="res://addons/tree-tools/docs/icon.png"
+main_scene="res://mainscene.tscn"
+name="demo-dialogtreetools"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "tree-tools" )

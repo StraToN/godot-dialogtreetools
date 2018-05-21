@@ -1,3 +1,4 @@
+extends Node
 
 onready var timer_dialog = Timer.new()	# This timer is started when a line is spoken by a character. 
 										# After that, it automatically calls the update_line() function 

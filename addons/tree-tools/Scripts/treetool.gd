@@ -1,39 +1,24 @@
 tool
-extends Control
+extends PanelContainer
 
+var EDITORPLUGIN
 
-const DialogNode = preload("../Nodes/Globals/dialognode.gd")
-onready var editor = get_node("Panel/editor")
-var hscroll
-var vscroll
+const DialogNode = preload("../Nodes/Globals/node.gd")
+onready var editor = $split_container/editor
 var currentSaveFile = null
 
 var list_groups = []
 
 
-func ready():
-	OS.set_low_processor_usage_mode(true)
+func _ready():
+	$save_dialog.set_access($save_dialog.ACCESS_FILESYSTEM)
+	$save_dialog.set_mode($save_dialog.MODE_SAVE_FILE)
+	$save_dialog.add_filter("*.json;JavaScript Object Notation")
 	
-	for c in editor.get_children():
-		if not c extends GraphNode:
-			hscroll = c.get_node("_h_scroll")
-			vscroll = c.get_node("_v_scroll")
-		if not hscroll == null and not vscroll == null:
-			break
+	$load_dialog.set_access($save_dialog.ACCESS_FILESYSTEM)
+	$load_dialog.set_mode($save_dialog.MODE_OPEN_FILE)
+	$load_dialog.add_filter("*.json;JavaScript Object Notation")
 
-	var save = get_node("save_dialog")
-	save.set_access(save.ACCESS_FILESYSTEM)
-	save.set_mode(save.MODE_SAVE_FILE)
-	save.add_filter("*.json;JavaScript Object Notation")
-	
-	var load_ = get_node("load_dialog")
-	load_.set_access(save.ACCESS_FILESYSTEM)
-	load_.set_mode(save.MODE_OPEN_FILE)
-	load_.add_filter("*.json;JavaScript Object Notation")
-	
-	# add signals to the frame
-	#get_viewport().connect("size_changed", self, "_on_resized")
-	#_on_resized()
 
 # returns data in a json string
 func get_json_string():
@@ -43,8 +28,9 @@ func get_json_string():
 # returns data in a dictionary
 func get_dictionary():
 	var nodes_list = []
+	print("Get Dictionary " + str(editor)) 
 	for gn in editor.get_children():
-		if gn extends GraphNode:
+		if gn is GraphNode:
 			gn.save_data(nodes_list)
 	var data = {
 		"connections": editor.get_connection_list(),
@@ -82,6 +68,7 @@ func _load_data( path ):
 func clear():
 	editor.clear()
 
+
 # Load data from a JSON string (given in jsonData)
 func load_from_json(jsonDataString):
 	# remove all nodes in editor
@@ -97,21 +84,25 @@ func load_from_json(jsonDataString):
 
 # Load graph data from dictionary
 func load_from_dict(dict):
+	print_stack()
+	
 	# add new nodes
-	for n in dict["nodes"]:
-		var new_node = editor._add_node(n["type"])
-#			printt("New node: ", n)
-		new_node.load_data(n)
-		
-#		for i in editor.get_children():
-#			if (i extends GraphNode):
-#				print(i.get_name())
+	if dict.has("nodes"):
+		for n in dict["nodes"]:
+			var new_node = editor._add_node(n["type"])
+	#			printt("New node: ", n)
+			new_node.load_data(n)
+			
+			debug_grapedit()
 		
 	# apply connections
 #		printt("LOADING CONNECTIONS = ", dict["connections"])
-	for c in dict["connections"]:
-#			printt("connect: ", c["from"], c["to"])
-		editor.connect_node(c["from"], c["from_port"], c["to"], c["to_port"])
+	if dict.has("connections"):
+		for c in dict["connections"]:
+	#			printt("connect: ", c["from"], c["to"])
+			editor.connect_node(c["from"], c["from_port"], c["to"], c["to_port"])
+	
+	print("LOADING FROM DICT DONE")
 
 
 func is_jsondata_valid(jsonDataString):
@@ -129,18 +120,9 @@ func is_jsondata_valid(jsonDataString):
 func make_groups_list():
 	list_groups = []
 	for gn in editor.get_children():
-		if gn extends DialogNode and gn.get_type() == "dialog_grouplabel":
+		if gn is DialogNode and gn.get_type() == "dialog_grouplabel":
 			list_groups.append(gn.get_group_name())
 			
-
-func set_state(state):
-	pass
-	
-func get_state(state):
-	pass
-	
-func clear_state():
-	pass
 
 func _on_resized():
 	# set the size of the top panel and GraphEdit to the same as the frame on resize
@@ -157,3 +139,8 @@ func _on_export_button_pressed():
 	if not get_node("load_dialog").is_hidden():
 		get_node("load_dialog").hide()
 	get_node("save_dialog").popup_centered()
+
+func debug_grapedit():
+	for i in editor.get_children():
+		if (i is GraphNode):
+			print(i.get_name())

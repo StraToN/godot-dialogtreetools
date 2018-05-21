@@ -1,3 +1,0 @@
-{
-"connections":[{"to":"node7", "from":"node1", "to_port":0, "from_port":0}], 
-"nodes":[{"id":"node1", "x":-765.5, "name":"start", "y":205.5, "type":"startnode"}, {"id":"node7", "x":-480, "y":20, "data0":{"id":0, "collapsed":false, "animation":"", "dialog":"", "actor":"g", "action_id":0}, "type":"dialog_line"}]}
