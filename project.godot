@@ -6,16 +6,27 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=3
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "block",
+"language": "GDScript",
+"path": "res://addons/tree-tools/scenes/editor/globals/block.gd"
+} ]
+_global_script_class_icons={
+"block": ""
+}
 
 [application]
 
 config/name="Dialog Tree Tools"
-run/main_scene="res://mainscene.tscn"
+run/main_scene="res://demo/mainscene.tscn"
+config/icon="res://icon.png"
 icon="res://addons/tree-tools/docs/icon.png"
 main_scene="res://mainscene.tscn"
 name="demo-dialogtreetools"
 
-[editor_plugins]
+[dialogtreetools]
 
-enabled=PoolStringArray( "tree-tools" )
+nodes_path="res://addons/tree-tools/scenes/nodes/"

@@ -1,0 +1,290 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/tree-tools/scenes/nodes/blocks/block_line.gd" type="Script" id=1]
+
+
+[node name="vbox_line" type="VBoxContainer"]
+margin_right = 116.0
+margin_bottom = 174.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+script = ExtResource( 1 )
+__meta__ = {
+"__editor_plugin_screen__": "Script"
+}
+block_to_collapse_path = NodePath("vbox_block")
+
+[node name="hbox" type="HBoxContainer" parent="."]
+margin_right = 107.0
+margin_bottom = 20.0
+size_flags_horizontal = 2
+alignment = 1
+
+[node name="id" type="Label" parent="hbox"]
+margin_top = 3.0
+margin_right = 7.0
+margin_bottom = 17.0
+size_flags_horizontal = 2
+text = "x"
+valign = 1
+
+[node name="option_btn_action" type="OptionButton" parent="hbox"]
+margin_left = 11.0
+margin_right = 73.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "say"
+items = [ "say", null, false, 0, null, "anim", null, false, 1, null, "walkto", null, false, 2, null, "teleport", null, false, 3, null ]
+selected = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="hbox"]
+margin_left = 77.0
+margin_right = 77.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="btn_hide" type="Button" parent="hbox"]
+margin_left = 81.0
+margin_right = 103.0
+margin_bottom = 20.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+toggle_mode = true
+text = "H"
+
+[node name="lbl_first_line" type="Label" parent="hbox"]
+margin_left = 107.0
+margin_right = 107.0
+margin_bottom = 14.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+
+[node name="vbox_block" type="VBoxContainer" parent="."]
+margin_top = 24.0
+margin_right = 116.0
+margin_bottom = 166.0
+size_flags_horizontal = 3
+
+[node name="box_say" type="VBoxContainer" parent="vbox_block"]
+margin_right = 116.0
+margin_bottom = 142.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="vbox_block/box_say"]
+margin_right = 116.0
+margin_bottom = 24.0
+
+[node name="lbl_actor" type="Label" parent="vbox_block/box_say/HBoxContainer"]
+margin_top = 5.0
+margin_right = 34.0
+margin_bottom = 19.0
+size_flags_horizontal = 2
+size_flags_vertical = 6
+text = "Actor"
+
+[node name="text" type="LineEdit" parent="vbox_block/box_say/HBoxContainer"]
+margin_left = 38.0
+margin_right = 116.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="vbox_block/box_say"]
+margin_top = 28.0
+margin_right = 116.0
+margin_bottom = 142.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="lbl_dialog" type="Label" parent="vbox_block/box_say/VBoxContainer"]
+margin_right = 40.0
+margin_bottom = 14.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "Dialog"
+
+[node name="dialog" type="TextEdit" parent="vbox_block/box_say/VBoxContainer"]
+margin_top = 18.0
+margin_right = 116.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 0, 50 )
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="lbl_animation" type="Label" parent="vbox_block/box_say/VBoxContainer"]
+margin_top = 72.0
+margin_right = 116.0
+margin_bottom = 86.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "Animation speech"
+
+[node name="animation" type="LineEdit" parent="vbox_block/box_say/VBoxContainer"]
+margin_top = 90.0
+margin_right = 116.0
+margin_bottom = 114.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="box_anim" type="VBoxContainer" parent="vbox_block"]
+editor/display_folded = true
+visible = false
+margin_top = 102.0
+margin_right = 128.0
+margin_bottom = 154.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="HBoxContainer1" type="HBoxContainer" parent="vbox_block/box_anim"]
+margin_right = 96.0
+margin_bottom = 24.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="actor_label" type="Label" parent="vbox_block/box_anim/HBoxContainer1"]
+margin_right = 34.0
+margin_bottom = 14.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "Actor"
+
+[node name="actor" type="LineEdit" parent="vbox_block/box_anim/HBoxContainer1"]
+margin_left = 38.0
+margin_right = 96.0
+margin_bottom = 24.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="vbox_block/box_anim"]
+margin_top = 28.0
+margin_right = 128.0
+margin_bottom = 52.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="animation_label" type="Label" parent="vbox_block/box_anim/HBoxContainer2"]
+margin_right = 66.0
+margin_bottom = 14.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "Animation"
+
+[node name="animation" type="LineEdit" parent="vbox_block/box_anim/HBoxContainer2"]
+margin_left = 70.0
+margin_right = 128.0
+margin_bottom = 24.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="box_walkto" type="VBoxContainer" parent="vbox_block"]
+editor/display_folded = true
+visible = false
+margin_top = 102.0
+margin_right = 136.0
+margin_bottom = 172.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="hbox" type="HBoxContainer" parent="vbox_block/box_walkto"]
+margin_right = 96.0
+margin_bottom = 24.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="actor_label" type="Label" parent="vbox_block/box_walkto/hbox"]
+margin_right = 34.0
+margin_bottom = 14.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "Actor"
+
+[node name="actor" type="LineEdit" parent="vbox_block/box_walkto/hbox"]
+margin_left = 38.0
+margin_right = 96.0
+margin_bottom = 24.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="vbox" type="VBoxContainer" parent="vbox_block/box_walkto"]
+margin_top = 28.0
+margin_right = 136.0
+margin_bottom = 70.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="Position2D node" type="Label" parent="vbox_block/box_walkto/vbox"]
+margin_right = 136.0
+margin_bottom = 14.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "Position2D NodePath"
+
+[node name="pos2d_nodepath" type="LineEdit" parent="vbox_block/box_walkto/vbox"]
+margin_top = 18.0
+margin_right = 58.0
+margin_bottom = 42.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="box_teleport" type="VBoxContainer" parent="vbox_block"]
+editor/display_folded = true
+visible = false
+margin_top = 102.0
+margin_right = 168.0
+margin_bottom = 154.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="hbox" type="HBoxContainer" parent="vbox_block/box_teleport"]
+margin_right = 96.0
+margin_bottom = 24.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="actor_label" type="Label" parent="vbox_block/box_teleport/hbox"]
+margin_right = 34.0
+margin_bottom = 14.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "Actor"
+
+[node name="actor" type="LineEdit" parent="vbox_block/box_teleport/hbox"]
+margin_left = 38.0
+margin_right = 96.0
+margin_bottom = 24.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="hbox1" type="HBoxContainer" parent="vbox_block/box_teleport"]
+margin_top = 28.0
+margin_right = 168.0
+margin_bottom = 52.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="Position2D node1" type="Label" parent="vbox_block/box_teleport/hbox1"]
+margin_right = 106.0
+margin_bottom = 14.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "Position2D node"
+
+[node name="pos2d_nodepath1" type="LineEdit" parent="vbox_block/box_teleport/hbox1"]
+margin_left = 110.0
+margin_right = 168.0
+margin_bottom = 24.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="HSeparator" type="HSeparator" parent="."]
+margin_top = 170.0
+margin_right = 116.0
+margin_bottom = 174.0
+
+[connection signal="item_selected" from="hbox/option_btn_action" to="." method="_on_item_action_selected"]

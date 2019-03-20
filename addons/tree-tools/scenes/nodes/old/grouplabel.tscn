@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/tree-tools/scenes/nodes/old/grouplabel.gd" type="Script" id=1]
+
+
+
+[node name="group_node" type="GraphNode"]
+margin_top = 2.0
+margin_right = 161.0
+margin_bottom = 76.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+title = "Dialog group label"
+show_close = true
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"__editor_plugin_screen__": "Script"
+}
+type = "grouplabel"
+first_left_slot = true
+first_right_slot = true
+
+[node name="vbox" type="VBoxContainer" parent="."]
+margin_left = 16.0
+margin_top = 24.0
+margin_right = 145.0
+margin_bottom = 66.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="lbl_groupname" type="Label" parent="vbox"]
+margin_right = 79.0
+margin_bottom = 14.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "Group name"
+
+[node name="groupname" type="LineEdit" parent="vbox"]
+margin_top = 18.0
+margin_right = 129.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[connection signal="close_request" from="." to="." method="_on_close_request"]

@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://addons/tree-tools/TreeNode/TreeNode.gd" type="Script" id=2]
+[ext_resource path="res://addons/tree-tools/icons/gear.png" type="Texture" id=3]
+[ext_resource path="res://dialogtrees_resources/TreeNodeSave.tres" type="Resource" id=4]
+[ext_resource path="res://demo/run_dialog.gd" type="Script" id=5]
+[ext_resource path="res://demo/dialog_manager.gd" type="Script" id=6]
+[ext_resource path="res://demo/option_chooser.tscn" type="PackedScene" id=7]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+self_modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 122.583, 90.4986 )
+texture = ExtResource( 1 )
+
+[node name="TreeNode" type="Node" parent="Sprite"]
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
+resource = ExtResource( 4 )
+
+[node name="dialog" type="Label" parent="Sprite"]
+margin_left = -116.0
+margin_top = -60.0
+margin_right = 173.0
+margin_bottom = -46.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+
+[node name="run_dlg_1_btn" type="Button" parent="Sprite"]
+margin_left = -40.583
+margin_top = 44.5014
+margin_right = 49.417
+margin_bottom = 64.5014
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = "Run dialog 1"
+script = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="Sprite"]
+margin_left = 39.0
+margin_top = -8.0
+margin_right = 79.0
+margin_bottom = 6.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "Red"
+
+[node name="player" type="Sprite" parent="."]
+self_modulate = Color( 0.0217285, 0.695313, 0, 1 )
+position = Vector2( 266, 332 )
+texture = ExtResource( 1 )
+
+[node name="dialog" type="Label" parent="player"]
+margin_left = -140.0
+margin_top = -53.0
+margin_right = 149.0
+margin_bottom = -39.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+
+[node name="dialog_manager" type="Node" parent="."]
+script = ExtResource( 6 )
+
+[node name="option_chooser" parent="dialog_manager" instance=ExtResource( 7 )]
+scroll_horizontal = 0
+scroll_vertical = 0
+
+[node name="VBoxContainer" parent="dialog_manager/option_chooser" index="0"]
+margin_right = 0.0
+margin_bottom = 0.0
+
+[editable path="dialog_manager/option_chooser"]

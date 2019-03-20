@@ -1,0 +1,265 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/tree-tools/scenes/nodes/old/line_random.gd" type="Script" id=1]
+[ext_resource path="res://addons/tree-tools/scenes/nodes/blocks/block_line.tscn" type="PackedScene" id=2]
+
+
+
+
+[node name="line_random_node" type="GraphNode" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 366.0
+margin_bottom = 221.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+title = "Random Text"
+offset = Vector2( 0, 0 )
+show_close = true
+resizable = false
+selected = false
+comment = false
+overlay = 0
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
+type = "line_random"
+block_scene = null
+new_block_collapsed = false
+first_left_slot = true
+first_right_slot = true
+new_block_adds_left_slot = false
+new_block_adds_right_slot = false
+left_slot_type = 0
+right_slot_type = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 16.0
+margin_top = 24.0
+margin_right = 350.0
+margin_bottom = 216.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+alignment = 0
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="lbl_rappel%" type="Label" parent="VBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 334.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "This node makes the character say one random line."
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="vbox_block" parent="VBoxContainer" index="1" instance=ExtResource( 2 )]
+
+margin_top = 18.0
+margin_right = 334.0
+margin_bottom = 192.0
+rect_clip_content = false
+
+[node name="hbox" parent="VBoxContainer/vbox_block" index="0"]
+
+editor/display_folded = true
+rect_clip_content = false
+
+[node name="id" parent="VBoxContainer/vbox_block/hbox" index="0"]
+
+rect_clip_content = false
+
+[node name="option_btn_action" parent="VBoxContainer/vbox_block/hbox" index="1"]
+
+rect_clip_content = false
+items = [ "say", null, false, 0, null, "anim", null, false, 1, null, "walkto", null, false, 2, null, "teleport", null, false, 3, null ]
+
+[node name="MarginContainer" parent="VBoxContainer/vbox_block/hbox" index="2"]
+
+rect_clip_content = false
+
+[node name="btn_hide" parent="VBoxContainer/vbox_block/hbox" index="3"]
+
+rect_clip_content = false
+
+[node name="lbl_first_line" parent="VBoxContainer/vbox_block/hbox" index="4"]
+
+rect_clip_content = false
+
+[node name="vbox_block" parent="VBoxContainer/vbox_block" index="1"]
+
+margin_right = 334.0
+rect_clip_content = false
+
+[node name="box_say" parent="VBoxContainer/vbox_block/vbox_block" index="0"]
+
+margin_right = 334.0
+rect_clip_content = false
+
+[node name="HBoxContainer" parent="VBoxContainer/vbox_block/vbox_block/box_say" index="0"]
+
+margin_right = 334.0
+rect_clip_content = false
+size_flags_horizontal = 3
+
+[node name="lbl_actor" parent="VBoxContainer/vbox_block/vbox_block/box_say/HBoxContainer" index="0"]
+
+rect_clip_content = false
+
+[node name="text" parent="VBoxContainer/vbox_block/vbox_block/box_say/HBoxContainer" index="1"]
+
+margin_left = 70.0
+margin_right = 334.0
+rect_clip_content = false
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="VBoxContainer" parent="VBoxContainer/vbox_block/vbox_block/box_say" index="1"]
+
+margin_right = 334.0
+rect_clip_content = false
+
+[node name="lbl_dialog" parent="VBoxContainer/vbox_block/vbox_block/box_say/VBoxContainer" index="0"]
+
+rect_clip_content = false
+
+[node name="dialog" parent="VBoxContainer/vbox_block/vbox_block/box_say/VBoxContainer" index="1"]
+
+margin_right = 334.0
+rect_clip_content = false
+
+[node name="lbl_animation" parent="VBoxContainer/vbox_block/vbox_block/box_say/VBoxContainer" index="2"]
+
+rect_clip_content = false
+
+[node name="animation" parent="VBoxContainer/vbox_block/vbox_block/box_say/VBoxContainer" index="3"]
+
+margin_right = 334.0
+rect_clip_content = false
+
+[node name="box_anim" parent="VBoxContainer/vbox_block/vbox_block" index="1"]
+
+rect_clip_content = false
+
+[node name="HBoxContainer1" parent="VBoxContainer/vbox_block/vbox_block/box_anim" index="0"]
+
+rect_clip_content = false
+
+[node name="actor_label" parent="VBoxContainer/vbox_block/vbox_block/box_anim/HBoxContainer1" index="0"]
+
+rect_clip_content = false
+
+[node name="actor" parent="VBoxContainer/vbox_block/vbox_block/box_anim/HBoxContainer1" index="1"]
+
+rect_clip_content = false
+
+[node name="HBoxContainer2" parent="VBoxContainer/vbox_block/vbox_block/box_anim" index="1"]
+
+rect_clip_content = false
+
+[node name="animation_label" parent="VBoxContainer/vbox_block/vbox_block/box_anim/HBoxContainer2" index="0"]
+
+rect_clip_content = false
+
+[node name="animation" parent="VBoxContainer/vbox_block/vbox_block/box_anim/HBoxContainer2" index="1"]
+
+rect_clip_content = false
+
+[node name="box_walkto" parent="VBoxContainer/vbox_block/vbox_block" index="2"]
+
+rect_clip_content = false
+
+[node name="hbox" parent="VBoxContainer/vbox_block/vbox_block/box_walkto" index="0"]
+
+rect_clip_content = false
+
+[node name="actor_label" parent="VBoxContainer/vbox_block/vbox_block/box_walkto/hbox" index="0"]
+
+rect_clip_content = false
+
+[node name="actor" parent="VBoxContainer/vbox_block/vbox_block/box_walkto/hbox" index="1"]
+
+rect_clip_content = false
+
+[node name="vbox" parent="VBoxContainer/vbox_block/vbox_block/box_walkto" index="1"]
+
+rect_clip_content = false
+
+[node name="Position2D node" parent="VBoxContainer/vbox_block/vbox_block/box_walkto/vbox" index="0"]
+
+rect_clip_content = false
+
+[node name="pos2d_nodepath" parent="VBoxContainer/vbox_block/vbox_block/box_walkto/vbox" index="1"]
+
+rect_clip_content = false
+
+[node name="box_teleport" parent="VBoxContainer/vbox_block/vbox_block" index="3"]
+
+rect_clip_content = false
+
+[node name="hbox" parent="VBoxContainer/vbox_block/vbox_block/box_teleport" index="0"]
+
+rect_clip_content = false
+
+[node name="actor_label" parent="VBoxContainer/vbox_block/vbox_block/box_teleport/hbox" index="0"]
+
+rect_clip_content = false
+
+[node name="actor" parent="VBoxContainer/vbox_block/vbox_block/box_teleport/hbox" index="1"]
+
+rect_clip_content = false
+
+[node name="hbox1" parent="VBoxContainer/vbox_block/vbox_block/box_teleport" index="1"]
+
+rect_clip_content = false
+
+[node name="Position2D node1" parent="VBoxContainer/vbox_block/vbox_block/box_teleport/hbox1" index="0"]
+
+rect_clip_content = false
+
+[node name="pos2d_nodepath1" parent="VBoxContainer/vbox_block/vbox_block/box_teleport/hbox1" index="1"]
+
+rect_clip_content = false
+
+[node name="HSeparator" parent="VBoxContainer/vbox_block" index="2"]
+
+margin_right = 334.0
+rect_clip_content = false
+size_flags_horizontal = 3
+_sections_unfolded = [ "Size Flags" ]
+
+[connection signal="close_request" from="." to="." method="_on_close_request"]
+
+
+[editable path="VBoxContainer/vbox_block"]

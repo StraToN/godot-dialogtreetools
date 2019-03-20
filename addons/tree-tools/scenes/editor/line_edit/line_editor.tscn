@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/tree-tools/scenes/editor/globals/blocks_stack.gd" type="Script" id=1]
+[ext_resource path="res://addons/tree-tools/scenes/editor/line_edit/block_line.tscn" type="PackedScene" id=2]
+
+[node name="line_editor" type="VBoxContainer"]
+script = ExtResource( 1 )
+block_scene = ExtResource( 2 )

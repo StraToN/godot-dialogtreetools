@@ -1,0 +1,98 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/tree-tools/scenes/nodes/old/condition.gd" type="Script" id=1]
+
+
+
+[node name="condition_node" type="GraphNode"]
+margin_right = 211.0
+margin_bottom = 119.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_constants/separation = 5
+title = "Condition"
+show_close = true
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+slot/1/left_enabled = true
+slot/1/left_type = 0
+slot/1/left_color = Color( 1, 1, 1, 1 )
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color( 1, 1, 1, 1 )
+slot/2/left_enabled = false
+slot/2/left_type = 0
+slot/2/left_color = Color( 1, 1, 1, 1 )
+slot/2/right_enabled = true
+slot/2/right_type = 0
+slot/2/right_color = Color( 1, 1, 1, 1 )
+slot/3/left_enabled = false
+slot/3/left_type = 0
+slot/3/left_color = Color( 1, 1, 1, 1 )
+slot/3/right_enabled = true
+slot/3/right_type = 0
+slot/3/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
+type = "condition"
+first_left_slot = true
+first_right_slot = true
+
+[node name="vbox" type="VBoxContainer" parent="."]
+margin_left = 16.0
+margin_top = 24.0
+margin_right = 195.0
+margin_bottom = 67.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+custom_constants/separation = 5
+
+[node name="label" type="Label" parent="vbox"]
+margin_right = 32.0
+margin_bottom = 14.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "Code"
+
+[node name="statement" type="LineEdit" parent="vbox"]
+margin_top = 19.0
+margin_right = 179.0
+margin_bottom = 43.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="HSeparator" type="HSeparator" parent="."]
+visible = false
+margin_left = 16.0
+margin_top = 67.0
+margin_right = 19.0
+margin_bottom = 71.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="true" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 76.0
+margin_right = 44.0
+margin_bottom = 90.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "True"
+align = 2
+
+[node name="false" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 95.0
+margin_right = 49.0
+margin_bottom = 109.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "False"
+
+[connection signal="close_request" from="." to="." method="_on_close_request"]

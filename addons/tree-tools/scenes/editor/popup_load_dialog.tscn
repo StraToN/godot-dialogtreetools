@@ -1,0 +1,15 @@
+[gd_scene format=2]
+
+[node name="load_dialog" type="FileDialog"]
+margin_right = 750.0
+margin_bottom = 450.0
+rect_min_size = Vector2( 750, 450 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+window_title = "Open a File"
+mode = 0
+access = 2
+filters = PoolStringArray( "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation", "*.json;JavaScript Object Notation" )
+current_dir = "/opt/Programming/github/godot-dialogtreetools"
+current_path = "/opt/Programming/github/godot-dialogtreetools/"
+

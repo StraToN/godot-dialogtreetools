@@ -1,0 +1,194 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/tree-tools/scenes/editor/globals/block.gd" type="Script" id=1]
+
+[node name="option_editor" type="VBoxContainer"]
+margin_right = 219.0
+margin_bottom = 131.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_constants/separation = 5
+script = ExtResource( 1 )
+label_id = NodePath("hbox/id")
+button_add = NodePath("hbox/btn_add")
+button_remove = NodePath("hbox/btn_remove")
+option_element = NodePath("vbox_line/box_say/HBoxContainer/text")
+
+[node name="hbox" type="HBoxContainer" parent="."]
+margin_right = 64.0
+margin_bottom = 20.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_constants/separation = 10
+
+[node name="id" type="Label" parent="hbox"]
+margin_right = 7.0
+margin_bottom = 14.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "x"
+
+[node name="btn_remove" type="Button" parent="hbox"]
+margin_left = 17.0
+margin_right = 34.0
+margin_bottom = 20.0
+text = "-"
+
+[node name="btn_add" type="Button" parent="hbox"]
+margin_left = 44.0
+margin_right = 64.0
+margin_bottom = 20.0
+text = "+"
+
+[node name="vbox_line" type="VBoxContainer" parent="."]
+margin_top = 25.0
+margin_right = 266.0
+margin_bottom = 67.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+__meta__ = {
+"__editor_plugin_screen__": "Script",
+"__editor_plugin_states__": {
+"2D": {
+"ofs": Vector2( -125.191, -103.952 ),
+"snap_grid": false,
+"snap_offset": Vector2( 0, 0 ),
+"snap_pixel": false,
+"snap_relative": false,
+"snap_rotation": false,
+"snap_rotation_offset": 0.0,
+"snap_rotation_step": 0.261799,
+"snap_show_grid": false,
+"snap_step": Vector2( 10, 10 ),
+"zoom": 1.67018
+},
+"3D": {
+"ambient_light_color": Color( 0.15, 0.15, 0.15, 1 ),
+"default_light": true,
+"default_srgb": false,
+"deflight_rot_x": 0.942478,
+"deflight_rot_y": 0.628319,
+"fov": 45.0,
+"show_grid": true,
+"show_origin": true,
+"viewport_mode": 1,
+"viewports": [ {
+"distance": 4.0,
+"listener": true,
+"pos": Vector3( 0, 0, 0 ),
+"use_environment": false,
+"use_orthogonal": false,
+"x_rot": 0.0,
+"y_rot": 0.0
+}, {
+"distance": 4.0,
+"listener": false,
+"pos": Vector3( 0, 0, 0 ),
+"use_environment": false,
+"use_orthogonal": false,
+"x_rot": 0.0,
+"y_rot": 0.0
+}, {
+"distance": 4.0,
+"listener": false,
+"pos": Vector3( 0, 0, 0 ),
+"use_environment": false,
+"use_orthogonal": false,
+"x_rot": 0.0,
+"y_rot": 0.0
+}, {
+"distance": 4.0,
+"listener": false,
+"pos": Vector3( 0, 0, 0 ),
+"use_environment": false,
+"use_orthogonal": false,
+"x_rot": 0.0,
+"y_rot": 0.0
+} ],
+"zfar": 500.0,
+"znear": 0.1
+}
+},
+"__editor_run_settings__": {
+"custom_args": "-l $scene",
+"run_mode": 0
+},
+"__editor_show_subtree": true
+}
+
+[node name="box_say" type="VBoxContainer" parent="vbox_line"]
+margin_right = 266.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="vbox_line/box_say"]
+margin_right = 266.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="Label" type="Label" parent="vbox_line/box_say/HBoxContainer"]
+margin_right = 266.0
+margin_bottom = 14.0
+text = "Choice"
+
+[node name="text" type="LineEdit" parent="vbox_line/box_say/HBoxContainer"]
+margin_top = 18.0
+margin_right = 266.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="vbox_params" type="VBoxContainer" parent="."]
+margin_top = 72.0
+margin_right = 266.0
+margin_bottom = 174.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="repeat" type="CheckBox" parent="vbox_params"]
+margin_right = 72.0
+margin_bottom = 24.0
+hint_tooltip = "If enabled, the choice will remain available every time the dialog is restarted."
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = "Repeat"
+
+[node name="not_said" type="CheckBox" parent="vbox_params"]
+margin_top = 28.0
+margin_right = 266.0
+margin_bottom = 52.0
+hint_tooltip = "If enabled, the choice is not actually said by the character. Instead, he will say the line in the next Line node.
+Best used with multiple choices leading to the same actual line to be said."
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = "Choice only (requires Line node next)"
+
+[node name="condition_label" type="Label" parent="vbox_params"]
+margin_top = 56.0
+margin_right = 128.0
+margin_bottom = 70.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "Visible on Condition"
+
+[node name="condition" type="LineEdit" parent="vbox_params"]
+margin_top = 74.0
+margin_right = 266.0
+margin_bottom = 98.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="spacer" type="Control" parent="vbox_params"]
+margin_top = 102.0
+margin_bottom = 102.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="HSeparator" type="HSeparator" parent="."]
+margin_top = 179.0
+margin_right = 266.0
+margin_bottom = 183.0
+size_flags_horizontal = 3
+[connection signal="text_changed" from="vbox_line/box_say/HBoxContainer/text" to="." method="_on_text_text_changed"]

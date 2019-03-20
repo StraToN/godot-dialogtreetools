@@ -1,0 +1,115 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/tree-tools/scenes/editor/globals/block.gd" type="Script" id=1]
+
+[node name="block_line" type="VBoxContainer"]
+margin_right = 500.0
+margin_bottom = 120.0
+script = ExtResource( 1 )
+label_id = NodePath("hbox/id")
+button_add = NodePath("hbox/btn_add")
+button_remove = NodePath("hbox/btn_remove")
+option_element = NodePath("vbox_block/box_say/VBoxContainer/dialog")
+
+[node name="hbox" type="HBoxContainer" parent="."]
+margin_right = 64.0
+margin_bottom = 20.0
+size_flags_horizontal = 2
+custom_constants/separation = 10
+alignment = 1
+
+[node name="id" type="Label" parent="hbox"]
+margin_top = 3.0
+margin_right = 7.0
+margin_bottom = 17.0
+size_flags_horizontal = 2
+text = "x"
+valign = 1
+
+[node name="btn_remove" type="Button" parent="hbox"]
+margin_left = 17.0
+margin_right = 34.0
+margin_bottom = 20.0
+text = "-"
+
+[node name="btn_add" type="Button" parent="hbox"]
+margin_left = 44.0
+margin_right = 64.0
+margin_bottom = 20.0
+text = "+"
+
+[node name="vbox_block" type="VBoxContainer" parent="."]
+margin_top = 24.0
+margin_right = 500.0
+margin_bottom = 120.0
+size_flags_horizontal = 3
+
+[node name="box_say" type="VBoxContainer" parent="vbox_block"]
+margin_right = 500.0
+margin_bottom = 96.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="vbox_block/box_say"]
+margin_right = 500.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="lbl_actor" type="Label" parent="vbox_block/box_say/HBoxContainer"]
+margin_top = 5.0
+margin_right = 53.0
+margin_bottom = 19.0
+size_flags_horizontal = 2
+size_flags_vertical = 6
+text = "Actor ID"
+
+[node name="actor_id" type="LineEdit" parent="vbox_block/box_say/HBoxContainer"]
+margin_left = 71.0
+margin_right = 339.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+caret_blink = true
+
+[node name="lbl_animation" type="Label" parent="vbox_block/box_say/HBoxContainer"]
+margin_left = 343.0
+margin_top = 5.0
+margin_right = 428.0
+margin_bottom = 19.0
+size_flags_horizontal = 2
+size_flags_vertical = 6
+text = "Animation ID"
+
+[node name="animation" type="LineEdit" parent="vbox_block/box_say/HBoxContainer"]
+margin_left = 432.0
+margin_right = 500.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+caret_blink = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="vbox_block/box_say"]
+margin_top = 28.0
+margin_right = 500.0
+margin_bottom = 96.0
+
+[node name="lbl_dialog" type="Label" parent="vbox_block/box_say/VBoxContainer"]
+margin_right = 68.0
+margin_bottom = 14.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "Dialog line"
+
+[node name="dialog" type="TextEdit" parent="vbox_block/box_say/VBoxContainer"]
+margin_top = 18.0
+margin_right = 500.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 500, 50 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HSeparator" type="HSeparator" parent="."]
+margin_top = 124.0
+margin_right = 500.0
+margin_bottom = 128.0

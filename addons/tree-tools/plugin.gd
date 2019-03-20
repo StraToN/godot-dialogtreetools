@@ -4,29 +4,38 @@ extends EditorPlugin
 
 const TREENODE = preload("res://addons/tree-tools/TreeNode/TreeNode.gd")
 const TREENODERESOURCE = preload("res://addons/tree-tools/TreeNode/TreeNodeResource.gd")
-var TREETOOL = preload("res://addons/tree-tools/treetool.tscn")
-var TREENODE_ICON = preload("res://addons/tree-tools/TreeNode/icons/gear.png")
+
+var TREETOOL = preload("res://addons/tree-tools/scenes/editor/treetool.tscn")
+
+var TREENODE_ICON = preload("res://addons/tree-tools/icons/gear.png")
+
 
 var tree_tools = null # plugin container
+var node_editor = null # bottom panel container
 var current_object
 var objects_list # list of objects to save on save_external_resources
+
 
 func _enter_tree():	
 	add_custom_type("TreeNode", "Node", TREENODE, TREENODE_ICON)
 	add_custom_type("TreeNodeResource", "Resource", TREENODERESOURCE, null)
 	
-	instanciate_treetool()
-	get_editor_interface().get_editor_viewport().add_child(tree_tools)
+	tree_tools = TREETOOL.instance()
 	
+	get_editor_interface().get_editor_viewport().add_child(tree_tools)
+#	tree_tools.editor.connect("node_selected", self, "_on_graphnode_selected")
+#	tree_tools.editor.connect("node_unselected", self, "_on_graphnode_unselected")
+
 	make_visible(false)
 
 
 # Free every custom types and resources when disabling the plugin
 func _exit_tree():
-	if tree_tools != null:
-		get_editor_interface().get_editor_viewport().remove_child(tree_tools)
-		tree_tools.clear()
-		tree_tools.queue_free()
+	#if tree_tools != null:
+	get_editor_interface().get_editor_viewport().remove_child(tree_tools)
+	tree_tools.queue_free()
+	tree_tools = null
+		
 	remove_custom_type("TreeNode")
 	remove_custom_type("TreeNodeResource")
 	
@@ -55,11 +64,6 @@ func handles(object):
 
 # OVERRIDE
 func edit(object):
-	print("JUST SELECTED")
-	debug_print(object)
-	
-	print("CURRENT")
-	debug_print(current_object)
 	
 	if current_object != null:
 		# save current graph to current_object
@@ -67,7 +71,6 @@ func edit(object):
 			current_object.resource.dict = tree_tools.get_dictionary()
 			var res_file = "res://dialogtrees_resources/" + current_object.get_name()+".tres"
 			current_object.external_path = res_file
-		save_external_data()
 
 	# switch current_object
 	if current_object == object || !handles(object) || object == null:
@@ -75,9 +78,6 @@ func edit(object):
 	
 	# add new object in list of objects
 	current_object = object
-	
-	print("NEW CURRENT")
-	debug_print(current_object)
 	
 	# load new current_object data into graph
 	#tree_tools.clear()
@@ -99,53 +99,17 @@ func set_state(state):
 
 # OVERRIDE
 func clear():
-	if tree_tools != null:
-		tree_tools.clear()
+	tree_tools.clear()
 
 # OVERRIDE
 func make_visible(visible):
-	if tree_tools != null:
-		if visible:
-			print("MAKE VISIBLE")
-			tree_tools.show()
-			print(tree_tools.get_children())
-		else:
-			print("MAKE HIDDEN")
-			tree_tools.hide()
-		print(str(tree_tools) + " " + tree_tools.name)
-
-func save_external_data():
-	print("ON SAVE CALLED")
-	if current_object != null:
-		print("current_object=", current_object)
-		if current_object is TREENODERESOURCE:
-			current_object.dict = tree_tools.get_dictionary()
-			ResourceSaver.save(current_object.external_path, current_object)
-			print("Saving TreeNodeResource in > ", current_object.external_path)
-		elif current_object is TREENODE:
-			if current_object is TREENODE:
-				current_object.resource.dict = tree_tools.get_dictionary()
-			if (current_object.external_path != null):
-				ResourceSaver.save(current_object.external_path, current_object.resource)
-				print("Saving TreeNode in > ", current_object.external_path)
-			else:
-				print("Error saving TreeNode: Resource external path is null")
-				
-
-func instanciate_treetool():
-	tree_tools = TREETOOL.instance()
-	tree_tools.EDITORPLUGIN = self
-
-
-func debug_print(object):
-	if object != null:
-		printt("\tobject: ", object)
-		if object is TREENODE:
-			printt("\ttype:", "TreeNode")
-		elif object is TREENODERESOURCE:
-			printt("\ttype:", "TreeNodeResource")
-		printt("\tCONTAINS:")
-		if object is TREENODE:
-			if object.resource != null && object.resource is TREENODERESOURCE:
-				printt("\t\t", object.resource.dict)
-	
+	if visible:
+		tree_tools.show()
+	else:
+		tree_tools.hide()
+		
+		# TODO Workaround https://github.com/godotengine/godot/issues/6459
+		# When the user selects another node, I want the plugin to release 
+		# its references to the dialog tree.
+		edit(null)
+		

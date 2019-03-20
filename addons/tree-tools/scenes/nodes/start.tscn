@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/tree-tools/scenes/nodes/start.gd" type="Script" id=1]
+
+[node name="start_node" type="GraphNode"]
+margin_right = 97.0
+margin_bottom = 43.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_constants/separation = 5
+title = "Start node"
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
+
+[node name="name" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 24.0
+margin_right = 81.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+text = "Name"
+align = 2

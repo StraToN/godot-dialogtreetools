@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/tree-tools/scenes/nodes/old/setvar.gd" type="Script" id=1]
+[ext_resource path="res://addons/tree-tools/scenes/nodes/blocks/block_setvar.tscn" type="PackedScene" id=2]
+
+
+
+
+[node name="setvar_node" type="GraphNode"]
+margin_right = 250.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 250, 90 )
+size_flags_horizontal = 3
+size_flags_vertical = 2
+custom_constants/separation = 5
+title = "Set variable"
+show_close = true
+script = ExtResource( 1 )
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
+type = "setvar"
+block_scene = ExtResource( 2 )
+first_left_slot = true
+first_right_slot = true
+
+[connection signal="close_request" from="." to="." method="_on_close_request"]

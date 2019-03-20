@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex"
+path="res://.import/dialogue-cloud-symbol.png-e7765e9a8f412ae1af829c37a22d04fb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon.png"
-dest_files=[ "res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex" ]
+source_file="res://addons/tree-tools/icons/dialogue-cloud-symbol.png"
+dest_files=[ "res://.import/dialogue-cloud-symbol.png-e7765e9a8f412ae1af829c37a22d04fb.stex" ]
 
 [params]
 
