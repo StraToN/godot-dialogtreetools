@@ -40,8 +40,8 @@ func show_data_for_graphnode(graphnode, data_json):
 	
 	#editor.load_data(data_json)
 
-
-
+func update_changes_to_graphnode():
+	get_child(0)._on_button_apply_changes_pressed()
 
 func hide_editor():
 	print("NO SELECTION")

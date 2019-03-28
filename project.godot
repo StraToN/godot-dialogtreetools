@@ -9,19 +9,31 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "ResourceFormatSaver",
+"class": "TreeNodeDataSaver",
+"language": "GDScript",
+"path": "res://addons/tree-tools/resources/treenode_resource_saver.gd"
+}, {
+"base": "ResourceFormatLoader",
+"class": "TreenNodeDataLoader",
+"language": "GDScript",
+"path": "res://addons/tree-tools/resources/treenode_resource_loader.gd"
+}, {
 "base": "Node",
 "class": "block",
 "language": "GDScript",
 "path": "res://addons/tree-tools/scenes/editor/globals/block.gd"
 } ]
 _global_script_class_icons={
+"TreeNodeDataSaver": "",
+"TreenNodeDataLoader": "",
 "block": ""
 }
 
 [application]
 
 config/name="Dialog Tree Tools"
-run/main_scene="res://demo/mainscene.tscn"
+run/main_scene="res://addons/tree-tools/scenes/editor/treetool.tscn"
 config/icon="res://icon.png"
 icon="res://addons/tree-tools/docs/icon.png"
 main_scene="res://mainscene.tscn"
@@ -30,3 +42,8 @@ name="demo-dialogtreetools"
 [dialogtreetools]
 
 nodes_path="res://addons/tree-tools/scenes/nodes/"
+languages="fr,en"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "tree-tools" )

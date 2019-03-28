@@ -3,12 +3,12 @@
 [ext_resource path="res://addons/tree-tools/scenes/nodes/line.gd" type="Script" id=1]
 
 [node name="line_node" type="GraphNode"]
-margin_left = 3.0
-margin_right = 266.0
+margin_right = 140.0
 margin_bottom = 43.0
+rect_min_size = Vector2( 250, 0 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
-title = "Dialog lines"
+title = "Dialog lines (0)"
 show_close = true
 slot/0/left_enabled = true
 slot/0/left_type = 0
@@ -24,7 +24,5 @@ __meta__ = {
 [node name="Label" type="Label" parent="."]
 margin_left = 16.0
 margin_top = 24.0
-margin_right = 247.0
+margin_right = 234.0
 margin_bottom = 38.0
-text = "%s lines of dialog (select for details)"
-

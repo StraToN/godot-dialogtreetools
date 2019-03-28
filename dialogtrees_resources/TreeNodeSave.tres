@@ -1,7 +1,24 @@
 [gd_resource type="Resource" load_steps=2 format=2]
 
-[ext_resource path="res://addons/tree-tools/TreeNode/TreeNodeResource.gd" type="Script" id=1]
+[sub_resource type="GDScript" id=1]
+script/source = "tool
+extends Resource
+
+
+#var nodes_list = [] setget set_nodes_list,get_nodes_list
+export(Dictionary) var dict = {\"connections\":[], \"nodes\":[{\"id\":\"node1\", \"x\":0, \"y\":0, \"type\":\"start\", \"name\":\"start\"}]} setget set_dictionary, get_dictionary
+
+
+###################
+
+func set_dictionary(dictionary):
+	dict = dictionary
+	
+func get_dictionary():
+	return dict
+
+"
 
 [resource]
-script = ExtResource( 1 )
+script = SubResource( 1 )
 dict = null

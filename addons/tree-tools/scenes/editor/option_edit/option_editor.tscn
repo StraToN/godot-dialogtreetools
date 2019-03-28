@@ -7,5 +7,6 @@
 margin_right = 266.0
 margin_bottom = 370.0
 script = ExtResource( 1 )
+type = "option"
 is_multi_output = true
 block_scene = ExtResource( 2 )

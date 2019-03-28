@@ -7,6 +7,8 @@ onready var context_menu = $PopupMenu
 onready var graphnode_selected = null
 onready var just_clicked_graphnode = false
 
+const START_OFFSET = 200
+
 var MultiOutputGraphNode = preload("res://addons/tree-tools/scenes/nodes/globals/multi_output_node.gd")
 
 signal graphnode_selected(graphnode)
@@ -32,7 +34,7 @@ func init():
 	#add start node to the scene
 	var startnode = _add_node("start")
 	startnode.get_node("name").set_text("start")
-	startnode.set_offset(Vector2(get_viewport_rect().size.x/2 - startnode.rect_size.x/2
+	startnode.set_offset(Vector2(get_viewport_rect().size.x/2 - startnode.rect_size.x/2 - START_OFFSET
 		,get_viewport_rect().size.y/2 - startnode.rect_size.y/2))
 	printt("STARTNODE", startnode.get_offset())
 
@@ -99,6 +101,7 @@ func _add_node(type):
 func set_signals_connections(graphnode):
 	graphnode.connect("graphnode_selected", self, "_on_graphnode_selected")
 	graphnode.connect("graphnode_unselected", self, "_on_graphnode_unselected")
+	graphnode.connect("graphnode_removed", self, "_on_graphnode_removed")
 
 func _on_add_button_pressed():
 	context_menu.set_position(get_global_mouse_position())
@@ -107,24 +110,23 @@ func _on_add_button_pressed():
 func _on_graphnode_selected(graphnode):
 	graphnode_selected = graphnode
 	just_clicked_graphnode = true
+	# inform right editor (passing by treetool.gd)
 	emit_signal("graphnode_selected", graphnode_selected)
 
 func _on_graphnode_unselected(graphnode):
+	# inform right editor (passing by treetool.gd)
 	emit_signal("graphnode_unselected", graphnode_selected)
+
+func _on_graphnode_removed(graphnode):
+#	print("GRAPHNODE REMOVED")
+	if graphnode == graphnode_selected:
+		graphnode_selected = null
 
 #############
 ############# OPTION
 #####################
 
-func _on_option_block_instanced(block):
-	printt("OPTION BLOCK INSTANCED", block, block.get_block_id())
-	if graphnode_selected:
-		graphnode_selected.add_option(block.get_block_name(), block.get_block_id())
-
-func _on_option_block_removed(block_id):
-	printt("OPTION BLOCK REMOVED", block_id)
-	graphnode_selected.remove_option(block_id)
-
-func _on_option_block_updated(block_id, new_name):
-	printt("OPTION BLOCK UPDATED", block_id, new_name)
-	graphnode_selected.update_option(block_id, new_name)
+func _on_block_updated(dict_new_data):
+	printt("BLOCK UPDATED", dict_new_data)
+	graphnode_selected.update_data(dict_new_data)
+	

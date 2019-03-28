@@ -2,11 +2,10 @@ tool
 extends EditorPlugin
 
 
-const TREENODE = preload("res://addons/tree-tools/TreeNode/TreeNode.gd")
-const TREENODERESOURCE = preload("res://addons/tree-tools/TreeNode/TreeNodeResource.gd")
+#const TREENODE = preload("res://addons/tree-tools/TreeNode/TreeNode.gd")
+const TreeNodeResource = preload("res://addons/tree-tools/resources/treenode_data.gd")
 
 var TREETOOL = preload("res://addons/tree-tools/scenes/editor/treetool.tscn")
-
 var TREENODE_ICON = preload("res://addons/tree-tools/icons/gear.png")
 
 
@@ -17,14 +16,12 @@ var objects_list # list of objects to save on save_external_resources
 
 
 func _enter_tree():	
-	add_custom_type("TreeNode", "Node", TREENODE, TREENODE_ICON)
-	add_custom_type("TreeNodeResource", "Resource", TREENODERESOURCE, null)
+	#add_custom_type("TreeNode", "Node", TREENODE, TREENODE_ICON)
+	add_custom_type("TreeNodeResource", "Resource", TreeNodeResource, null)
 	
 	tree_tools = TREETOOL.instance()
 	
 	get_editor_interface().get_editor_viewport().add_child(tree_tools)
-#	tree_tools.editor.connect("node_selected", self, "_on_graphnode_selected")
-#	tree_tools.editor.connect("node_unselected", self, "_on_graphnode_unselected")
 
 	make_visible(false)
 
@@ -36,7 +33,7 @@ func _exit_tree():
 	tree_tools.queue_free()
 	tree_tools = null
 		
-	remove_custom_type("TreeNode")
+#	remove_custom_type("TreeNode")
 	remove_custom_type("TreeNodeResource")
 	
 
@@ -58,38 +55,18 @@ func has_main_screen():
 # OVERRIDE
 # function called by editor to ask if the object is managed by plugin
 func handles(object):
-	#return object is TREENODERESOURCE || (object is TREENODE && object.resource != null)
-	return object is TREENODE && object.resource != null
-
+	return object is TreeNodeResource # || (object is TREENODE && object.resource != null)
 
 # OVERRIDE
 func edit(object):
-	
-	if current_object != null:
-		# save current graph to current_object
-		if current_object is TREENODE:
-			current_object.resource.dict = tree_tools.get_dictionary()
-			var res_file = "res://dialogtrees_resources/" + current_object.get_name()+".tres"
-			current_object.external_path = res_file
-
-	# switch current_object
-	if current_object == object || !handles(object) || object == null:
+	print("Edit ", object)
+	if object == null:
 		return
 	
-	# add new object in list of objects
-	current_object = object
-	
-	# load new current_object data into graph
-	#tree_tools.clear()
-
-	if current_object is TREENODE:
-		if current_object.resource != null && current_object.resource is TREENODERESOURCE:
-			tree_tools.load_from_dict(current_object.resource.dict)
-			make_visible(true)
-	elif current_object is TREENODERESOURCE:
-		tree_tools.load_from_dict(current_object.dict)
+	if object is TreeNodeResource:
 		make_visible(true)
-	
+	else:
+		make_visible(false)
 	
 func get_state():
 	return
